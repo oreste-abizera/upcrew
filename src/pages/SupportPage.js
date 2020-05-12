@@ -1,5 +1,8 @@
 import React from "react";
+import Modal from '../components/Modal'
 
 export default function SupportPage() {
-  return <div>hello from SupportPage</div>;
+  return <>
+  <Modal buttonName="test modal"></Modal>
+  </>;
 }
