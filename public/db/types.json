@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "student"
+  },
+  {
+    "id": 2,
+    "title": "teacher"
+  },
+  {
+    "id": 3,
+    "title": "headmaster"
+  },
+  {
+    "id": 4,
+    "title": "librarian"
+  },
+  {
+    "id": 5,
+    "title": "parent"
+  },
+  {
+    "id": 6,
+    "title": "Accountant"
+  },
+  {
+    "id": 7,
+    "title": "Hostel Manager"
+  }
+]

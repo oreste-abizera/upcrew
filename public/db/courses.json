@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "HTML"
+  },
+  {
+    "id": 2,
+    "name": "CSS"
+  },
+  {
+    "id": 3,
+    "name": "VANILLA JS"
+  },
+  {
+    "id": 4,
+    "name": "PHYSICS"
+  },
+  {
+    "id": 5,
+    "name": "MATHEMATICS"
+  },
+  {
+    "id": 6,
+    "name": "ANGULAR JS"
+  }
+]

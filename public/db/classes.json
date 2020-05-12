@@ -1,0 +1,43 @@
+[{
+    "id": 1,
+    "name": "Ado One",
+    "classTeacher": 2,
+    "courses": [1, 2, 3, 4, 5, "6"]
+  },
+  {
+    "id": 2,
+    "name": "Ado Two",
+    "classTeacher": "",
+    "courses": [1, 2, 3, 4, 5, "6"]
+  },
+  {
+    "id": 3,
+    "name": "Ado Three",
+    "classTeacher": "",
+    "courses": [1, 2, 3, 4, 5, "6"]
+  },
+  {
+    "id": 4,
+    "name": "Ado Four",
+    "classTeacher": "",
+    "courses": [1, 2, 3, 4, 5, "6"]
+  },
+  {
+    "id": 5,
+    "name": "Ado Five",
+    "classTeacher": "",
+    "courses": [1, 2, 3, 4, 5, "6"]
+  },
+  {
+    "id": 6,
+    "name": "Ado Six",
+    "classTeacher": "",
+    "courses": [1, 2, 3, 4, 5, "6"]
+  },
+  {
+    "id": 7,
+    "name": "Ado Seven",
+    "classTeacher": "",
+    "courses": [1, 2, 3, 4, 5, "90"]
+  }
+]

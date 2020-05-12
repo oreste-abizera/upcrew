@@ -1,0 +1,141 @@
+/* @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans"); */
+
+:root {
+  --primaryColor: #82b340;
+  --primaryBg: #435165;
+  --primaryBorder: 1px solid #dee0e4;
+  --primaryRGBA: rgba(0, 0, 0, 0.3);
+  --primaryBoxShadow: 0 5px 9px 0 rgba(0, 0, 0, 0.3);
+  --mainGrey: #fafafa;
+  --darkGrey: #5f5e5e;
+  --lightGrey: #e6dfdf;
+  --mainWhite: #fff;
+  --mainBlack: #222;
+  --mainTransition: all 0.3s ease-in-out;
+  --mainSpacing: 0.3rem;
+  --mainRed: rgb(211, 8, 8);
+}
+
+
+body {
+  font-family: "Open Sans", sans-serif !important;
+  background: var(--mainGrey) !important;
+  color: var(--mainBlack);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  color: #5b6574;
+  padding: 0.5rem 0;
+  border-bottom: var(--primaryBorder);
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+h3 {
+  text-align: center;
+  color: #5b6574;
+  padding: 1rem 0;
+}
+
+
+.title-underline {
+  height: 0.25rem;
+  width: 7rem;
+  background: var(--primaryColor);
+}
+
+.text-link {
+  color: var(--primaryColor);
+}
+
+.text-link:hover {
+  color: var(--primaryColor);
+}
+
+.text-main {
+  font-weight: bold;
+}
+
+/* buttons */
+.ado-btn {
+  display: inline-block;
+  padding: 0.5rem;
+  letter-spacing: 3px;
+  background: var(--primaryColor);
+  border: none;
+  margin: 0.5rem;
+  color: var(--mainWhite);
+  outline: 1px solid var(--primaryColor);
+  outline-offset: 3px;
+  transition: var(--mainTransition);
+}
+
+.ado-btn:hover {
+  outline-color: var(--darkGrey);
+  background: var(--darkGrey);
+  color: var(--primaryColor);
+}
+
+.ado-btn-outline {
+  color: var(--primaryColor) !important;
+  border-color: var(--primaryColor) !important;
+}
+
+.ado-btn-outline:hover {
+  color: var(--mainWhite) !important;
+  background-color: var(--primaryColor) !important;
+  border-color: var(--primaryColor) !important;
+}
+
+.action-btn {
+  margin: 0.2rem;
+  padding: 0.1rem;
+  background: transparent;
+  border: none;
+  outline: none !important;
+}
+
+.btn-icon {
+  font-size: 1.2rem;
+  margin-top: -0.5rem;
+}
+
+.action-button {
+  background: var(--primaryColor);
+  padding: 0.5rem 0.3rem;
+  color: var(--mainWhite);
+}
+.action-button:hover{
+  background: var(--darkGrey);
+  color: var(--primaryColor) !important;
+}
+/* end of buttons */
+
+.main-icon {
+  color: var(--primaryColor);
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.main-heading {
+  color: var(--primaryColor);
+  letter-spacing: 0.3rem;
+}
+
+.main-text {
+  color: var(--primaryColor);
+  font-weight: bolder !important;
+}

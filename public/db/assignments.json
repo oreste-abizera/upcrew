@@ -1,0 +1,33 @@
+[{
+    "id": 1,
+    "title": "Angular assignment",
+    "class": 1,
+    "course": 6,
+    "teacher": 2,
+    "duration": 5
+  },
+  {
+    "id": 2,
+    "title": "HTML review",
+    "class": 1,
+    "course": 1,
+    "teacher": 2,
+    "duration": 5
+  },
+  {
+    "id": 3,
+    "title": "Angular second Assignment",
+    "class": 1,
+    "course": 6,
+    "teacher": 2,
+    "duration": 5
+  },
+  {
+    "id": 4,
+    "title": "CSS assignment",
+    "class": 2,
+    "course": 2,
+    "teacher": 2,
+    "duration": 30
+  }
+]

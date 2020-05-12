@@ -1,0 +1,275 @@
+[{
+    "id": 1,
+    "firstName": "Coder",
+    "lastName": "Tauras",
+    "userName": "tauras",
+    "userPassword": "123",
+    "dateOfBirth": "03/02/2000",
+    "userEmail": "tauras@hotmail.com",
+    "userCountry": "Rwanda",
+    "image": {
+      "name": "",
+      "url": "",
+      "provider": "local"
+    },
+    "gender": "male",
+    "type": 1,
+    "currentClass": 1,
+    "classTeacher": "",
+    "father": "",
+    "mother": ""
+  },
+  {
+    "id": 2,
+    "firstName": "Oreste",
+    "lastName": "Abizera",
+    "userName": "Oreste",
+    "userPassword": "123",
+    "dateOfBirth": "03/02/2000",
+    "userEmail": "oreste@hotmail.com",
+    "userCountry": "Rwanda",
+    "image": {
+      "name": "",
+      "url": "",
+      "provider": "local"
+    },
+    "gender": "male",
+    "type": 2
+  },
+  {
+    "id": 3,
+    "firstName": "Lee",
+    "lastName": "Youn",
+    "userName": "Lee Youn",
+    "userPassword": "123",
+    "dateOfBirth": "03/02/2000",
+    "userEmail": "leeyoun@hotmail.com",
+    "userCountry": "Rwanda",
+    "image": {
+      "name": "",
+      "url": "",
+      "provider": "local"
+    },
+    "gender": "male",
+    "type": 1,
+    "currentClass": 1,
+    "father": "",
+    "mother": ""
+  },
+  {
+    "id": 4,
+    "firstName": "John",
+    "lastName": "Doe",
+    "userName": "Doe",
+    "userPassword": "123",
+    "dateOfBirth": "03/02/2000",
+    "userEmail": "johndoe@hotmail.com",
+    "userCountry": "Rwanda",
+    "image": {
+      "name": "",
+      "url": "",
+      "provider": "local"
+    },
+    "gender": "male",
+    "type": 1,
+    "currentClass": 1,
+    "father": "",
+    "mother": ""
+  },
+  {
+    "id": 5,
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "userName": "Jane Doe",
+    "userPassword": "123",
+    "dateOfBirth": "03/02/2000",
+    "userEmail": "janedoe@hotmail.com",
+    "userCountry": "Rwanda",
+    "image": {
+      "name": "",
+      "url": "",
+      "provider": "local"
+    },
+    "gender": "female",
+    "type": 1,
+    "currentClass": 1,
+    "father": "",
+    "mother": ""
+  },
+  {
+    "id": 6,
+    "firstName": "Manzi",
+    "lastName": "Mike",
+    "userName": "Rich.com",
+    "userPassword": "123",
+    "dateOfBirth": "03/02/2000",
+    "userEmail": "manzimike@hotmail.com",
+    "userCountry": "Rwanda",
+    "image": {
+      "name": "",
+      "url": "",
+      "provider": "local"
+    },
+    "gender": "male",
+    "type": 1,
+    "currentClass": 5,
+    "father": 11,
+    "mother": 12
+  },
+  {
+    "id": 7,
+    "firstName": "Jaques",
+    "lastName": "Twizeyimana",
+    "userName": "Sandberg",
+    "userPassword": "123",
+    "dateOfBirth": "03/02/2000",
+    "userEmail": "sandberg@hotmail.com",
+    "userCountry": "Rwanda",
+    "image": {
+      "name": "",
+      "url": "",
+      "provider": "local"
+    },
+    "gender": "male",
+    "type": 1,
+    "currentClass": 1,
+    "father": "",
+    "mother": ""
+  },
+  {
+    "id": 8,
+    "firstName": "Manzi",
+    "lastName": "Gustave",
+    "userName": "Mgustave",
+    "userPassword": "123",
+    "dateOfBirth": "03/02/2000",
+    "userEmail": "mgustave@hotmail.com",
+    "userCountry": "Rwanda",
+    "image": {
+      "name": "",
+      "url": "",
+      "provider": "local"
+    },
+    "gender": "male",
+    "type": 1,
+    "currentClass": 2,
+    "father": "",
+    "mother": ""
+  },
+  {
+    "id": 9,
+    "firstName": "Erneste",
+    "lastName": "Ntezirizaza",
+    "userName": "Tabagwe",
+    "userPassword": "123",
+    "dateOfBirth": "03/02/2000",
+    "userEmail": "tbg@hotmail.com",
+    "userCountry": "Rwanda",
+    "image": {
+      "name": "",
+      "url": "",
+      "provider": "local"
+    },
+    "gender": "male",
+    "type": 1,
+    "currentClass": 3,
+    "father": "",
+    "mother": ""
+  },
+  {
+    "id": 10,
+    "firstName": "Nell",
+    "lastName": "Snow",
+    "userName": "snow",
+    "userPassword": "123",
+    "dateOfBirth": "03/02/2000",
+    "userEmail": "nellsnow@hotmail.com",
+    "userCountry": "UK",
+    "image": {
+      "name": "nba.jpg",
+      "url": "/assets/images/nba.jpg",
+      "provider": "local"
+    },
+    "gender": "female",
+    "type": 1,
+    "currentClass": 1,
+    "father": 11,
+    "mother": 12
+  },
+  {
+    "id": 11,
+    "firstName": "Kell",
+    "lastName": "Meek",
+    "userName": "meek",
+    "userPassword": "123",
+    "dateOfBirth": "03/02/2000",
+    "userEmail": "kellmeek@hotmail.com",
+    "userCountry": "UK",
+    "image": {
+      "name": "savio.jpg",
+      "url": "/assets/images/savio.jpeg",
+      "provider": "local"
+    },
+    "gender": "male",
+    "type": 5,
+    "occupation": "Photographer",
+    "phoneNumber": "0898765437"
+  },
+  {
+    "id": 12,
+    "firstName": "Neil",
+    "lastName": "Wright",
+    "userName": "wright",
+    "userPassword": "123",
+    "dateOfBirth": "03/02/2000",
+    "userEmail": "wrightneil@hotmail.com",
+    "userCountry": "UK",
+    "image": {
+      "name": "savio.jpg",
+      "url": "/assets/images/kevin.jpg",
+      "provider": "local"
+    },
+    "gender": "female",
+    "type": 5,
+    "occupation": "Singer",
+    "phoneNumber": "0838763431"
+  },
+  {
+    "id": 13,
+    "firstName": "Bar",
+    "lastName": "Kinda",
+    "userName": "Kinda",
+    "userPassword": "123",
+    "dateOfBirth": "03/02/2000",
+    "userEmail": "barkinda@hotmail.com",
+    "userCountry": "Japan",
+    "image": {
+      "name": "nba.jpg",
+      "url": "/assets/images/nba.jpg",
+      "provider": "local"
+    },
+    "gender": "male",
+    "type": 3,
+    "phoneNumber": "0694725530"
+  },
+  {
+    "id": 14,
+    "firstName": "Johnston",
+    "lastName": "Mill",
+    "userName": "guest",
+    "userPassword": "123",
+    "dateOfBirth": "03/02/2000",
+    "userEmail": "mill@hotmail.com",
+    "userCountry": "Canada",
+    "image": {
+      "name": "",
+      "url": "",
+      "provider": "local"
+    },
+    "gender": "male",
+    "type": 10,
+    "currentClass": 5,
+    "father": 11,
+    "mother": 12
+  }
+]
