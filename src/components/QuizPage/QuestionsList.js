@@ -5,6 +5,7 @@ import SingleQuestion from "./SingleQuestion";
 
 
 const getTime = (time = 0) => {
+    var element = document.getElementById("timer")
     time = parseInt(time)
     let countdownDate = new Date()
     countdownDate.setMinutes(countdownDate.getMinutes() + time)
@@ -15,10 +16,11 @@ const getTime = (time = 0) => {
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        document.getElementById("timer").innerHTML = days > 0 ? `${days}d ${hours}h ${minutes}m ${seconds}s` : hours > 0 ? `${hours}h ${minutes}m ${seconds}s` : `${minutes}m ${seconds}s`
+        element ? element.innerHTML = days > 0 ? `${days}d ${hours}h ${minutes}m ${seconds}s` : hours > 0 ? `${hours}h ${minutes}m ${seconds}s` : `${minutes}m ${seconds}s`
+            : element = document.getElementById("timer")
         if (distance <= 0) {
             clearInterval(timerInterval)
-            document.getElementById("timer").innerHTML = "Time up"
+            element ? element.innerHTML = "Time up" : element = document.getElementById("timer")
         }
     }, 1000);
 }
@@ -30,9 +32,9 @@ export default function QuestionsList({ id }) {
     let currentAssignment = assignments.find(item => item.id.toString() === id)
 
     React.useEffect(() => {
-        setTime(currentAssignment.duration)    
-    },[])
-    
+        setTime(currentAssignment.duration)
+    }, [])
+
     React.useEffect(() => {
         sortQuestions(id)
     }, [id])
@@ -86,13 +88,21 @@ export default function QuestionsList({ id }) {
 }
 
 const QuestionsListWrapper = styled.div`
+position: relative;
 .timer{
-    position: fixed;
+    position: fixed !important;
     top: 4rem;
     right: 0;
+    /* right: 7rem; */
     padding: 1rem;
     z-index: 1;
     /* background: #d9edf7; */
     background: var(--primaryColor);
+}
+@media screen and (max-width:576px){
+    .timer{
+        top: 8rem;
+        right: 7rem;
+    }
 }
 `
