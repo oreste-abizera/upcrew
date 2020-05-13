@@ -4,7 +4,8 @@
     "class": 1,
     "course": 6,
     "teacher": 2,
-    "duration": 5
+    "duration": 5,
+    "status": "published"
   },
   {
     "id": 2,
@@ -12,7 +13,8 @@
     "class": 1,
     "course": 1,
     "teacher": 2,
-    "duration": 5
+    "duration": 5,
+    "status": "published"
   },
   {
     "id": 3,
@@ -20,7 +22,8 @@
     "class": 1,
     "course": 6,
     "teacher": 2,
-    "duration": 5
+    "duration": 5,
+    "status": "notPublished"
   },
   {
     "id": 4,
@@ -28,6 +31,7 @@
     "class": 2,
     "course": 2,
     "teacher": 2,
-    "duration": 30
+    "duration": 30,
+    "status": "completed"
   }
 ]

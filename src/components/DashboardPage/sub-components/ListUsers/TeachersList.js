@@ -4,6 +4,7 @@ import { UserContext } from "../../../../context/UserContext";
 import UserList from "./UserList";
 import Heading from "../../../Heading";
 import UsersFilters from "./UsersFilters";
+import Modal from "../../../Modal"
 
 export default function TeachersList() {
   const { filteredUsers, resetClass } = React.useContext(UserContext);
@@ -13,7 +14,7 @@ export default function TeachersList() {
     <TeachersListWrapper>
       <Heading title="Teachers list"></Heading>
       <UsersFilters>
-        <button className="ado-btn">Add new Teacher</button>
+      <Modal buttonName="Add new teacher" header="Add teacher" footer="Add teacher"></Modal>
       </UsersFilters>
       <UserList data={teachers} userClass={false}></UserList>
     </TeachersListWrapper>

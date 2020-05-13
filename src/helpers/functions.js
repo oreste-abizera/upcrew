@@ -47,6 +47,13 @@ export async function getAssignments() {
   return response.data;
 }
 
+export async function getQuestions() {
+  let response = await axios
+    .get(`${url}/db/questions.json`)
+    .catch((err) => console.log(err));
+  return response.data;
+}
+
 export async function formatUser(user) {
   let classes = await getClasses();
   let tempClass = classes.find((item) => item.id === user.currentClass);

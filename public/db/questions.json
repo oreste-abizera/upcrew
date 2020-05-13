@@ -1,0 +1,106 @@
+[
+    {
+        "question_id": 1,
+        "quiz_id": 2,
+        "type": 1,
+        "question": "The year in which HTML was first proposed is:",
+        "options": [
+            "1990",
+            "2000",
+            "1980",
+            "1985"
+        ],
+        "answer": "1990",
+        "score": 1
+    },
+    {
+        "question_id": 2,
+        "quiz_id": 2,
+        "type": 1,
+        "question": "HTML tags are surrounded by which type of brackets.",
+        "options": [
+            "Curly",
+            "Squart",
+            "Round",
+            "Angle"
+        ],
+        "answer": "Angle",
+        "score": 1
+    },
+    {
+        "question_id": 3,
+        "quiz_id": 2,
+        "type": 1,
+        "question": "HTML web pages can be read and rendered by _________.",
+        "options": [
+            "Compiler",
+            "Server",
+            "Browser",
+            "Interpreter"
+        ],
+        "answer": "Browser",
+        "score": 1
+    },
+    {
+        "question_id": 4,
+        "quiz_id": 2,
+        "type": 1,
+        "question": "Which one is the attribute of <form> tag",
+        "options": [
+            "Method",
+            "Href",
+            "Type",
+            "Src"
+        ],
+        "answer": "Method",
+        "score": 1
+    },
+    {
+        "question_id": 5,
+        "quiz_id": 2,
+        "type": 1,
+        "question": "What is the correct HTML element for inserting a line break?",
+        "options": [
+            "<lb>",
+            "<br>",
+            "<break>"
+        ],
+        "answer": "<br>",
+        "score": 1
+    },
+    {
+        "question_id": 6,
+        "quiz_id": 2,
+        "type": 1,
+        "question": "Choose the correct HTML element to define emphasized text",
+        "options": [
+            "<i>",
+            "<em>",
+            "<italic>"
+        ],
+        "answer": "<em>",
+        "score": 1
+    },
+    {
+        "question_id": 7,
+        "quiz_id": 2,
+        "type": 1,
+        "question": "How can you make a list that lists the items with numbers?",
+        "options": [
+            "<ol>",
+            "<dl>",
+            "<ul>",
+            "<list>"
+        ],
+        "answer": "<ol>",
+        "score": 1
+    },
+    {
+        "question_id": 8,
+        "quiz_id": 2,
+        "type": 2,
+        "question": "Define H.T.M.L in full",
+        "answer": "Hyper Text Markup Language",
+        "score": 2
+    }
+]

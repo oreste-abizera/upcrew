@@ -17,6 +17,7 @@ import Profile2 from "./pages/secured/Profile2";
 import Students from "./pages/secured/Students";
 import Teachers from "./pages/secured/Teachers";
 import Assignments from "./pages/secured/Assignments";
+import QuizPage from "./pages/secured/QuizPage"
 
 //import components
 import Navbar from "./components/Navbar";
@@ -94,6 +95,7 @@ class Routes extends Component {
           <HeadmasterRoute path="/teachers">
             <Teachers></Teachers>
           </HeadmasterRoute>
+          <PrivateRoute path="/quiz/:id" component={QuizPage}></PrivateRoute>
           <Route path="*" component={ErrorPage}></Route>
         </Switch>
         {!user.token && <Footer />}

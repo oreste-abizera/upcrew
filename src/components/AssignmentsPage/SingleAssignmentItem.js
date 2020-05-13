@@ -42,7 +42,7 @@ export default function SingleAssignmentItem({ data = {}, index }) {
         </div>
         <div className="col-8 col-md-2">
           <Link
-            to="/assignments"
+            to={`/quiz/${assignment.id}`}
             className="ado-btn btn-block text-center mt-d-0 col-md-8"
           >
             Start <span className="d-md-none">Quiz</span>
