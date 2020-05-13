@@ -140,3 +140,7 @@ h3 {
   color: var(--primaryColor);
   font-weight: bolder !important;
 }
+
+.no-resize{
+  resize: none;
+}
