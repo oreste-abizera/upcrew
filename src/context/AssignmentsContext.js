@@ -81,6 +81,11 @@ function AssignmentsProvider({ children }) {
     })
     setFilteredQuestions(tempQuestions)
   }
+
+  function submitAssignment(answers,assignment_id) {
+    console.log(answers)
+    console.log(assignment_id)
+  }
   return (
     <AssignmentsContext.Provider
       value={{
@@ -88,6 +93,7 @@ function AssignmentsProvider({ children }) {
         filteredAssignments,
         filteredQuestions,
         sortQuestions,
+        submitAssignment,
         title,
         courses,
         course,

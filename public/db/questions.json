@@ -63,7 +63,8 @@
         "options": [
             "<lb>",
             "<br>",
-            "<break>"
+            "<break>",
+            "None of the above"
         ],
         "answer": "<br>",
         "score": 1
@@ -76,7 +77,8 @@
         "options": [
             "<i>",
             "<em>",
-            "<italic>"
+            "<italic>",
+            "None of the above"
         ],
         "answer": "<em>",
         "score": 1
