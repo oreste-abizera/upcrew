@@ -73,12 +73,23 @@ export default function QuestionsList({ id }) {
     //     setValues(tempValues)
     // }, [filteredQuestions])
 
+    function enableBeforeUnload() {
+        window.onbeforeunload = (e) => {
+            return "Discard Changes?"
+        }
+    }
+    function disableBeforeUnload() {
+        window.onbeforeunload = null
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
+        disableBeforeUnload()
         submitAssignment(values, id)
     }
 
     const handleChange = (e) => {
+        enableBeforeUnload()
         let tempValues = values.map(item => item.id === e.target.name ? { ...item, value: e.target.value } : item)
         setValues(tempValues)
     }
@@ -88,7 +99,7 @@ export default function QuestionsList({ id }) {
         <h2 className="text-center">{currentAssignment.title} <span className="main-text"> /{marks} marks</span></h2>
         <hr></hr>
         <div className="timer" id="timer"></div>
-        <form className="questions col-lg-6 mx-auto" onSubmit={handleSubmit}>
+        <form className="questions col-lg-8 mx-auto" onSubmit={handleSubmit}>
             {filteredQuestions.map((record, index) => <SingleQuestion key={record.question_id} index={index} data={record} values={values} handleChange={handleChange}></SingleQuestion>)}
             <button className="ado-btn btn-block col-10 mx-auto mx-lg-0">Submit</button>
         </form>
