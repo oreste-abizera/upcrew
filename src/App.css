@@ -27,6 +27,7 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  outline-color: var(--primaryColor);
 }
 
 h1 {

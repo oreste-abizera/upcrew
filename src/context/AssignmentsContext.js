@@ -79,7 +79,8 @@ function AssignmentsProvider({ children }) {
     let tempQuestions = questions.filter(record => {
       return record.quiz_id.toString() === quizId.toString()
     })
-    setFilteredQuestions(tempQuestions)
+    // setFilteredQuestions(tempQuestions)
+    return tempQuestions
   }
 
   function submitAssignment(answers,assignment_id) {

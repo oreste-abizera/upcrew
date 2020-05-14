@@ -25,18 +25,19 @@ const getTime = (time = 0) => {
     }, 1000);
 }
 export default function QuestionsList({ id }) {
-    const { assignments, submitAssignment, filteredQuestions, sortQuestions } = React.useContext(AssignmentsContext)
+    const { assignments, submitAssignment, sortQuestions } = React.useContext(AssignmentsContext)
     const [values, setValues] = React.useState([])
     const [marks, setMarks] = React.useState(0)
     const [time, setTime] = React.useState(5)
+    const [filteredQuestions, setFilteredQuestions] = React.useState([])
     let currentAssignment = assignments.find(item => item.id.toString() === id)
-
     React.useEffect(() => {
         setTime(currentAssignment.duration)
     }, [])
 
     React.useEffect(() => {
-        sortQuestions(id)
+        let tempQuestions = sortQuestions(id)
+        setFilteredQuestions(tempQuestions)
     }, [id])
 
 
@@ -47,6 +48,13 @@ export default function QuestionsList({ id }) {
         }, 0)
         setMarks(totalMarks)
         getTime(time)
+
+        //set values placeholders
+        let tempValues = []
+        for (let i = 0; i < filteredQuestions.length; i++) {
+            tempValues = [...tempValues, { id: `question${filteredQuestions[i].question_id}`, value: "" }]
+        }
+        setValues(tempValues)
     }, [filteredQuestions])
 
 
@@ -57,13 +65,13 @@ export default function QuestionsList({ id }) {
 
 
 
-    React.useEffect(() => {
-        let tempValues = []
-        for (let i = 0; i < filteredQuestions.length; i++) {
-            tempValues = [...tempValues, { id: `question${filteredQuestions[i].question_id}`, value: "" }]
-        }
-        setValues(tempValues)
-    }, [filteredQuestions])
+    // React.useEffect(() => {
+    //     let tempValues = []
+    //     for (let i = 0; i < filteredQuestions.length; i++) {
+    //         tempValues = [...tempValues, { id: `question${filteredQuestions[i].question_id}`, value: "" }]
+    //     }
+    //     setValues(tempValues)
+    // }, [filteredQuestions])
 
     const handleSubmit = (e) => {
         e.preventDefault()
