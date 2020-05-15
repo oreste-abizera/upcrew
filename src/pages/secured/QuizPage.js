@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { UserContext } from "../../context/UserContext";
 import { AssignmentsContext } from "../../context/AssignmentsContext"
 import QuestionsList from "../../components/QuizPage/QuestionsList";
+import Loader from "../../components/Loader";
 
 export default function QuizPage(props) {
   const { history } = props
@@ -13,7 +14,7 @@ export default function QuizPage(props) {
   
   if (!found) {
     return <QuizPageWrapper sidebarOpen={sidebarOpen}>
-      <p className="text-center mt-3">Quiz info loading...</p>
+      <Loader text="Quiz info loading..."></Loader>
     </QuizPageWrapper>
   } else {
     let tempQuestions = questions.filter(record => record.quiz_id === found.id)

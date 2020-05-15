@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import ProfileList from "./ProfileList";
 import UserList from '../DashboardPage/sub-components/ListUsers/UserList'
+import Loader from "../Loader";
 
 export default function ProfileData({ title, data, columns }) {
   if (columns) {
@@ -22,7 +23,8 @@ export default function ProfileData({ title, data, columns }) {
       </button>
       <div className="line"></div>
       {data.length === 0 ? (
-        <div className="p-3 my-2">{title} is loading...</div>
+        // <div className="p-3 my-2">{title} is loading...</div>
+        <Loader text={`${title} is loading...`} center={false}></Loader>
       ) : (
         <ProfileList data={data}></ProfileList>
       )}

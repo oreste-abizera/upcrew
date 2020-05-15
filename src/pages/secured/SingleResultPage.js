@@ -3,6 +3,7 @@ import { UserContext } from '../../context/UserContext'
 import { AssignmentsContext } from '../../context/AssignmentsContext'
 import styled from 'styled-components'
 import AnswersList from '../../components/SingleResultPage/AnswersList'
+import Loader from '../../components/Loader'
 
 export default function SingleResultPage(props) {
     const { id: quizId } = props.match.params
@@ -37,7 +38,7 @@ export default function SingleResultPage(props) {
 
     if (!found) {
         return <SingleResultPageWrapper sidebarOpen={sidebarOpen}>
-            <p className="text-center my-3">Loading assignment's data...</p>
+            <Loader text="Loading assignment's data..."></Loader>
         </SingleResultPageWrapper>
     }
     return <SingleResultPageWrapper sidebarOpen={sidebarOpen}>

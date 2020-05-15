@@ -7,6 +7,7 @@ import {
   getMotherInfo,
 } from "../../helpers/profileFunctions";
 import ProfileData from "../../components/ProfilePage/ProfileData";
+import Loader from "../../components/Loader";
 
 export default function Profile2(props) {
   const { slug } = props.match.params;
@@ -38,7 +39,7 @@ export default function Profile2(props) {
   }, [user]);
 
   if (!user) {
-    return <div className="text-center mt-5">User data loading...</div>;
+    return <Loader text="User Data loading..."></Loader>;
   }
   if (user.length === 0) {
     return <div className="text-center mt-5">Sorry. No user found</div>;

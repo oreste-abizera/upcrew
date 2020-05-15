@@ -2,6 +2,7 @@ import React from "react";
 import styled from 'styled-components'
 import { AssignmentsContext } from "../../context/AssignmentsContext";
 import SingleQuestion from "./SingleQuestion";
+import Loader from "../Loader";
 
 
 const getTime = (time = 0) => {
@@ -60,7 +61,7 @@ export default function QuestionsList({ id }) {
 
 
     if (filteredQuestions.length === 0) {
-        return <p className="text-center my-3">Loading questions...</p>
+        return <Loader text="Loading questions..."></Loader>
     }
 
 
