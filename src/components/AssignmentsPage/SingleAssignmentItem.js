@@ -1,13 +1,38 @@
 import React from "react";
 import { formatAssignment } from "../../helpers/functions";
 import { Link } from "react-router-dom";
+import { AssignmentsContext } from "../../context/AssignmentsContext";
+import { UserContext } from "../../context/UserContext";
 
 export default function SingleAssignmentItem({ data = {}, index }) {
+  const { results, questions, assignments } = React.useContext(AssignmentsContext)
+  const { user } = React.useContext(UserContext)
   const [assignment, setAssignment] = React.useState({});
+  const [done, setDone] = React.useState(false)
 
   React.useEffect(() => {
     mount();
   }, data);
+
+  React.useEffect(() => {
+    checkDone(assignment)
+  }, [assignment, results, questions, assignments])
+
+  function checkDone(assignment) {
+    let tempDone = false
+    let checkQuestions = questions.filter(record => record.quiz_id === assignment.id)
+    if (checkQuestions.length > 0) {
+      for (let i = 0; i < checkQuestions.length; i++) {
+        let doneQuestions = results.find(record => record.question_id === checkQuestions[i].question_id && record.student_id === user.user.id)
+        if (doneQuestions) {
+          tempDone = true
+          break
+        }
+      }
+    }
+
+    setDone(tempDone)
+  }
 
   async function mount() {
     let tempAssignment = await formatAssignment(data);
@@ -41,12 +66,18 @@ export default function SingleAssignmentItem({ data = {}, index }) {
           {assignment.duration} mins
         </div>
         <div className="col-8 col-md-2">
-          <Link
+          {done ? <Link
+            to={`/results/${assignment.id}`}
+            className="main-text btn-block text-md-center ml-5 mt-1 m-md-0 col-md-8"
+          >
+            Results
+          </Link>: <Link
             to={`/quiz/${assignment.id}`}
             className="ado-btn btn-block text-center mt-d-0 col-md-8"
           >
             Start <span className="d-md-none">Quiz</span>
-          </Link>
+          </Link>}
+          
         </div>
       </div>
     </div>

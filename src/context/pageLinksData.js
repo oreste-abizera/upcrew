@@ -3,6 +3,7 @@ import {
   MdDashboard,
   MdAssignment,
   MdAssignmentReturned,
+  MdMessage,
 } from "react-icons/md";
 import {
   FaGraduationCap,
@@ -64,6 +65,14 @@ export default [
     text: "Exams",
     type: "all",
   },
+
+  {
+    id: 9,
+    url: "/messages",
+    icon: <MdMessage className="pagelink-icon"></MdMessage>,
+    text: "Messages",
+    type: "all",
+  },
   {
     id: 7,
     url: "/timetable",
@@ -72,7 +81,7 @@ export default [
     type: "all",
   },
   {
-    id: 9,
+    id: 10,
     url: "/books",
     icon: <FaBook className="pagelink-icon"></FaBook>,
     text: "Library Books",

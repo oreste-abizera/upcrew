@@ -18,6 +18,8 @@ import Students from "./pages/secured/Students";
 import Teachers from "./pages/secured/Teachers";
 import Assignments from "./pages/secured/Assignments";
 import QuizPage from "./pages/secured/QuizPage"
+import ResultsPage from "./pages/secured/ResultsPage"
+import SingleResultPage from "./pages/secured/SingleResultPage";
 
 //import components
 import Navbar from "./components/Navbar";
@@ -95,7 +97,9 @@ class Routes extends Component {
           <HeadmasterRoute path="/teachers">
             <Teachers></Teachers>
           </HeadmasterRoute>
-          <PrivateRoute path="/quiz/:id" component={QuizPage}></PrivateRoute>
+          <PrivateRoute exact path="/quiz/:id" component={QuizPage}></PrivateRoute>
+          <PrivateRoute exact path="/results" component={ResultsPage}></PrivateRoute>
+          <PrivateRoute exact path="/results/:id" component={SingleResultPage}></PrivateRoute>
           <Route path="*" component={ErrorPage}></Route>
         </Switch>
         {!user.token && <Footer />}

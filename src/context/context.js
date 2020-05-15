@@ -96,9 +96,10 @@ class AdoProvider extends Component {
 
       const newUser = { ...response };
       userLogin(newUser);
-      this.showAlert({
-        message: `Congratulations ${newUser.username}, you are now logged in.`,
-      });
+      // this.showAlert({
+      //   message: `Congratulations ${newUser.username}, you are now logged in.`,
+      // });
+      this.hideAlert()
     } else {
       this.showAlert({
         message: "Something went wrong. Please try again later.",

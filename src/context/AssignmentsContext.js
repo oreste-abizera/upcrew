@@ -1,5 +1,5 @@
 import React from "react";
-import { getAssignments, getCourses, getQuestions } from "../helpers/functions";
+import { getAssignments, getCourses, getQuestions, getResults } from "../helpers/functions";
 const AssignmentsContext = React.createContext();
 
 function AssignmentsProvider({ children }) {
@@ -7,7 +7,7 @@ function AssignmentsProvider({ children }) {
   const [filteredAssignments, setFilteredAssignments] = React.useState([]);
   const [title, setTitle] = React.useState("");
   const [questions, setQuestions] = React.useState([]);
-  const [filteredQuestions, setFilteredQuestions] = React.useState([]);
+  const [results, setResults] = React.useState([]);
   const [courses, setCourses] = React.useState([]);
   const [course, setCourse] = React.useState("all");
   const [duration, setDuration] = React.useState(0);
@@ -26,8 +26,9 @@ function AssignmentsProvider({ children }) {
     let tempAssignments = await getAssignments();
     let tempCourses = await getCourses();
     let tempQuestions = await getQuestions();
+    let tempResults = await getResults();
     setQuestions(tempQuestions)
-    setFilteredQuestions(tempQuestions)
+    setResults(tempResults)
     setCourses(tempCourses);
     setAssignments(tempAssignments);
     setFilteredAssignments(tempAssignments);
@@ -79,7 +80,6 @@ function AssignmentsProvider({ children }) {
     let tempQuestions = questions.filter(record => {
       return record.quiz_id.toString() === quizId.toString()
     })
-    // setFilteredQuestions(tempQuestions)
     return tempQuestions
   }
 
@@ -92,8 +92,9 @@ function AssignmentsProvider({ children }) {
       value={{
         assignments,
         filteredAssignments,
-        filteredQuestions,
+        results,
         sortQuestions,
+        questions,
         submitAssignment,
         title,
         courses,

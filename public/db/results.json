@@ -1,0 +1,65 @@
+[
+    {
+        "result_id": 1,
+        "question_id": 1,
+        "answer": "1990",
+        "score": 2,
+        "student_id": 10
+    },
+    {
+        "result_id": 2,
+        "question_id": 2,
+        "answer": "Angle",
+        "score": 1,
+        "student_id": 10
+    },
+    {
+        "result_id": 3,
+        "question_id": 3,
+        "answer": "Browser",
+        "score": 1,
+        "student_id": 10
+    },
+    {
+        "result_id": 4,
+        "question_id": 4,
+        "answer": "Method",
+        "score": 1,
+        "student_id": 10
+    },
+    {
+        "result_id": 5,
+        "question_id": 5,
+        "answer": "<br>",
+        "score": 1,
+        "student_id": 10
+    },
+    {
+        "result_id": 6,
+        "question_id": 6,
+        "answer": "<em>",
+        "score": 1,
+        "student_id": 10
+    },
+    {
+        "result_id": 7,
+        "question_id": 7,
+        "answer": "<ol>",
+        "score": 1,
+        "student_id": 10
+    },
+    {
+        "result_id": 8,
+        "question_id": 8,
+        "answer": "Hyper text markup language",
+        "score": 1,
+        "student_id": 10
+    },
+    {
+        "result_id": 9,
+        "question_id": 20,
+        "answer": "Angleio",
+        "score": 10,
+        "student_id": 100
+    }
+]

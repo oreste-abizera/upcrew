@@ -54,6 +54,13 @@ export async function getQuestions() {
   return response.data;
 }
 
+export async function getResults() {
+  let response = await axios
+    .get(`${url}/db/results.json`)
+    .catch((err) => console.log(err));
+  return response.data;
+}
+
 export async function formatUser(user) {
   let classes = await getClasses();
   let tempClass = classes.find((item) => item.id === user.currentClass);
