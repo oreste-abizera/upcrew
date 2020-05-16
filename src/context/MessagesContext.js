@@ -4,7 +4,7 @@ const MessagesContext = React.createContext();
 
 function MessagesProvider({ children }) {
     const [messages, setMessages] = React.useState([]);
-
+    const [activeMessage, setActiveMessage] = React.useState(getActiveMessageFromSessionStorage)
 
     React.useEffect(() => {
         mount();
@@ -14,10 +14,21 @@ function MessagesProvider({ children }) {
         let tempMessages = await getMessages()
         setMessages(tempMessages)
     }
+
+    function getActiveMessageFromSessionStorage() {
+        return sessionStorage.getItem("currentMessage") ? JSON.parse(sessionStorage.getItem("currentMessage")) : ""
+    }
+
+    function syncActiveMessageToSessionStorage(item) {
+        sessionStorage.setItem("currentMessage", JSON.stringify(item))
+        setActiveMessage(getActiveMessageFromSessionStorage())
+    }
     return (
         <MessagesContext.Provider
             value={{
-                messages
+                messages,
+                activeMessage,
+                syncActiveMessageToSessionStorage
             }}
         >
             {children}

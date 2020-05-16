@@ -4,8 +4,12 @@ import styled from 'styled-components'
 import MessagesArea from './MessagesArea';
 import ChatList from './ChatList';
 import { MdMenu } from 'react-icons/md';
+import { MessagesContext } from '../../context/MessagesContext';
+import { UserContext } from "../../context/UserContext";
 
 export default function MessagesContainer() {
+    const { user } = React.useContext(UserContext)
+    const { activeMessage, syncActiveMessageToSessionStorage, messages } = React.useContext(MessagesContext)
     const [sideOpen, setSideOpen] = React.useState(true)
     const closeSide = () => {
         setSideOpen(false)
@@ -19,8 +23,8 @@ export default function MessagesContainer() {
             {/* <Heading title="Private Messaging"></Heading> */}
             <div className="messages-data d-flex">
                 <div className="open-side"><MdMenu onClick={openSide} className="open-icon"></MdMenu></div>
-                <ChatList closeSide={closeSide}></ChatList>
-                <MessagesArea></MessagesArea>
+                <ChatList closeSide={closeSide} syncActiveMessageToSessionStorage={syncActiveMessageToSessionStorage}></ChatList>
+                <MessagesArea activeMessage={activeMessage} messages={messages} me={user.user.id}></MessagesArea>
             </div>
         </div>
     </MessagesContainerWrapper>
@@ -70,7 +74,10 @@ const MessagesContainerWrapper = styled.div`
 .messages-area{
     min-width: ${props => props.sideOpen ? "50%" : "90%"};
     max-width: ${props => props.sideOpen ? "50%" : "90%"};
+    min-height: 89.1vh;
+    max-height: 89.1vh;
     background: var(--mainWhite);
+    overflow-y: auto;
 }
 .messages-header{
     color: var(--mainWhite);
@@ -89,10 +96,11 @@ const MessagesContainerWrapper = styled.div`
     font-size: 1.7rem;
     text-align: center;
     cursor:pointer;
+    color: var(--primaryColor);
 }
 
 @media screen and (min-height:500px){
-    .messages-list{
+    .messages-list,.messages-area{
         min-height: 92vh;
     }
 }
