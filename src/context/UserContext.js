@@ -49,6 +49,10 @@ function UserProvider({ children }) {
     setSidebarOpen(!sidebarOpen);
   };
 
+  const closeSidebar = () => {
+    setSidebarOpen(false);
+  };
+
   const userLogin = (user) => {
     setUser(user);
     sessionStorage.setItem("ado-user", JSON.stringify(user));
@@ -145,6 +149,7 @@ function UserProvider({ children }) {
         userLogout: userLogout,
         sidebarOpen: sidebarOpen,
         toggleSidebar: toggleSidebar,
+        closeSidebar: closeSidebar,
         users,
         classes,
         types,

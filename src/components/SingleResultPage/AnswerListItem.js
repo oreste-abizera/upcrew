@@ -16,24 +16,26 @@ export default function AnswerListItem({ index, question, userId, results }) {
                 {index + 1}. {question.question}
             </div>
             <div className="answer-description ml-4">
-                {question.type === 1 && <div className="options d-flex">
-                    <p className="main-text mr-2">Options: </p>
+                {question.type === 1 && <div className="options">
+                    <p className=""> <span className="main-text">Options: </span>
                     {question.options && question.options.map((record, index) => <span key={index}>{index !== 0 && ","} {record}</span>)}
+                    </p>
                 </div>}
 
-                <div className="answer d-flex">
-                    <p className="main-text mr-2">Answer: </p>
-                    <span>{question.answer}</span>
+                <div className="answer">
+                    <p><span className="main-text">Answer: </span><span>{question.answer}</span></p>
                 </div>
 
-                <div className="myAnswer d-flex">
-                    <p className="main-text mr-2">My Answer: </p>
-                    <span>{questionResult.answer}</span>
+                <div className="myAnswer">
+                    <p><span className="main-text">My Answer: </span>
+                        <span>{questionResult.answer}</span>
+                    </p>
                 </div>
 
-                <div className="score d-flex">
-                    <p className="main-text mr-2">Score: </p>
-                    <span>{questionResult.score} <span className="text-main">/ {question.score} marks</span></span>
+                <div className="score">
+                    <p><span className="main-text mr-2">Score: </span>
+                        <span>{questionResult.score} <span className="text-main">/ {question.score} marks</span></span>
+                    </p>
                 </div>
             </div>
 

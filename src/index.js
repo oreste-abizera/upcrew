@@ -7,8 +7,10 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { AdoProvider } from "./context";
 import { UserProvider } from "./context/UserContext";
 import { AssignmentsProvider } from "./context/AssignmentsContext";
+import { MessagesProvider } from "./context/MessagesContext";
 
 ReactDOM.render(
+  <MessagesProvider>
   <AssignmentsProvider>
     <UserProvider>
       <AdoProvider>
@@ -17,11 +19,12 @@ ReactDOM.render(
         </Router>
       </AdoProvider>
     </UserProvider>
-  </AssignmentsProvider>,
-  document.getElementById("root")
-);
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+    </AssignmentsProvider>
+  </MessagesProvider>,
+    document.getElementById("root")
+  );
+  
+  // If you want your app to work offline and load faster, you can change
+  // unregister() to register() below. Note this comes with some pitfalls.
+  // Learn more about service workers: https://bit.ly/CRA-PWA
+  serviceWorker.unregister();

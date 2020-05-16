@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "subject": "Claiming marks in HTML review Assignment",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi culpa voluptatum consectetur eaque quod suscipit delectus debitis sapiente commodi vero cum saepe animi beatae in, aspernatur eum amet fugiat consequatur accusantium perferendis rerum, dolore nostrum. Nihil vitae architecto reprehenderit atque nulla dolores commodi magnam exercitationem, ad molestiae maxime, omnis fuga debitis a aperiam vero, voluptates autem error! Accusantium nemo enim aliquid animi eum dicta quibusdam vero quasi incidunt commodi amet magni nulla ad culpa nobis ex quos, totam distinctio quidem, doloremque dolore debitis a eligendi iusto. Provident ipsum, commodi, similique quas praesentium inventore officia illo debitis doloremque laboriosam odit at?",
+        "to": 2,
+        "from": 10
+    },
+    {
+        "id": 2,
+        "subject": "Requesting explanations on this week's abscence",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi culpa voluptatum consectetur eaque quod suscipit delectus debitis sapiente commodi vero cum saepe animi beatae in, aspernatur eum amet fugiat consequatur accusantium perferendis rerum, dolore nostrum. Nihil vitae architecto reprehenderit atque nulla dolores commodi magnam exercitationem, ad molestiae maxime, omnis fuga debitis a aperiam vero, voluptates autem error! Accusantium nemo enim aliquid animi eum dicta quibusdam vero quasi incidunt commodi amet magni nulla ad culpa nobis ex quos, totam distinctio quidem, doloremque dolore debitis a eligendi iusto. Provident ipsum, commodi, similique quas praesentium inventore officia illo debitis doloremque laboriosam odit at?",
+        "to": 10,
+        "from": 13
+    },
+    {
+        "id": 3,
+        "subject": "Greetings",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi culpa voluptatum consectetur eaque quod suscipit delectus debitis sapiente commodi vero cum saepe animi beatae in, aspernatur eum amet fugiat consequatur accusantium perferendis rerum, dolore nostrum. Nihil vitae architecto reprehenderit atque nulla dolores commodi magnam exercitationem, ad molestiae maxime, omnis fuga debitis a aperiam vero, voluptates autem error! Accusantium nemo enim aliquid animi eum dicta quibusdam vero quasi incidunt commodi amet magni nulla ad culpa nobis ex quos, totam distinctio quidem, doloremque dolore debitis a eligendi iusto. Provident ipsum, commodi, similique quas praesentium inventore officia illo debitis doloremque laboriosam odit at?",
+        "to": 5,
+        "from": 10
+    },
+    {
+        "id": 4,
+        "subject": "Thanking",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi culpa voluptatum consectetur eaque quod suscipit delectus debitis sapiente commodi vero cum saepe animi beatae in, aspernatur eum amet fugiat consequatur accusantium perferendis rerum, dolore nostrum. Nihil vitae architecto reprehenderit atque nulla dolores commodi magnam exercitationem, ad molestiae maxime, omnis fuga debitis a aperiam vero, voluptates autem error! Accusantium nemo enim aliquid animi eum dicta quibusdam vero quasi incidunt commodi amet magni nulla ad culpa nobis ex quos, totam distinctio quidem, doloremque dolore debitis a eligendi iusto. Provident ipsum, commodi, similique quas praesentium inventore officia illo debitis doloremque laboriosam odit at?",
+        "to": 4,
+        "from": 7
+    }
+]

@@ -18,7 +18,7 @@ export default function Sidebar() {
   return (
     <SidebarWrapper sidebarOpen={sidebarOpen}>
       <div className="sidebar-content">
-        <div className="sidebar-profile">
+        <div className="sidebar-profile text-center">
           <h2 className="names">{`${user.firstName} ${user.lastName}`}</h2>
           <h6 className="email text-muted">{user.userEmail}</h6>
           <img
@@ -88,12 +88,7 @@ const SidebarWrapper = styled.nav`
   .sidebar-footer a:hover .icon {
     /* color: var(--primaryColor); */
   }
-  .sidebar-profile .names,
-  .email {
-    text-align: center;
-  }
   .sidebar-profile img {
-    margin-left: 25%;
     border-radius: 50%;
     max-width: 9rem;
   }
