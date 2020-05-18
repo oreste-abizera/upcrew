@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { AdoContext } from "../../context";
 import { MdStar } from "react-icons/md";
+import Laptop from "./Laptop";
 
 export default function Hero({ children }) {
   const { updatesData } = React.useContext(AdoContext);
@@ -12,7 +13,7 @@ export default function Hero({ children }) {
         <div className="row">
           <div className="hero-info col-10 col-sm-8 col-md-6 px-md-5 py-5 mx-auto">
             <h2>"Help us to help you."</h2>
-            <p>
+            <p style={{letterSpacing:"1px"}}>
               Upcrew is a project based site. Simply it is a school management
               system aiming to change education to smart education. We are in
               the beginning of this project. Contact us for more info or for any
@@ -26,7 +27,13 @@ export default function Hero({ children }) {
               Developers
             </Link>
           </div>
-          <div className="notebook-container col-10 col-sm-8 col-md-6 mx-auto mb-1">
+
+          <div className="col-10 col-sm-8 col-md-6 mx-auto mb-1 mb-md-0">
+            <Laptop></Laptop>
+          </div>
+
+
+          <div className="notebook-container col-10 col-sm-8 col-md-12 mx-auto my-4">
             <section className="notebook">
               <h1>Updates</h1>
               <ul className="updates-list">
@@ -40,15 +47,15 @@ export default function Hero({ children }) {
                 ))}
               </ul>
             </section>
-          </div>
         </div>
-      </div>
+        </div>
+        </div>
     </HeroWrapper>
   );
 }
 
 const HeroWrapper = styled.div`
-  min-height: calc(100vh - 63px);
+  /* min-height: calc(100vh - 63px); */
   background: var(--primaryBg);
 
   .hero-info h2 {
@@ -78,8 +85,8 @@ const HeroWrapper = styled.div`
       padding-top: 1rem !important;
     }
     .notebook {
-      margin: 30% auto;
-      padding: 1rem;
+      /* margin: 30% auto; */
+      /* padding: 1rem; */
       min-height: 15rem;
     }
   }

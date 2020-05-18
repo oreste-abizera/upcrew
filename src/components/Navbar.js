@@ -73,7 +73,7 @@ const NavbarWrapper = styled.nav`
   .nav-icon-container {
     position: absolute;
     top: 0;
-    right: 1rem;
+    right: 3rem;
   }
   .nav-icon {
     font-size: 2.5rem;
@@ -93,7 +93,7 @@ const NavbarWrapper = styled.nav`
   .right-links {
     margin-top: -1rem;
   }
-  @media screen and (min-width: 576px) {
+  @media screen and (min-width: 1116px) {
     display: grid;
     grid-template-columns: 1fr 7fr;
     .nav-icon-container {
