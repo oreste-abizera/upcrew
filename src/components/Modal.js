@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
 
-export default function Modal({ buttonName, header, body, footer, opener = false, children }) {
+export default function Modal({ buttonName, header, body, opener = false, children }) {
   const openModal = () => {
     document.getElementById("modal01").style.display = "block"
   }
@@ -33,8 +33,9 @@ export default function Modal({ buttonName, header, body, footer, opener = false
             <p>some text....</p>
           </>}
         </div>
-        <footer className="w3-container w3-teal modal-part text-center">
-          <h2>{footer || "Modal Footer"}</h2>
+        <footer className="w3-container text-right">
+          {/* <h2>{footer || "Modal Footer"}</h2> */}
+          <button className="btn btn-danger my-2" onClick={closeModal}>Close</button>
         </footer>
       </div>
     </div>

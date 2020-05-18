@@ -5,6 +5,7 @@ import { MdArrowDropDown, MdCreate, MdClose } from "react-icons/md";
 import ChatListItem from './ChatListItem';
 import Modal from '../Modal'
 import Loader from "../Loader"
+import ComposeMessage from './ComposeMessage';
 
 export default function ChatList({ closeSide, syncActiveMessageToSessionStorage }) {
     const { messages } = React.useContext(MessagesContext)
@@ -27,7 +28,7 @@ export default function ChatList({ closeSide, syncActiveMessageToSessionStorage 
                 <p className="userName">{user.username}</p>
             </div>
             <div className="col-12 col-md-6">
-                <Modal opener={true} header="Compose new Message" body={Wrapper}>
+                <Modal opener={true} header="Compose new Message" body={<ComposeMessage />}>
                     <div className="input-group">
                         <input
                             type="button"
@@ -54,8 +55,3 @@ export default function ChatList({ closeSide, syncActiveMessageToSessionStorage 
         </ul>
     </div>
 }
-
-
-const Wrapper = <div>
-    <p>my new Modal</p>
-</div>

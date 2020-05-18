@@ -1,10 +1,14 @@
 import React from "react";
 import { getMessages } from "../helpers/functions";
+import { UserContext } from "./UserContext";
 const MessagesContext = React.createContext();
 
 function MessagesProvider({ children }) {
+    const { users } = React.useContext(UserContext)
     const [messages, setMessages] = React.useState([]);
     const [activeMessage, setActiveMessage] = React.useState(getActiveMessageFromSessionStorage)
+    const [to, setTo] = React.useState()
+    const [suggestions, setSuggestions] = React.useState([])
 
     React.useEffect(() => {
         mount();
@@ -23,12 +27,75 @@ function MessagesProvider({ children }) {
         sessionStorage.setItem("currentMessage", JSON.stringify(item))
         setActiveMessage(getActiveMessageFromSessionStorage())
     }
+
+
+    function getSuggestions(name) {
+        let tempUsers = users.filter(record => {
+            let fname = record.firstName
+            let lname = record.lastName
+            let concat1 = `${fname} ${lname}`.toLowerCase()
+            let concat2 = `${lname} ${fname}`.toLowerCase()
+
+            let slice1 = concat1.slice(0, name.length)
+            let slice2 = concat2.slice(0, name.length)
+
+            return slice1 === name.toLowerCase() || slice2 === name.toLowerCase()
+        })
+
+        let response = []
+        for (let i = 0; i < tempUsers.length; i++) {
+            const value = `${tempUsers[i].firstName} ${tempUsers[i].lastName}`
+            const id = tempUsers[i].id
+            response = [...response, {
+                id,
+                value
+            }]
+        }
+
+        return response
+    }
+
+    function handleTo(e) {
+        let response = []
+        const tempTo = e.target.value
+        if (tempTo !== "") {
+            response = getSuggestions(tempTo)
+        }
+        setSuggestions(response)
+    }
+
+
+    function changeTo(id) {
+        setTo(id)
+    }
+
+    function sendMessage(e) {
+        e.preventDefault()
+        let tempTo
+        let name = window.to.value
+        let subject = window.subject.value
+        let message = window.message.value
+        console.log("sending message to " + name)
+        console.log(subject)
+        console.log(message);
+
+        let validUser = users.find(record => {
+            return `${record.firstName} ${record.lastName}` === name || `${record.lastName} ${record.firstName}` === name
+        })
+        if (validUser) {
+            tempTo = validUser.id
+        }
+    }
     return (
         <MessagesContext.Provider
             value={{
                 messages,
                 activeMessage,
-                syncActiveMessageToSessionStorage
+                syncActiveMessageToSessionStorage,
+                handleTo,
+                sendMessage,
+                suggestions,
+                changeTo
             }}
         >
             {children}

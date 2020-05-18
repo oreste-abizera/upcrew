@@ -5,7 +5,12 @@ import MessageBody from './MessageBody'
 
 
 export default function MessagesArea({ activeMessage, messages = [], me }) {
-    const message = messages.find(record => record.id === activeMessage)
+    let message = messages.find(record => record.id === activeMessage)
+    if (message) {
+        if (me !== message.from && me !== message.to) {
+            message = undefined
+        }
+    }
     return <div className="messages-area">
         <MessagesHeader></MessagesHeader>
         <div className="messages-body text-center">

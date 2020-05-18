@@ -11,7 +11,7 @@ export default function ChatListItem({ message, me, syncActiveMessageToSessionSt
         syncActiveMessageToSessionStorage(id)
     }}>
         <span className="text-muted">{screenSubject} {to === me && "(to me)"}</span>
-        {message.status === "unread" && to === me && <span className="text-white status badge">new</span>}
+        {message.status === "unread" && to === me && <span className="text-white status badge ml-1">new</span>}
     </ChatListItemWrapper>
 }
 

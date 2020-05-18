@@ -6,7 +6,7 @@ import UpcrewVideo from "../../assets/videos/upcrew.mp4"
 export default function Laptop() {
     return <LaptopWrapper>
         <div className="laptop">
-            <img src={LaptopImg}></img>
+            <img src={LaptopImg} alt=""></img>
             <video src={UpcrewVideo} controls></video>
         </div>
     </LaptopWrapper>
