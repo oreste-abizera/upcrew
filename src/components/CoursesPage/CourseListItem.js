@@ -1,6 +1,7 @@
 import React from "react";
 import { formatClass } from "../../helpers/functions";
 import styled from "styled-components";
+import Loader from "../Loader"
 
 export default function CourseListItem({ cClass, index, shown, changeShown }) {
   let show = false;
@@ -8,20 +9,29 @@ export default function CourseListItem({ cClass, index, shown, changeShown }) {
     show = true;
   }
   const [currentClass, setCurrentClass] = React.useState(cClass);
+  const [loading, setLoading] = React.useState(true)
   async function mount() {
     let formatedClass = await formatClass(cClass);
     setCurrentClass(formatedClass);
+    setLoading(false)
   }
   React.useEffect(() => {
     mount();
   }, []);
+  if (loading) {
+    if (index === 0) {
+      return <Loader text="Courses loading..."></Loader>
+    } else {
+      return <p className="text-center">loading...</p>
+    }
+  }
   return (
     <CourseListItemWrapper show={show}>
       <div className="container-fluid mt-3 mt-md-0">
         <div className="row">
           <div className="col-6 col-md-4 main-text">{`${index + 1}.  ${
             currentClass.name
-          }`}</div>
+            }`}</div>
           <div className="col-6 col-md-4">
             <ul className="courses-list">
               {currentClass.courses.map((item, index) =>

@@ -22,8 +22,9 @@ export default function UserListItem({ user, index, actions, userClass }) {
           {index + 1}
         </div>
         <div className="col-lg-2">
-          <span className="d-lg-none main-text">Roll Number: </span>
-          {data.rollNumber}
+          {/* <span className="d-lg-none main-text">Roll Number: </span> */}
+          {/* {data.rollNumber} */}
+          <img src={data.image.url || "/assets/images/avatar.jpg"} alt={data.firstName} className="img-fluid" width="50" height="50" style={{ borderRadius: "50%", maxHeight: "4rem" }}></img>
         </div>
         <div className="col-lg-2">
           <span className="d-lg-none main-text">Names: </span>
@@ -64,14 +65,14 @@ export default function UserListItem({ user, index, actions, userClass }) {
               </button>
             </>
           ) : (
-            <Link
-              to={`/profile/${data.id}`}
-              className="action-button"
-              target="_new"
-            >
-              profile
+              <Link
+                to={`/profile/${data.id}`}
+                className="action-button"
+                target="_new"
+              >
+                profile
             </Link>
-          )}
+            )}
         </div>
       </div>
       <hr></hr>

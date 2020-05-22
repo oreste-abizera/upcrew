@@ -6,7 +6,7 @@ export default function UserColumns({ userClass }) {
       <hr></hr>
       <div className="row main-text">
         <div className="col-1">#</div>
-        <div className="col-2">Roll Number</div>
+        <div className="col-2">Photo</div>
         <div className="col-2">Names</div>
         <div className="col-3">Email</div>
         <div className="col-2">{userClass ? "Class" : "Phone number"}</div>

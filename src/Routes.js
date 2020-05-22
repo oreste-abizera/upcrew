@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Redirect } from "react-router-dom";
 import { UserContext } from "./context/UserContext";
 
 //import pages
@@ -26,16 +26,12 @@ import Courses from "./pages/secured/Courses";
 import LibraryBooks from "./pages/secured/LibraryBooks";
 
 //import components
-import Navbar from "./components/Navbar";
 import Alert from "./components/Alert";
-import Footer from "./components/Footer";
 import { ScrollButton } from "./components/ScrollButton";
+import Route from "./components/Route"
 import PrivateRoute from "./components/PrivateRoute";
 import HeadmasterRoute from "./components/HeadmasterRoute";
 
-//loggedIn components
-import SecuredNavbar from "./components/Users/Navbar";
-import Sidebar from "./components/Users/Sidebar";
 
 class Routes extends Component {
   static contextType = UserContext;
@@ -43,32 +39,11 @@ class Routes extends Component {
     const { user } = this.context;
     return (
       <>
-        {user.token ? <SecuredNavbar /> : <Navbar />}
-        {user.token && <Sidebar />}
         <Alert />
         <ScrollButton></ScrollButton>
-
         <Switch>
           {user.token && (
-            <Redirect exact from="/home" to="/dashboard"></Redirect>
-          )}
-          {user.token && (
-            <Redirect exact from="/contact" to="/dashboard"></Redirect>
-          )}
-          {user.token && (
-            <Redirect exact from="/about" to="/dashboard"></Redirect>
-          )}
-          {user.token && (
-            <Redirect exact from="/support" to="/dashboard"></Redirect>
-          )}
-          {user.token && (
-            <Redirect exact from="/developers" to="/dashboard"></Redirect>
-          )}
-          {user.token && (
-            <Redirect exact from="/register" to="/dashboard"></Redirect>
-          )}
-          {user.token && (
-            <Redirect exact from="/login" to="/dashboard"></Redirect>
+            <Redirect pop exact from="/login" to="/dashboard"></Redirect>
           )}
           <Redirect exact from="/" to="/home"></Redirect>
           <Route exact path="/home" component={HomePage}></Route>
@@ -108,7 +83,6 @@ class Routes extends Component {
           <PrivateRoute exact path="/messages" component={MessagesPage}></PrivateRoute>
           <Route path="*" component={ErrorPage}></Route>
         </Switch>
-        {!user.token && <Footer />}
       </>
     );
   }
