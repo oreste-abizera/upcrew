@@ -35,8 +35,8 @@ export default function Alert() {
 const AlertWrapper = styled.div`
   position: fixed;
   min-width: 40rem;
-  top: 40%;
-  right: -20%;
+  top: 20%;
+  right: -10%;
   z-index: 5;
   .alert-container {
     display: none;

@@ -5,6 +5,7 @@ import UserList from "./UserList";
 import Heading from "../../../Heading";
 import UsersFilters from "./UsersFilters";
 import Modal from "../../../Modal"
+import NewStudent from "./AddNew/NewStudent";
 
 export default function StudentsList() {
   const { filteredUsers, resetCountry } = React.useContext(UserContext);
@@ -15,7 +16,7 @@ export default function StudentsList() {
     <StudentsListWrapper>
       <Heading title="Students List"></Heading>
       <UsersFilters userClass={true}>
-        <Modal buttonName="Add new student" header="Add student" footer="Add student"></Modal>
+        <Modal buttonName="Add new student" header="Add student" body={<NewStudent></NewStudent>}></Modal>
       </UsersFilters>
       <UserList data={students} userClass={true}></UserList>
     </StudentsListWrapper>

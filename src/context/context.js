@@ -37,7 +37,7 @@ class AdoProvider extends Component {
         height: window.pageYOffset,
       });
     });
-    return () => window.removeEventListener("scroll", () => {});
+    return () => window.removeEventListener("scroll", () => { });
   }
 
   showAlert = ({ message, type = "success" }) => {
@@ -66,6 +66,7 @@ class AdoProvider extends Component {
   };
   handleSubmit = async (e) => {
     e.preventDefault();
+    this.showAlert({ message: "Accessing Your data. Please wait...." });
     let response;
     if (this.state.isMember) {
       let loginData = {
@@ -85,7 +86,7 @@ class AdoProvider extends Component {
       //register user
       response = await registerUser({ ...registerData });
     }
-    this.showAlert({ message: "Accessing Your data. Please wait...." });
+
     if (response) {
       const { userLogin } = this.context;
       // const {
