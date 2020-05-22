@@ -79,12 +79,23 @@ function MessagesProvider({ children }) {
         console.log(subject)
         console.log(message);
 
-        let validUser = users.find(record => {
-            return `${record.firstName} ${record.lastName}` === name || `${record.lastName} ${record.firstName}` === name
+        let clickedUser = users.find(record => {
+            return (`${record.firstName} ${record.lastName}` === name || `${record.lastName} ${record.firstName}` === name) && record.id === to
         })
-        if (validUser) {
-            tempTo = validUser.id
+        if (clickedUser) {
+            console.log(to + name)
+            tempTo = to
+        } else {
+            let typedUser = users.find(record => {
+                return `${record.firstName} ${record.lastName}` === name || `${record.lastName} ${record.firstName}` === name
+            })
+            if (typedUser) {
+                console.log(typedUser)
+                tempTo = typedUser.id
+            }
         }
+
+        console.log(`final to = ${tempTo}`)
     }
     return (
         <MessagesContext.Provider

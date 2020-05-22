@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { MessagesContext } from "../../context/MessagesContext"
+import ProfileDisplay from "./ProfileDisplay"
 
 export default function ComposeMessage() {
     const { sendMessage, handleTo, suggestions, changeTo } = React.useContext(MessagesContext)
@@ -18,9 +19,14 @@ export default function ComposeMessage() {
 
                     <div className="suggestions mt-2">
                         {suggestions.length === 0 ? "No suggestions found" :
-                            suggestions.map((record, index) => <span key={index} className="suggestion badge" onClick={() => { clickSuggestion(record.id, record.value) }}>
-                                {record.value}
-                            </span>)
+                            suggestions.map((record, index) => <div key={index} className="suggestion-container">
+                                <span className="suggestion badge" onClick={() => { clickSuggestion(record.id, record.value) }}>
+                                    {record.value}
+                                </span>
+                                <div className="profile-popup">
+                                    <ProfileDisplay user={record}></ProfileDisplay>
+                                </div>
+                            </div>)
                         }
                     </div>
                 </div>
@@ -48,5 +54,18 @@ const ComposeMessageWrapper = styled.div`
     background: var(--primaryColor);
     margin-right: 1rem;
     cursor: pointer;
+}
+.suggestion-container{
+    display: inline-block;
+    position: relative;
+}
+.profile-popup{
+    display: none;
+    position: absolute;
+    top: 1.5rem;
+    left: 0;
+}
+.suggestion-container:hover .profile-popup{
+    display: inline-block;
 }
 `
