@@ -62,7 +62,7 @@ export default function NewTeacher() {
             </div>
 
             <div className="form-group">
-                <input type="submit" className="form-control" value="Save teacher" className="btn btn-block ado-btn-outline"></input>
+                <input type="submit" value="Save teacher" className="form-control btn btn-block ado-btn-outline"></input>
             </div>
         </form>
     </NewTeacherWrapper>

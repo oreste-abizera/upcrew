@@ -22,6 +22,8 @@ import ResultsPage from "./pages/secured/ResultsPage"
 import SingleResultPage from "./pages/secured/SingleResultPage";
 import ExamsPage from "./pages/secured/ExamsPage";
 import MessagesPage from "./pages/secured/MessagesPage";
+import Courses from "./pages/secured/Courses";
+import LibraryBooks from "./pages/secured/LibraryBooks";
 
 //import components
 import Navbar from "./components/Navbar";
@@ -34,7 +36,6 @@ import HeadmasterRoute from "./components/HeadmasterRoute";
 //loggedIn components
 import SecuredNavbar from "./components/Users/Navbar";
 import Sidebar from "./components/Users/Sidebar";
-import Courses from "./pages/secured/Courses";
 
 class Routes extends Component {
   static contextType = UserContext;
@@ -93,6 +94,7 @@ class Routes extends Component {
           <PrivateRoute path="/assignments">
             <Assignments></Assignments>
           </PrivateRoute>
+          <PrivateRoute path="/books" component={LibraryBooks}></PrivateRoute>
           <HeadmasterRoute path="/students">
             <Students></Students>
           </HeadmasterRoute>

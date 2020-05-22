@@ -68,6 +68,13 @@ export async function getMessages() {
   return response.data;
 }
 
+export async function getBooks() {
+  let response = await axios
+    .get(`${url}/db/books.json`)
+    .catch(err => console.log(err))
+  return response.data;
+}
+
 export async function formatUser(user) {
   let classes = await getClasses();
   let tempClass = classes.find((item) => item.id === user.currentClass);

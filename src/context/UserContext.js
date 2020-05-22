@@ -5,6 +5,7 @@ import {
   getTypes,
   getCourses,
   formatUser,
+  getBooks,
 } from "../helpers/functions";
 const UserContext = React.createContext();
 
@@ -24,6 +25,7 @@ function UserProvider({ children }) {
   const [classes, setClasses] = React.useState([]);
   const [types, setTypes] = React.useState([]);
   const [courses, setCourses] = React.useState([]);
+  const [books, setBooks] = React.useState([])
   const [searchTerm, setSearchTerm] = React.useState("");
   const [searchClass, setSearchClass] = React.useState("all");
   const [searchCountry, setSearchCountry] = React.useState("all");
@@ -43,6 +45,8 @@ function UserProvider({ children }) {
     setTypes(tempTypes);
     let tempCourses = await getCourses();
     setCourses(tempCourses);
+    let tempBooks = await getBooks();
+    setBooks(tempBooks)
   }
 
   const toggleSidebar = () => {
@@ -154,6 +158,7 @@ function UserProvider({ children }) {
         classes,
         types,
         courses,
+        books,
         loading,
         filteredUsers,
         searchClass,

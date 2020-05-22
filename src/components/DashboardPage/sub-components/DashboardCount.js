@@ -5,7 +5,7 @@ import { MdGroup, MdGroupAdd, MdBook, MdSettings } from "react-icons/md";
 import SingleCount from "./SingleCount";
 import Heading from "../../Heading";
 
-export default function DashboardCount({ users, messages, me }) {
+export default function DashboardCount({ users, messages, me, books }) {
   let myMessages = messages.filter(item => item.to === me && item.status === "unread")
   let students = users.filter((item) => item.type === 1);
   let teachers = users.filter((item) => item.type === 2);
@@ -48,7 +48,7 @@ export default function DashboardCount({ users, messages, me }) {
       id: 5,
       title: "books",
       subtitle: "Total books",
-      number: 100,
+      number: books.length,
       icon: <MdBook className="count-icon"></MdBook>,
       bg: "aqua",
     },
@@ -107,5 +107,6 @@ const DashboardCountWrapper = styled.div`
 
 DashboardCount.defaultProps = {
   users: [],
-  messages: []
+  messages: [],
+  books: []
 };
