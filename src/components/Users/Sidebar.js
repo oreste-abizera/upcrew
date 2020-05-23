@@ -6,12 +6,12 @@ import { Link } from "react-router-dom";
 import PagesLinks from "./PagesLinks";
 
 export default function Sidebar() {
-  const {
+  let {
     sidebarOpen,
     user: { user },
-    types,
+    types = [],
   } = React.useContext(UserContext);
-
+  if (!user) user = { image: { url: "" } }
   let userType = types.find((item) => item.id === user.type);
 
   const { socialData } = React.useContext(AdoContext);

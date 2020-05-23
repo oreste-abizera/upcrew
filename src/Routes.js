@@ -47,33 +47,34 @@ class Routes extends Component {
           )}
           <Redirect exact from="/" to="/home"></Redirect>
           <Route exact path="/home" component={HomePage}></Route>
-          <Route path="/contact" component={ContactPage}></Route>
-          <Route path="/about" component={AboutPage}></Route>
-          <Route path="/login" component={LoginPage}></Route>
-          <Route path="/register" component={RegisterPage}></Route>
-          <Route path="/developers" component={DevelopersPage}></Route>
-          <Route path="/support" component={SupportPage}></Route>
-          <PrivateRoute path="/dashboard">
+          <Route exact path="/contact" component={ContactPage}></Route>
+          <Route exact path="/about" component={AboutPage}></Route>
+          <Route exact path="/login" component={LoginPage}></Route>
+          <Route exact path="/register" component={RegisterPage}></Route>
+          <Route exact path="/developers" component={DevelopersPage}></Route>
+          <Route exact path="/support" component={SupportPage}></Route>
+          <PrivateRoute exact path="/dashboard">
             <Dashboard></Dashboard>
           </PrivateRoute>
           <PrivateRoute exact path="/profile">
             <Profile></Profile>
           </PrivateRoute>
           <PrivateRoute
+            exact
             path="/profile/:slug"
             component={Profile2}
           ></PrivateRoute>
-          <PrivateRoute path="/courses">
+          <PrivateRoute exact path="/courses">
             <Courses></Courses>
           </PrivateRoute>
-          <PrivateRoute path="/assignments">
+          <PrivateRoute exact path="/assignments">
             <Assignments></Assignments>
           </PrivateRoute>
-          <PrivateRoute path="/books" component={LibraryBooks}></PrivateRoute>
-          <HeadmasterRoute path="/students">
+          <PrivateRoute exact path="/books" component={LibraryBooks}></PrivateRoute>
+          <HeadmasterRoute exact path="/students">
             <Students></Students>
           </HeadmasterRoute>
-          <HeadmasterRoute path="/teachers">
+          <HeadmasterRoute exact path="/teachers">
             <Teachers></Teachers>
           </HeadmasterRoute>
           <PrivateRoute exact path="/quiz/:id" component={QuizPage}></PrivateRoute>
