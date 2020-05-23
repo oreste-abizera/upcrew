@@ -2,6 +2,8 @@ import React from "react";
 import { formatUser } from "../../../../helpers/functions";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Modal from "../../../Modal"
+import EditUser from "./UserActions/EditUser";
 
 export default function UserListItem({ user, index, actions, userClass }) {
   const [data, setData] = React.useState(user);
@@ -47,14 +49,12 @@ export default function UserListItem({ user, index, actions, userClass }) {
         <div className="col-lg-1">
           {actions ? (
             <>
-              <button
-                className="action-btn"
-                onClick={() => {
-                  console.log("edit user " + data.id);
-                }}
-              >
-                <FaEdit className="btn-icon main-text"></FaEdit>
-              </button>
+              <Modal id={`user${data.id}`} header="Change Profile info" opener={true} body={<EditUser user={data}></EditUser>}>
+                <button
+                  className="action-btn">
+                  <FaEdit className="btn-icon main-text"></FaEdit>
+                </button>
+              </Modal>
               <button
                 className="action-btn"
                 onClick={() => {

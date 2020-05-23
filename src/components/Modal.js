@@ -1,26 +1,18 @@
 import React from 'react'
 import styled from "styled-components";
 
-export default function Modal({ buttonName, header, body, opener = false, children }) {
+export default function Modal({ buttonName, header, body, opener = false, children, id = "modal01" }) {
   const openModal = () => {
-    document.getElementById("modal01").style.display = "block"
+    document.getElementById(id).style.display = "block"
   }
   const closeModal = () => {
-    document.getElementById("modal01").style.display = "none"
-  }
-  // closing the modal
-  var modal = document.getElementById('modal01');
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function (event) {
-    if (event.target === modal) {
-      closeModal()
-    }
+    document.getElementById(id).style.display = "none"
   }
   return <ModalWrapper><div className="w3-container">
     {opener ? <div onClick={openModal}>
       {children}
     </div> : <button onClick={openModal} className="ado-btn">{buttonName || "Open Modal"}</button>}
-    <div id="modal01" className="w3-modal">
+    <div id={id} className="w3-modal">
       <div className="w3-modal-content w3-card-4 w3-animate-zoom">
         <header className="w3-container w3-teal modal-header modal-part">
           <span onClick={closeModal}
