@@ -18,6 +18,7 @@ import Students from "./pages/secured/Students";
 import Teachers from "./pages/secured/Teachers";
 import Assignments from "./pages/secured/Assignments";
 import QuizPage from "./pages/secured/QuizPage"
+import ViewQuizPage from "./pages/secured/ViewQuizPage";
 import ResultsPage from "./pages/secured/ResultsPage"
 import SingleResultPage from "./pages/secured/SingleResultPage";
 import ExamsPage from "./pages/secured/ExamsPage";
@@ -78,6 +79,7 @@ class Routes extends Component {
             <Teachers></Teachers>
           </HeadmasterRoute>
           <PrivateRoute exact path="/quiz/:id" component={QuizPage}></PrivateRoute>
+          <PrivateRoute exact path="/viewQuiz/:id" component={ViewQuizPage}></PrivateRoute>
           <PrivateRoute exact path="/results" component={ResultsPage}></PrivateRoute>
           <PrivateRoute exact path="/results/:id" component={SingleResultPage}></PrivateRoute>
           <PrivateRoute exact path="/exams" component={ExamsPage}></PrivateRoute>

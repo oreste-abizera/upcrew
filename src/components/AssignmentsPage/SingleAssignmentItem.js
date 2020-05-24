@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AssignmentsContext } from "../../context/AssignmentsContext";
 import { UserContext } from "../../context/UserContext";
 
-export default function SingleAssignmentItem({ data = {}, index }) {
+export default function SingleAssignmentItem({ data = {}, index, type }) {
   const { results, questions, assignments } = React.useContext(AssignmentsContext)
   const { user } = React.useContext(UserContext)
   const [assignment, setAssignment] = React.useState({});
@@ -66,18 +66,22 @@ export default function SingleAssignmentItem({ data = {}, index }) {
           {assignment.duration} mins
         </div>
         <div className="col-8 col-md-2">
-          {done ? <Link
+          {type === 2 ? <Link to={`/viewQuiz/${assignment.id}`}
+            className="ado-btn btn-block text-center mt-d-0 col-md-8"
+          >
+            View <span className="d-md-none">Quiz</span>
+          </Link> : done ? <Link
             to={`/results/${assignment.id}`}
             className="main-text btn-block text-md-center ml-5 mt-1 m-md-0 col-md-8"
           >
             Results
-          </Link>: <Link
-            to={`/quiz/${assignment.id}`}
-            className="ado-btn btn-block text-center mt-d-0 col-md-8"
-          >
-            Start <span className="d-md-none">Quiz</span>
-          </Link>}
-          
+          </Link> : <Link
+                to={`/quiz/${assignment.id}`}
+                className="ado-btn btn-block text-center mt-d-0 col-md-8"
+              >
+                Start <span className="d-md-none">Quiz</span>
+              </Link>}
+
         </div>
       </div>
     </div>

@@ -5,6 +5,8 @@ import SingleAssignmentItem from "./SingleAssignmentItem";
 import Heading from "../Heading";
 import AssignmentsColumns from "./AssignmentsColumns";
 import AssignmentFilters from "./AssignmentFilters";
+import Modal from "../Modal"
+import UpdateQuizInfo from "../ViewQuizPage/UpdateQuizInfo";
 
 export default function AssignmentsList() {
   const { user, users } = React.useContext(UserContext);
@@ -19,9 +21,16 @@ export default function AssignmentsList() {
   }, [users]);
 
   React.useEffect(() => {
-    let tempAssignments = filteredAssignments.filter(
-      (record) => record.class === stateUser.currentClass
-    );
+    let tempAssignments
+
+    //if user is a teacher
+    if (user.user.type === 2) {
+      tempAssignments = filteredAssignments.filter(record => record.teacher === user.user.id)
+    } else {
+      tempAssignments = filteredAssignments.filter(
+        (record) => record.class === stateUser.currentClass
+      );
+    }
     setCheckedAssignments(tempAssignments);
   }, [filteredAssignments, stateUser]);
 
@@ -29,6 +38,9 @@ export default function AssignmentsList() {
     <>
       <Heading title="Assignments list"></Heading>
       <AssignmentFilters></AssignmentFilters>
+      <div className="container-fluid">
+        <Modal buttonName="New Assignment" header="Create Assignment" body={<UpdateQuizInfo edit={false}></UpdateQuizInfo>}></Modal>
+      </div>
       <p className="text-center mt-2">
         {checkedAssignments.length} assignments found.
       </p>
@@ -41,6 +53,7 @@ export default function AssignmentsList() {
           key={record.id}
           data={record}
           index={index}
+          type={user.user.type}
         ></SingleAssignmentItem>
       ))}
     </>

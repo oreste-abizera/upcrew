@@ -83,9 +83,36 @@ function AssignmentsProvider({ children }) {
     return tempQuestions
   }
 
-  function submitAssignment(answers,assignment_id) {
+  function submitAssignment(answers, assignment_id) {
     console.log(answers)
     console.log(assignment_id)
+  }
+
+  function EditQuestion(finalQuestion) {
+    //sending request to edit the question
+    console.log(finalQuestion)
+  }
+
+  function deleteQuestion(questionId) {
+    console.log(`delete question ${questionId}`)
+  }
+
+  function deleteAssignment(assignmentId) {
+    console.log(`delete assignment ${assignmentId}`)
+  }
+
+  function updateAssignment(finalQuiz) {
+    console.log(finalQuiz)
+  }
+
+  function AddQuestion(finalQuiz, quizId) {
+    console.log(finalQuiz)
+    console.log(quizId)
+  }
+
+  function AddAssignment(newAssignment) {
+    console.log("add assignment")
+    console.log(newAssignment)
   }
   return (
     <AssignmentsContext.Provider
@@ -96,6 +123,12 @@ function AssignmentsProvider({ children }) {
         sortQuestions,
         questions,
         submitAssignment,
+        AddQuestion,
+        EditQuestion,
+        deleteQuestion,
+        AddAssignment,
+        updateAssignment,
+        deleteAssignment,
         title,
         courses,
         course,
