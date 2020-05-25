@@ -1,22 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
-import { getUserNames } from '../../helpers/functions'
+import { UserContext } from '../../context/UserContext'
 
 export default function MessageBody({ message = {}, me }) {
+    const { getUserNames, users } = React.useContext(UserContext)
     const [to, setTo] = React.useState()
     const [from, setFrom] = React.useState()
 
     React.useEffect(() => {
-        // console.log(message)
-        mount()
-    }, [message])
-
-    async function mount() {
-        const tempTo = await getUserNames(message.to)
-        const tempFrom = await getUserNames(message.from)
+        const tempTo = getUserNames(message.to)
+        const tempFrom = getUserNames(message.from)
         setTo(tempTo)
         setFrom(tempFrom)
-    }
+    }, [message, users])
 
 
     return <MessageBodyWrapper>
@@ -28,10 +24,10 @@ export default function MessageBody({ message = {}, me }) {
         <p className="text-left text-muted">{message.body}</p>
 
         <p className="text-right text-muted text-main">
-            {message.status === "unread" && message.from === me && "Not seen"}    
+            {message.status === "unread" && message.from === me && "Not seen"}
             {message.status === "read" && message.from === me && "seen"}
         </p>
-        
+
     </MessageBodyWrapper>
 }
 

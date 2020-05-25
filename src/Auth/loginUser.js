@@ -1,5 +1,5 @@
 import axios from "axios";
-import { formatUser } from "../helpers/functions";
+// import { formatUser } from "../helpers/functions";
 async function formatResponse(res, identifier, password) {
   const userWithEmail = res.find(
     (item) => item.userEmail === identifier && item.userPassword === password
@@ -11,14 +11,16 @@ async function formatResponse(res, identifier, password) {
     return {
       username: userWithEmail.userName,
       token: "qwefrtrythrgdfdsfytvtre",
-      user: await formatUser(userWithEmail),
+      // user: await formatUser(userWithEmail),
+      user: userWithEmail
     };
   }
   if (userWithUsername) {
     return {
       username: userWithUsername.userName,
       token: "qwefrtrythrgdfdsfytvtre",
-      user: await formatUser(userWithUsername),
+      // user: await formatUser(userWithUsername),
+      user: userWithUsername
     };
   }
   return null;

@@ -4,7 +4,7 @@ import { UserContext } from "./UserContext";
 const MessagesContext = React.createContext();
 
 function MessagesProvider({ children }) {
-    const { users } = React.useContext(UserContext)
+    const { users, reload } = React.useContext(UserContext)
     const [messages, setMessages] = React.useState([]);
     const [activeMessage, setActiveMessage] = React.useState(getActiveMessageFromSessionStorage)
     const [to, setTo] = React.useState()
@@ -12,7 +12,7 @@ function MessagesProvider({ children }) {
 
     React.useEffect(() => {
         mount();
-    }, []);
+    }, [reload]);
 
     async function mount() {
         let tempMessages = await getMessages()

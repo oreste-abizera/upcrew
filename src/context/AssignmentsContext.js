@@ -1,5 +1,6 @@
 import React from "react";
 import { getAssignments, getCourses, getQuestions, getResults } from "../helpers/functions";
+import { UserContext } from "./UserContext";
 const AssignmentsContext = React.createContext();
 
 function AssignmentsProvider({ children }) {
@@ -12,11 +13,12 @@ function AssignmentsProvider({ children }) {
   const [course, setCourse] = React.useState("all");
   const [duration, setDuration] = React.useState(0);
   const [maxDuration, setMaxDuration] = React.useState(0);
+  const { reload } = React.useContext(UserContext)
 
 
   React.useEffect(() => {
     mount();
-  }, []);
+  }, [reload]);
 
   React.useEffect(() => {
     sortAssignments();

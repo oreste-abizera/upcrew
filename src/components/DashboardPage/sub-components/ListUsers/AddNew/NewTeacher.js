@@ -5,7 +5,19 @@ import styled from "styled-components"
 export default function NewTeacher() {
     const addStudent = (e) => {
         e.preventDefault()
-        console.log(window.username)
+        const finalUser = {
+            firstName: window.fname.value,
+            lastName: window.lname.value,
+            userName: window.username.value,
+            userPassword: window.password.value,
+            dateOfBirth: window.dob.value,
+            userEmail: window.email.value,
+            userCountry: window.country.value,
+            gender: window.gender.value,
+            type: 1,
+            currentClass: 1,
+        }
+        console.log(finalUser)
     }
     return <NewTeacherWrapper>
         <form className="form-container my-4 col-md-9 mx-auto" onSubmit={addStudent}>

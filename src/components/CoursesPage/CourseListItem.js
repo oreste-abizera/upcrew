@@ -1,23 +1,23 @@
 import React from "react";
-import { formatClass } from "../../helpers/functions";
 import styled from "styled-components";
 import Loader from "../Loader"
+import { UserContext } from "../../context/UserContext";
 
 export default function CourseListItem({ cClass, index, shown, changeShown }) {
+  const { formatClass, users, courses } = React.useContext(UserContext)
   let show = false;
   if (shown === index) {
     show = true;
   }
   const [currentClass, setCurrentClass] = React.useState(cClass);
   const [loading, setLoading] = React.useState(true)
-  async function mount() {
-    let formatedClass = await formatClass(cClass);
+  React.useEffect(() => {
+    let formatedClass = formatClass(cClass);
     setCurrentClass(formatedClass);
     setLoading(false)
-  }
-  React.useEffect(() => {
-    mount();
-  }, []);
+  }, [users, courses]);
+
+
   if (loading) {
     if (index === 0) {
       return <Loader text="Courses loading..."></Loader>

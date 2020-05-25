@@ -12,19 +12,15 @@ import Loader from "../../components/Loader";
 export default function Profile2(props) {
   const { slug } = props.match.params;
   const [user, setUser] = React.useState({});
-  const { getUser, users, sidebarOpen } = React.useContext(UserContext);
+  const { getUser, users, classes, settings, sidebarOpen } = React.useContext(UserContext);
   const [personalInfo, setPersonalInfo] = React.useState([]);
   const [parentInfo, setParentInfo] = React.useState([]);
   const [childrenInfo, setChildrenInfo] = React.useState([]);
 
-  async function mount() {
-    let searchUser = await getUser(slug);
-    setUser(searchUser);
-  }
-
   React.useEffect(() => {
-    mount();
-  }, [users]);
+    let searchUser = getUser(slug);
+    setUser(searchUser);
+  }, [users, settings, classes]);
 
   //useEffect for getting info
   React.useEffect(() => {

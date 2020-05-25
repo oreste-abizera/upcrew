@@ -1,20 +1,17 @@
 import React from "react";
-import { formatUser } from "../../../../helpers/functions";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Modal from "../../../Modal"
 import EditUser from "./UserActions/EditUser";
+import { UserContext } from "../../../../context/UserContext";
 
 export default function UserListItem({ user, index, actions, userClass }) {
   const [data, setData] = React.useState(user);
+  const { formatUser, classes } = React.useContext(UserContext)
 
-  //function to call user formatter
-  async function format() {
-    setData(await formatUser(user));
-  }
   React.useEffect(() => {
-    format();
-  }, []);
+    setData(formatUser(user));
+  }, [classes]);
 
   return (
     <div className="container-fluid my-3">
@@ -56,7 +53,7 @@ export default function UserListItem({ user, index, actions, userClass }) {
                 </button>
               </Modal>
               <button
-                className="action-btn"
+                className="action-btn ml-3"
                 onClick={() => {
                   console.log("delete user " + data.id);
                 }}

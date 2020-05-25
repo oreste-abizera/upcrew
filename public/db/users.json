@@ -1,4 +1,5 @@
-[{
+[
+  {
     "id": 1,
     "firstName": "Coder",
     "lastName": "Tauras",
@@ -107,7 +108,7 @@
     "userCountry": "Rwanda",
     "image": {
       "name": "",
-      "url": "",
+      "url": "/assets/images/photo.jpg",
       "provider": "local"
     },
     "gender": "male",
@@ -167,7 +168,7 @@
     "userCountry": "Rwanda",
     "image": {
       "name": "",
-      "url": "",
+      "url": "/assets/images/avatar2.jpg",
       "provider": "local"
     },
     "gender": "male",

@@ -1,17 +1,17 @@
 import React from "react";
-import { formatAssignment } from "../../helpers/functions";
 import { Link } from "react-router-dom";
 import { AssignmentsContext } from "../../context/AssignmentsContext";
 import { UserContext } from "../../context/UserContext";
 
 export default function SingleAssignmentItem({ data = {}, index, type }) {
   const { results, questions, assignments } = React.useContext(AssignmentsContext)
-  const { user } = React.useContext(UserContext)
+  const { user, formatAssignment } = React.useContext(UserContext)
   const [assignment, setAssignment] = React.useState({});
   const [done, setDone] = React.useState(false)
 
   React.useEffect(() => {
-    mount();
+    let tempAssignment = formatAssignment(data);
+    setAssignment(tempAssignment);
   }, data);
 
   React.useEffect(() => {
@@ -32,11 +32,6 @@ export default function SingleAssignmentItem({ data = {}, index, type }) {
     }
 
     setDone(tempDone)
-  }
-
-  async function mount() {
-    let tempAssignment = await formatAssignment(data);
-    setAssignment(tempAssignment);
   }
   return (
     <div className="container-fluid my-4">
