@@ -23,7 +23,7 @@ import ResultsPage from "./pages/secured/ResultsPage"
 import SingleResultPage from "./pages/secured/SingleResultPage";
 import ExamsPage from "./pages/secured/ExamsPage";
 import MessagesPage from "./pages/secured/MessagesPage";
-import Courses from "./pages/secured/Courses";
+import Classes from "./pages/secured/Classes";
 import LibraryBooks from "./pages/secured/LibraryBooks";
 
 //import components
@@ -65,8 +65,8 @@ class Routes extends Component {
             path="/profile/:slug"
             component={Profile2}
           ></PrivateRoute>
-          <PrivateRoute exact path="/courses">
-            <Courses></Courses>
+          <PrivateRoute exact path="/classes">
+            <Classes></Classes>
           </PrivateRoute>
           <PrivateRoute exact path="/assignments">
             <Assignments></Assignments>

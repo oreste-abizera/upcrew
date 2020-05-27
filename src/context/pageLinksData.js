@@ -37,9 +37,9 @@ export default [
   },
   {
     id: 4,
-    url: "/courses",
+    url: "/classes",
     icon: <FaList className="pagelink-icon"></FaList>,
-    text: "Courses",
+    text: "Classes",
     type: "all",
   },
   {

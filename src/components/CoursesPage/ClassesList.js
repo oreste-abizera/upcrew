@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { UserContext } from "../../context/UserContext";
-import CourseListItem from "./CourseListItem";
+import ClassListItem from "./ClassListItem";
 import Heading from "../Heading";
-import CoursesColumns from "./CoursesColumns";
+import ClassesColumns from "./ClassesColumns";
 
-export default function CoursesList() {
+export default function ClassesList() {
   const { classes } = React.useContext(UserContext);
   const [shown, setShown] = React.useState();
   const changeShown = (index) => {
@@ -16,20 +16,20 @@ export default function CoursesList() {
     }
   };
   return (
-    <CoursesListWrapper>
+    <ClassesListWrapper>
       <Heading title="Courses list"></Heading>
-      <CoursesColumns></CoursesColumns>
+      <ClassesColumns></ClassesColumns>
       {classes.map((item, index) => (
-        <CourseListItem
+        <ClassListItem
           key={item.id}
           cClass={item}
           index={index}
           shown={shown}
           changeShown={changeShown}
-        ></CourseListItem>
+        ></ClassListItem>
       ))}
-    </CoursesListWrapper>
+    </ClassesListWrapper>
   );
 }
 
-const CoursesListWrapper = styled.div``;
+const ClassesListWrapper = styled.div``;

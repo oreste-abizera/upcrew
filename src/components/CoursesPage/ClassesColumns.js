@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CoursesColumns() {
+export default function ClassesColumns() {
   return (
     <div className="container-fluid my-5 d-none d-md-block">
       <div className="row">

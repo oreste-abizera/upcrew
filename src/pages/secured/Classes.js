@@ -1,18 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import { UserContext } from "../../context/UserContext";
-import CoursesList from "../../components/CoursesPage/CoursesList";
+import ClassesList from "../../components/CoursesPage/ClassesList";
 
 export default function Courses() {
   const { sidebarOpen } = React.useContext(UserContext);
   return (
-    <CoursesWrapper sidebarOpen={sidebarOpen}>
-      <CoursesList></CoursesList>
-    </CoursesWrapper>
+    <ClassesWrapper sidebarOpen={sidebarOpen}>
+      <ClassesList></ClassesList>
+    </ClassesWrapper>
   );
 }
 
-const CoursesWrapper = styled.div`
+const ClassesWrapper = styled.div`
   @media screen and (min-width: 786px) {
     margin-left: ${(props) => (props.sidebarOpen === true ? "26%" : "1%")};
   }

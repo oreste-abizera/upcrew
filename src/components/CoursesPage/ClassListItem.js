@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Loader from "../Loader"
 import { UserContext } from "../../context/UserContext";
 
-export default function CourseListItem({ cClass, index, shown, changeShown }) {
+export default function ClassListItem({ cClass, index, shown, changeShown }) {
   const { formatClass, users, courses } = React.useContext(UserContext)
   let show = false;
   if (shown === index) {
@@ -26,7 +26,7 @@ export default function CourseListItem({ cClass, index, shown, changeShown }) {
     }
   }
   return (
-    <CourseListItemWrapper show={show}>
+    <ClassListItemWrapper show={show}>
       <div className="container-fluid mt-3 mt-md-0">
         <div className="row">
           <div className="col-6 col-md-4 main-text">{`${index + 1}.  ${
@@ -68,15 +68,15 @@ export default function CourseListItem({ cClass, index, shown, changeShown }) {
           </div>
         </div>
       </div> */}
-    </CourseListItemWrapper>
+    </ClassListItemWrapper>
   );
 }
 
-CourseListItem.defaultProps = {
+ClassListItem.defaultProps = {
   cClass: {},
 };
 
-const CourseListItemWrapper = styled.div`
+const ClassListItemWrapper = styled.div`
   .courses-list {
     /* text-transform: lowercase; */
   }
