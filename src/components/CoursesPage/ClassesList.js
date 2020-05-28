@@ -17,7 +17,7 @@ export default function ClassesList() {
   };
   return (
     <ClassesListWrapper>
-      <Heading title="Courses list"></Heading>
+      <Heading title="Classes list"></Heading>
       <ClassesColumns></ClassesColumns>
       {classes.map((item, index) => (
         <ClassListItem

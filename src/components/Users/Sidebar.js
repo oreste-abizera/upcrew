@@ -34,7 +34,7 @@ export default function Sidebar() {
           </Link>
         </div>
         <hr></hr>
-        <PagesLinks userType={userType}></PagesLinks>
+        <PagesLinks userType={userType} me={user.id}></PagesLinks>
       </div>
       <div className="sidebar-footer">
         {socialData.map((item) => (

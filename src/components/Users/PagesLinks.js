@@ -2,10 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { AdoContext } from "../../context";
+import { MessagesContext } from "../../context/MessagesContext";
 // import { UserContext } from "../../context/UserContext";
 
-export default function PagesLinks({ userType }) {
+export default function PagesLinks({ userType, me }) {
   let { pageLinksData } = React.useContext(AdoContext);
+  const { messages } = React.useContext(MessagesContext)
+  let unreadMessages = messages.filter(record => record.to === me && record.status === "unread")
   // const {
   //   user: {
   //     user: { type },
@@ -29,6 +32,10 @@ export default function PagesLinks({ userType }) {
           activeClassName="selected-link"
         >
           {item.icon} {item.text}
+          {item.url === "/messages" && unreadMessages.length > 0 && (
+            <span className="badge badge-success ml-2">
+              {unreadMessages.length}
+            </span>)}
         </NavLink>
       ))}
     </PagesLinksWrapper>

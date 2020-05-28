@@ -84,7 +84,11 @@ class Routes extends Component {
           <PrivateRoute exact path="/results/:id" component={SingleResultPage}></PrivateRoute>
           <PrivateRoute exact path="/exams" component={ExamsPage}></PrivateRoute>
           <PrivateRoute exact path="/messages" component={MessagesPage}></PrivateRoute>
-          <Route path="*" component={ErrorPage}></Route>
+          {user.token ?
+            <PrivateRoute path="*" component={ErrorPage}></PrivateRoute>
+            :
+            <Route path="*" component={ErrorPage}></Route>
+          }
         </Switch>
       </>
     );
