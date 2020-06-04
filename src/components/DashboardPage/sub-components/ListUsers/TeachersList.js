@@ -10,7 +10,7 @@ import NewTeacher from "./AddNew/NewTeacher";
 export default function TeachersList() {
   const { filteredUsers, resetClass } = React.useContext(UserContext);
   resetClass();
-  const teachers = filteredUsers.filter((item) => item.type === 2);
+  const teachers = filteredUsers.filter((item) => item.type === "teacher");
   return (
     <TeachersListWrapper>
       <Heading title="Teachers list"></Heading>

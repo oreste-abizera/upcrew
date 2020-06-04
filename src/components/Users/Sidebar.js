@@ -9,9 +9,7 @@ export default function Sidebar() {
   let {
     sidebarOpen,
     user: { user },
-    types = [],
   } = React.useContext(UserContext);
-  let userType = types.find((item) => item.id === user.type);
   const { socialData } = React.useContext(AdoContext);
   return (
     <SidebarWrapper sidebarOpen={sidebarOpen}>
@@ -32,7 +30,7 @@ export default function Sidebar() {
           </Link>
         </div>
         <hr></hr>
-        <PagesLinks userType={userType} me={user.id}></PagesLinks>
+        <PagesLinks userType={user.type} me={user.id}></PagesLinks>
       </div>
       <div className="sidebar-footer">
         {socialData.map((item) => (

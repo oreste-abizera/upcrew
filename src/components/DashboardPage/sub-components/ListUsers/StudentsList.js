@@ -10,7 +10,7 @@ import NewStudent from "./AddNew/NewStudent";
 export default function StudentsList() {
   const { filteredUsers, resetCountry } = React.useContext(UserContext);
   resetCountry();
-  const students = filteredUsers.filter((item) => item.type === 1);
+  const students = filteredUsers.filter((item) => item.type === "student");
 
   return (
     <StudentsListWrapper>

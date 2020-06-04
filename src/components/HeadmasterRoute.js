@@ -14,12 +14,12 @@ export default function HeadmasterRoute({ children, component, ...rest }) {
       {component ?
         <Route
           {...rest}
-          component={user.token ? component : AccessDenied}
+          component={user.token && user.user.type === "headmaster" ? component : AccessDenied}
         ></Route>
         :
         <Route
           {...rest}
-          render={() => (user.token && user.user.type === 3 ? children : <Redirect to="/login"></Redirect>)}
+          render={() => (user.token && user.user.type === "headmaster" ? children : <Redirect to="/login"></Redirect>)}
         ></Route>
       }
 

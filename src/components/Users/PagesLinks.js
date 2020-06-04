@@ -9,14 +9,9 @@ export default function PagesLinks({ userType, me }) {
   let { pageLinksData } = React.useContext(AdoContext);
   const { messages } = React.useContext(MessagesContext)
   let unreadMessages = messages.filter(record => record.to === me && record.status === "unread")
-  // const {
-  //   user: {
-  //     user: { type },
-  //   },
-  // } = React.useContext(UserContext);
-  if (userType.title) {
+  if (userType) {
     pageLinksData = pageLinksData.filter(
-      (item) => item.type === "all" || item.type === userType.title
+      (item) => item.type === "all" || item.type === userType
     );
   } else {
     pageLinksData = pageLinksData.filter((item) => item.type === "all");
