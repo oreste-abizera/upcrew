@@ -7,11 +7,11 @@ import Heading from "../../Heading";
 
 export default function DashboardCount({ users, messages, me, books }) {
   let myMessages = messages.filter(item => item.to === me && item.status === "unread")
-  let students = users.filter((item) => item.type === 1);
-  let teachers = users.filter((item) => item.type === 2);
-  let parents = users.filter((item) => item.type === 5);
-  let librarians = users.filter((item) => item.type === 4);
-  let hostelManagers = users.filter((item) => item.type === 6);
+  let students = users.filter((item) => item.type === "student");
+  let teachers = users.filter((item) => item.type === "teacher");
+  let parents = users.filter((item) => item.type === "parent");
+  let librarians = users.filter((item) => item.type === "librarian");
+  let guests = users.filter((item) => item.type === "guest");
   let data = [
     {
       id: 1,
@@ -71,7 +71,7 @@ export default function DashboardCount({ users, messages, me, books }) {
       id: 8,
       title: "Guests",
       subtitle: "All Guests",
-      number: hostelManagers.length,
+      number: guests.length,
       icon: <FaBars className="count-icon"></FaBars>,
       bg: "red",
     },

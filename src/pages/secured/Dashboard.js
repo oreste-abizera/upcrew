@@ -13,25 +13,25 @@ export default function Dashboard() {
   } = user;
 
   switch (type) {
-    case 1:
+    case "student":
       return (
         <DashboardWrapper sidebarOpen={sidebarOpen}>
           <StudentDashboard></StudentDashboard>
         </DashboardWrapper>
       );
-    case 2:
+    case "teacher":
       return (
         <DashboardWrapper sidebarOpen={sidebarOpen}>
           <TeacherDashboard></TeacherDashboard>
         </DashboardWrapper>
       );
-    case 3:
+    case "headmaster":
       return (
         <DashboardWrapper sidebarOpen={sidebarOpen}>
           <HeadmasterDashboard></HeadmasterDashboard>
         </DashboardWrapper>
       );
-    case 5:
+    case "parent":
       return (
         <DashboardWrapper sidebarOpen={sidebarOpen}>
           <ParentDashboard></ParentDashboard>

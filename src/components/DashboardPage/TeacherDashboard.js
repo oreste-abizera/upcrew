@@ -9,7 +9,7 @@ export default function TeacherDashboard() {
   return <div className="container-fluid">
     <div className="row">
       <Heading title="Teacher Dashboard"></Heading>
-      <DisplayClass currentClass={myClass}></DisplayClass>
+      {myClass && <DisplayClass currentClass={myClass}></DisplayClass>}
       {/* <DisplayClass currentClass={myClass}></DisplayClass> */}
     </div>
   </div>;

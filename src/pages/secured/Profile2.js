@@ -43,20 +43,18 @@ export default function Profile2(props) {
   return (
     <ProfileWrapper sidebarOpen={sidebarOpen}>
       <div className="personal-data mx-auto">
-        {user.image && (
-          <img
-            src={user.image ? user.image : "/assets/images/avatar.jpg"}
-            alt={user.userName}
-            className="img-thumbnail"
-          ></img>
-        )}
+        <img
+          src={user.image ? user.image : "/assets/images/avatar.jpg"}
+          alt={user.userName}
+          className="img-thumbnail"
+        ></img>
 
         <br />
         <ProfileData
           title="Personal Information"
           data={personalInfo}
         ></ProfileData>
-        {user.type === 1 && (
+        {user.type === "student" && (
           <div>
             <ProfileData
               title="Parent Information"
@@ -65,7 +63,7 @@ export default function Profile2(props) {
             <ProfileData title="Payment History"></ProfileData>
           </div>
         )}
-        {user.type === 5 && (
+        {user.type === "parent" && (
           <div>
             <ProfileData
               title="Children Information"

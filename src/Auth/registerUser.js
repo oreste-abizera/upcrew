@@ -28,9 +28,6 @@ async function registerUser({
   } else {
     return errorResponse
   }
-
-  //waiting for cms
-  return null;
 }
 
 export default registerUser;

@@ -8,12 +8,25 @@ export async function getSettings() {
     .catch((err) => console.log(err));
   return response.data;
 }
-export async function getUsers() {
+export async function getUsers(token) {
   let response;
   response = await axios
-    .get(`${url}/db/users.json`)
-    .catch((err) => console.log(err));
-  return response.data;
+    .get(`http://localhost:5000/api/v1/users`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .catch((err) => response = err.response);
+  const { success, data, error } = response.data
+  if (success) {
+    data.map(item => {
+      item.id = item._id
+      return item
+    })
+    return data
+  }
+  console.log(error)
+  return [];
 }
 
 export async function getClasses() {

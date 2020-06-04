@@ -38,7 +38,7 @@ function UserProvider({ children }) {
     setLoading(false);
   }, [reload]);
   async function mount() {
-    let tempUsers = await getUsers();
+    let tempUsers = await getUsers(user.token);
     setUsers(tempUsers);
     setFilteredUsers(tempUsers);
     let tempClasses = await getClasses();
@@ -188,7 +188,7 @@ function UserProvider({ children }) {
       currentTerm: settings.currentTerm,
       mother,
       father,
-      rollNumber: "UPCREW2020__0" + user.id,
+      rollNumber: user.id,
       children,
     };
     // console.log(finalUser);
