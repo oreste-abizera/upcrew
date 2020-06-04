@@ -49,7 +49,7 @@ export default function EditUser({ user }) {
 
                 {/* single input */}
                 <div className="form-group">
-                    <img src={user.image.url || "/assets/images/avatar.jpg"} alt={user.userName} className="img img-fluid" width="100" height="100"></img>
+                    <img src={user.image || "/assets/images/avatar.jpg"} alt={user.userName} className="img img-fluid" width="100" height="100"></img>
                     <input type="file" className="form-control" id={`image${user.id}`}></input>
                 </div>
                 {/* end of single input */}

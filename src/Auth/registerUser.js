@@ -1,4 +1,4 @@
-// import axios from "axios";
+import axios from "axios";
 
 async function registerUser({
   firstName,
@@ -6,19 +6,28 @@ async function registerUser({
   userName,
   email,
   password,
+  gender,
+  dateOfBirth,
+  userCountry
 }) {
-  //   let response = await axios
-  //     .post("url", {
-  //       headers: {
-  //         firstName,
-  //         lastName,
-  //         userName,
-  //         email,
-  //         password,
-  //       },
-  //     })
-  //     .catch((err) => console.log(err));
-  //   return response;
+  let errorResponse
+  let response = await axios
+    .post("http://localhost:5000/api/v1/auth/register", {
+      firstName,
+      lastName,
+      userName,
+      userEmail: email,
+      userPassword: password,
+      gender,
+      dateOfBirth,
+      userCountry
+    })
+    .catch((err) => errorResponse = err.response);
+  if (response) {
+    return response;
+  } else {
+    return errorResponse
+  }
 
   //waiting for cms
   return null;

@@ -8,7 +8,7 @@ export default function ProfileDisplay({ user = {} }) {
     let currentUser = users.find(item => item.id === user.id)
     return <ProfileDisplayWrapper>
         <div>
-            <img alt={currentUser.firstName} src={currentUser.image.url || "/assets/images/avatar.jpg"} className="img-thumbnail img img-fluid"></img>
+            <img alt={currentUser.firstName} src={currentUser.image || "/assets/images/avatar.jpg"} className="img-thumbnail img img-fluid"></img>
         </div>
         <div>
             <p>{`${currentUser.firstName} ${currentUser.lastName}`}</p>

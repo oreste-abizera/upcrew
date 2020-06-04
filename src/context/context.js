@@ -5,6 +5,7 @@ import pageLinksData from "./pageLinksData";
 import loginUser from "../Auth/loginUser";
 import registerUser from "../Auth/registerUser";
 import { UserContext } from "./UserContext";
+import { getMe } from "../helpers/functions";
 
 const AdoContext = React.createContext();
 class AdoProvider extends Component {
@@ -23,6 +24,9 @@ class AdoProvider extends Component {
       confirmPass: "",
       agree: false,
       isMember: true,
+      gender: "",
+      dateOfBirth: "",
+      country: "",
       touched: {
         login: false,
         register: false,
@@ -82,28 +86,34 @@ class AdoProvider extends Component {
         userName: this.state.userName,
         email: this.state.email,
         password: this.state.password,
+        gender: this.state.gender,
+        dateOfBirth: this.state.dateOfBirth,
+        userCountry: this.state.country
       };
       //register user
       response = await registerUser({ ...registerData });
     }
 
-    if (response) {
+    const { success: responseSuccess, error: responseError, token } = response.data
+    if (responseSuccess) {
       const { userLogin } = this.context;
-      // const {
-      //   jwt: token,
-      //   user: { username },
-      // } = response.data;
-      // const newUser = { username, token };
-
-      const newUser = { ...response };
-      userLogin(newUser);
-      // this.showAlert({
-      //   message: `Congratulations ${newUser.username}, you are now logged in.`,
-      // });
-      this.hideAlert()
+      const newUser = { token };
+      let userInfo = await getMe(token)
+      let { data, success, error } = userInfo.data
+      if (success) {
+        data.id = data._id
+        newUser.user = data
+        userLogin(newUser);
+        this.hideAlert()
+      } else {
+        this.showAlert({
+          message: error || "Something went wrong. Please try again later.",
+          type: "danger",
+        });
+      }
     } else {
       this.showAlert({
-        message: "Something went wrong. Please try again later.",
+        message: responseError || "Something went wrong. Please try again later.",
         type: "danger",
       });
     }

@@ -8,6 +8,9 @@ import {
     FaUserCheck,
     FaUserMd,
     FaMailBulk,
+    FaBirthdayCake,
+    FaTransgender,
+    FaHome
 } from "react-icons/fa";
 
 export default function RegisterForm() {
@@ -23,6 +26,9 @@ export default function RegisterForm() {
         password,
         confirmPass,
         agree,
+        gender,
+        dateOfBirth,
+        country,
         alert,
         changeTouched,
         touched,
@@ -32,8 +38,8 @@ export default function RegisterForm() {
             changeIsMember(false);
         }, 0);
     }
-    let isEmpty =
-        !firstName || !lastName || !userName || !email || !password || !confirmPass;
+    let isEmpty = false
+    // !firstName || !lastName || !userName || !email || !password || !confirmPass || !gender || !dateOfBirth || !country;
     let match = password === confirmPass;
     return (
         <RegisterFormWrapper>
@@ -110,6 +116,75 @@ export default function RegisterForm() {
                                 value={email}
                                 onChange={handleChange}
                             ></input>
+                        </div>
+
+
+                        <div className="input-group">
+                            <div className="input-group-prepend">
+                                <div className="input-group-text text-white">
+                                    <FaHome></FaHome>
+                                </div>
+                            </div>
+                            <select
+                                className="form-control"
+                                name="country"
+                                value={country}
+                                onChange={handleChange}
+                            >
+                                <option value="">select your country</option>
+                                <option value="Rwanda">Rwanda</option>
+                                <option value="Kenya">Kenya</option>
+                                <option value="Nigeria">Nigeria</option>
+                                <option value="Egypt">Egypt</option>
+                                <option value="Senegal">Senegal</option>
+                                <option value="England">England</option>
+                                <option value="Spain">Spain</option>
+                                <option value="Italy">Italy</option>
+                                <option value="Denmark">Denmark</option>
+                                <option value="Germany">Germany</option>
+                                <option value="Japan">Japan</option>
+                                <option value="China">China</option>
+                                <option value="Canada">Canada</option>
+                                <option value="India">India</option>
+                                <option value="USA">USA</option>
+                                <option value="Colombia">Colombia</option>
+                            </select>
+                        </div>
+
+
+                        <div className="input-group">
+                            <div className="input-group-prepend">
+                                <div className="input-group-text text-white">
+                                    <FaBirthdayCake></FaBirthdayCake>
+                                </div>
+                            </div>
+                            <input
+                                autoComplete="off"
+                                type="date"
+                                className="form-control"
+                                placeholder="Date of birth"
+                                name="dateOfBirth"
+                                value={dateOfBirth}
+                                onChange={handleChange}
+                            ></input>
+                        </div>
+
+                        <div className="input-group">
+                            <div className="input-group-prepend">
+                                <div className="input-group-text text-white">
+                                    <FaTransgender></FaTransgender>
+                                </div>
+                            </div>
+                            <select
+                                className="form-control"
+                                name="gender"
+                                value={gender}
+                                onChange={handleChange}
+                            >
+                                <option value="">select your gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
                         </div>
 
                         <div className="input-group">

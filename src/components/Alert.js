@@ -19,7 +19,7 @@ export default function Alert() {
     <AlertWrapper>
       <div className="container">
         <div className="row">
-          <div className={`col-6 mx-auto py-5 pl-3 ${css}`}>
+          <div className={`text-center col-6 mx-auto py-5 pl-3 ${css}`}>
             <p className="alert-footer">{message}</p>
             <FaWindowClose
               className="alert-icon"

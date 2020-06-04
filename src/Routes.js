@@ -46,6 +46,9 @@ class Routes extends Component {
           {user.token && (
             <Redirect pop exact from="/login" to="/dashboard"></Redirect>
           )}
+          {user.token && (
+            <Redirect pop exact from="/register" to="/dashboard"></Redirect>
+          )}
           <Redirect exact from="/" to="/home"></Redirect>
           <Route exact path="/home" component={HomePage}></Route>
           <Route exact path="/contact" component={ContactPage}></Route>

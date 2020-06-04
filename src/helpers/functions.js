@@ -75,6 +75,22 @@ export async function getBooks() {
   return response.data;
 }
 
+export async function getMe(token) {
+  let errorResponse
+  let response = await axios
+    .get("http://localhost:5000/api/v1/auth/me", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .catch((err) => errorResponse = err.response);
+  if (response) {
+    return response
+  } else {
+    return errorResponse
+  }
+}
+
 // export async function formatUser(user) {
 //   let classes = await getClasses();
 //   let tempClass = classes.find((item) => item.id === user.currentClass);

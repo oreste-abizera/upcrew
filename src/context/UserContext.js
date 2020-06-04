@@ -13,7 +13,7 @@ function UserProvider({ children }) {
   const getUserFromSessionStorage = () => {
     return sessionStorage.getItem("ado-user")
       ? JSON.parse(sessionStorage.getItem("ado-user"))
-      : { username: null, token: null, user: null };
+      : { token: null, user: {} };
   };
 
   //state values
@@ -70,7 +70,7 @@ function UserProvider({ children }) {
     reloadContent()
   };
   const userLogout = () => {
-    setUser({ username: null, token: null, user: null });
+    setUser({ token: null, user: {} });
     sessionStorage.removeItem("ado-user");
   };
   const handleTerm = (e) => {

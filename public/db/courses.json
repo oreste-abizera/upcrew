@@ -1,23 +1,27 @@
 [
   {
     "id": 1,
-    "name": "HTML"
+    "name": "HTML",
+    "image": "/assets/images/html.png"
   },
   {
     "id": 2,
-    "name": "CSS"
+    "name": "CSS",
+    "image": "/assets/images/css.png"
   },
   {
     "id": 3,
-    "name": "VANILLA JS"
+    "name": "Vue JS",
+    "image": "/assets/images/vue.png"
   },
   {
     "id": 4,
-    "name": "PHYSICS"
+    "name": "React js"
   },
   {
     "id": 5,
-    "name": "MATHEMATICS"
+    "name": "MATHEMATICS",
+    "image": "/assets/images/math.png"
   },
   {
     "id": 6,

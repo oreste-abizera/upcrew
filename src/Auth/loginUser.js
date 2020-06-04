@@ -26,19 +26,24 @@ async function formatResponse(res, identifier, password) {
   return null;
 }
 async function loginUser({ identifier, password }) {
-  //   let response = await axios
-  //     .post("url", {
-  //       identifier,
-  //       password,
-  //     })
-  //     .catch((error) => console.log(error));
-  // return response
+  let errorResponse
+  let response = await axios
+    .post("http://localhost:5000/api/v1/auth/login", {
+      identifier,
+      password,
+    })
+    .catch((error) => errorResponse = error.response);
+  if (response) {
+    return response
+  } else {
+    return errorResponse
+  }
 
   //waiting for headless cms
-  let response = await axios
-    .get("./db/users.json")
-    .catch((error) => console.log(error));
-  response = await formatResponse(response.data, identifier, password);
-  return response;
+  // let response = await axios
+  //   .get("./db/users.json")
+  //   .catch((error) => console.log(error));
+  // response = await formatResponse(response.data, identifier, password);
+  // return response;
 }
 export default loginUser;

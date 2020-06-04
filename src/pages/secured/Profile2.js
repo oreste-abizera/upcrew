@@ -45,7 +45,7 @@ export default function Profile2(props) {
       <div className="personal-data mx-auto">
         {user.image && (
           <img
-            src={user.image.url ? user.image.url : "/assets/images/avatar.jpg"}
+            src={user.image ? user.image : "/assets/images/avatar.jpg"}
             alt={user.userName}
             className="img-thumbnail"
           ></img>

@@ -11,9 +11,7 @@ export default function Sidebar() {
     user: { user },
     types = [],
   } = React.useContext(UserContext);
-  if (!user) user = { image: { url: "" } }
   let userType = types.find((item) => item.id === user.type);
-
   const { socialData } = React.useContext(AdoContext);
   return (
     <SidebarWrapper sidebarOpen={sidebarOpen}>
@@ -22,7 +20,7 @@ export default function Sidebar() {
           <h2 className="names">{`${user.firstName} ${user.lastName}`}</h2>
           <h6 className="email text-muted">{user.userEmail}</h6>
           <img
-            src={user.image.url ? user.image.url : "/assets/images/avatar.jpg"}
+            src={user.image ? user.image : "/assets/images/avatar.jpg"}
             alt={user.userName}
             className="img-thumbnail"
           ></img>
