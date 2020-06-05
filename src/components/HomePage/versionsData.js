@@ -12,6 +12,6 @@ export default [
     {
         id: 2,
         title: "Version 2",
-        description: "In this version, all included is backend development of the project. Technology to be used in this project is strapi headless cms."
+        description: "In this version, all included is backend development of the project. Technology to be used in this project is Node js."
     }
 ]

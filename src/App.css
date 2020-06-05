@@ -18,7 +18,7 @@
 
 
 body {
-  font-family: "Open Sans", sans-serif !important;
+  /* font-family: "Open Sans", sans-serif !important; */
   background: var(--mainGrey) !important;
   color: var(--mainBlack);
 }

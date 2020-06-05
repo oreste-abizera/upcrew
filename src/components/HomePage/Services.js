@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { FaEye, FaBus } from "react-icons/fa";
-import { MdForward30,MdHelp } from "react-icons/md";
+import { MdForward30, MdHelp } from "react-icons/md";
 import styled from "styled-components";
 import Title from "../Title";
 
@@ -61,6 +61,7 @@ export default class Services extends Component {
 }
 
 const ServicesWrapper = styled.div`
+margin-top: 3rem;
   background: var(--test);
   .services-icon {
     display: block;

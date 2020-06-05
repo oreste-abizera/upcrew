@@ -13,7 +13,7 @@ export default function Versions() {
                 {versionsData.map((record, index) => <div className="col-10 col-md-6 col-lg-4 my-3 mx-auto text-center" key={index}>
                     <h2 className="version-title">{record.title}</h2>
                     <p className="text-muted version-description">{record.description}</p>
-                        <video className="version-video" src={record.video || VersionInProgressVideo} controls poster={record.poster || defaultPoster}></video>
+                    <video className="version-video" src={record.video || VersionInProgressVideo} controls poster={record.poster || defaultPoster}></video>
                 </div>)}
             </div>
         </div>
@@ -21,6 +21,8 @@ export default function Versions() {
 }
 
 const VersionsWrapper = styled.div`
+margin: 3rem 0;
+padding: 4rem 0;
 background: var(--primaryBg);
 .version-title{
     color: var(--mainWhite);
