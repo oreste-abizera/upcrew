@@ -38,9 +38,11 @@ function UserProvider({ children }) {
     setLoading(false);
   }, [reload]);
   async function mount() {
-    let tempUsers = await getUsers(user.token);
-    setUsers(tempUsers);
-    setFilteredUsers(tempUsers);
+    if (user.token) {
+      let tempUsers = await getUsers(user.token);
+      setUsers(tempUsers);
+      setFilteredUsers(tempUsers);
+    }
     let tempClasses = await getClasses();
     setClasses(tempClasses);
     let tempTypes = await getTypes();

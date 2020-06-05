@@ -104,6 +104,33 @@ export async function getMe(token) {
   }
 }
 
+
+export async function addUser(user) {
+  let response = await axios.post("http://localhost:5000/api/v1/auth/register", {
+    ...user
+  }).catch(err => response = err.response)
+  return response
+}
+
+export async function updateUser(user, id, token) {
+  let response = await axios.put(`http://localhost:5000/api/v1/users/${id}`, {
+    ...user
+  }, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }).catch(err => response = err.response)
+  return response
+}
+
+export async function deleteUser(id, token) {
+  let response = await axios.delete(`http://localhost:5000/api/v1/users/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }).catch(err => response = err.response)
+  return response
+}
 // export async function formatUser(user) {
 //   let classes = await getClasses();
 //   let tempClass = classes.find((item) => item.id === user.currentClass);

@@ -4,14 +4,33 @@ import { Link } from "react-router-dom";
 import Modal from "../../../Modal"
 import EditUser from "./UserActions/EditUser";
 import { UserContext } from "../../../../context/UserContext";
+import { deleteUser } from "../../../../helpers/functions";
+import { AdoContext } from "../../../../context/context";
 
 export default function UserListItem({ user, index, actions, userClass }) {
   const [data, setData] = React.useState(user);
-  const { formatUser, classes } = React.useContext(UserContext)
+  const { formatUser, classes, user: me, reloadContent } = React.useContext(UserContext)
+  const { showAlert } = React.useContext(AdoContext)
 
   React.useEffect(() => {
     setData(formatUser(user));
   }, [classes]);
+
+  const handleDelete = async () => {
+    let response = await deleteUser(data.id, me.token)
+    const { success, error } = response.data
+    if (success) {
+      window.Toast.fire({
+        title: "User deleted successifully"
+      })
+      reloadContent()
+    } else {
+      showAlert({
+        message: error || "Something went wrong",
+        type: "danger"
+      })
+    }
+  }
 
   return (
     <div className="container-fluid my-3">
@@ -45,22 +64,20 @@ export default function UserListItem({ user, index, actions, userClass }) {
         </div>
         <div className="col-lg-1">
           {actions ? (
-            <>
-              <Modal id={`user${data.id}`} header="Change Profile info" opener={true} body={<EditUser user={data}></EditUser>}>
+            <div className="row">
+              <Modal id={`user${data.id}`} header="Change Profile info" opener={true} body={<EditUser user={data} id={`user${data.id}`}></EditUser>}>
                 <button
                   className="action-btn">
                   <FaEdit className="btn-icon main-text"></FaEdit>
                 </button>
               </Modal>
               <button
-                className="action-btn ml-3"
-                onClick={() => {
-                  console.log("delete user " + data.id);
-                }}
+                className="action-btn ml-3 ml-lg-0"
+                onClick={handleDelete}
               >
                 <FaTrash className="btn-icon text-danger"></FaTrash>
               </button>
-            </>
+            </div>
           ) : (
               <Link
                 to={`/profile/${data.id}`}

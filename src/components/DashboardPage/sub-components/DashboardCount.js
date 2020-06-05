@@ -4,8 +4,10 @@ import { FaEnvelope, FaBars } from "react-icons/fa";
 import { MdGroup, MdGroupAdd, MdBook, MdSettings } from "react-icons/md";
 import SingleCount from "./SingleCount";
 import Heading from "../../Heading";
+import { UserContext } from "../../../context/UserContext";
 
 export default function DashboardCount({ users, messages, me, books }) {
+  const { sidebarOpen } = React.useContext(UserContext)
   let myMessages = messages.filter(item => item.to === me && item.status === "unread")
   let students = users.filter((item) => item.type === "student");
   let teachers = users.filter((item) => item.type === "teacher");
@@ -83,7 +85,7 @@ export default function DashboardCount({ users, messages, me, books }) {
           <Heading title="Headmaster Dashboard"></Heading>
           {data.map((item) => (
             <div
-              className="col-10 col-sm-6 col-md-4 col-lg-3 mx-auto my-3"
+              className={sidebarOpen ? "col-10 col-sm-6 col-md-4 col-lg-4 mx-auto my-3" : "col-10 col-sm-6 col-md-4 col-lg-3 mx-auto my-3"}
               key={item.id}
             >
               <SingleCount {...item}></SingleCount>

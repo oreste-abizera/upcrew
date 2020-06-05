@@ -22,9 +22,9 @@ export default function UsersFilters({ children, userClass }) {
   return (
     <UsersFiltersWrapper>
       <div className="container-fluid mt-3">
-        <div className="d-md-flex">
+        <div className="row">
           {/* single input */}
-          <div className="form-group col-md-4">
+          <div className="form-group col-md-6 col-lg-4">
             <label htmlFor="search">Search</label>
             <input
               type="text"
@@ -37,7 +37,7 @@ export default function UsersFilters({ children, userClass }) {
           {/* end of single input */}
           {/* single input */}
           {userClass ? (
-            <div className="form-group col-md-4">
+            <div className="form-group col-md-6 col-lg-4">
               <label htmlFor="class">Select Class</label>
               <select
                 className="form-control"
@@ -54,26 +54,26 @@ export default function UsersFilters({ children, userClass }) {
               </select>
             </div>
           ) : (
-            <div className="form-group col-md-4">
-              <label htmlFor="country">Select Country</label>
-              <select
-                className="form-control"
-                id="country"
-                value={searchCountry}
-                onChange={handleCountry}
-              >
-                <option value="all">All</option>
-                {tempCountries.map((item, index) => (
-                  <option key={index} value={item}>
-                    {item}
-                  </option>
-                ))}
-              </select>
-            </div>
-          )}
+              <div className="form-group col-md-6 col-lg-4">
+                <label htmlFor="country">Select Country</label>
+                <select
+                  className="form-control"
+                  id="country"
+                  value={searchCountry}
+                  onChange={handleCountry}
+                >
+                  <option value="all">All</option>
+                  {tempCountries.map((item, index) => (
+                    <option key={index} value={item}>
+                      {item}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
           {/* end of single input */}
           {/* children */}
-          <div className="col-md-4 mt-md-4">{children}</div>
+          <div className="col-md-6 col-lg-4 mt-md-4">{children}</div>
           {/* end of children */}
         </div>
       </div>

@@ -1,9 +1,14 @@
 import React from "react"
 import styled from "styled-components"
+import { addUser } from "../../../../../helpers/functions"
+import { AdoContext } from "../../../../../context/context"
+import { UserContext } from "../../../../../context/UserContext"
 
 
-export default function NewTeacher() {
-    const addStudent = (e) => {
+export default function NewUser({ type = "student", id }) {
+    const { showAlert } = React.useContext(AdoContext)
+    const { reloadContent } = React.useContext(UserContext)
+    const handleSubmit = async (e) => {
         e.preventDefault()
         const finalUser = {
             firstName: window.fname.value,
@@ -14,13 +19,33 @@ export default function NewTeacher() {
             userEmail: window.email.value,
             userCountry: window.country.value,
             gender: window.gender.value,
-            type: 1,
-            currentClass: 1,
+            type: type,
+            phoneNumber: window.phoneNumber.value
         }
-        console.log(finalUser)
+        let response = await addUser(finalUser)
+        const { error, success } = response.data
+        if (success) {
+
+            //hide modal
+            let modal = document.getElementById(id)
+            if (modal) {
+                modal.style.display = "none"
+            }
+            //display alert
+            window.Toast.fire({
+                title: `${type} created Successifully`
+            })
+            //reload data
+            reloadContent()
+        } else {
+            showAlert({
+                message: error || "something went wrong",
+                type: "danger"
+            })
+        }
     }
-    return <NewTeacherWrapper>
-        <form className="form-container my-4 col-md-9 mx-auto" onSubmit={addStudent}>
+    return <NewUserWrapper>
+        <form className="form-container my-4 col-md-9 mx-auto" onSubmit={handleSubmit}>
             <div className="form-group">
                 <label htmlFor="fname">First name</label>
                 <input type="text" className="form-control" id="fname" required ref={fname => window.fname = fname}></input>
@@ -74,10 +99,10 @@ export default function NewTeacher() {
             </div>
 
             <div className="form-group">
-                <input type="submit" value="Save teacher" className="form-control btn btn-block ado-btn-outline"></input>
+                <input type="submit" value={`save ${type}`} className="form-control btn btn-block ado-btn-outline"></input>
             </div>
         </form>
-    </NewTeacherWrapper>
+    </NewUserWrapper>
 }
 
-const NewTeacherWrapper = styled.div``
+const NewUserWrapper = styled.div``

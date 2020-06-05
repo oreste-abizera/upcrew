@@ -24,7 +24,7 @@ export default function AssignmentsList() {
     let tempAssignments
 
     //if user is a teacher
-    if (user.user.type === 2) {
+    if (user.user.type === "teacher") {
       tempAssignments = filteredAssignments.filter(record => record.teacher === user.user.id)
     } else {
       tempAssignments = filteredAssignments.filter(
@@ -38,9 +38,11 @@ export default function AssignmentsList() {
     <>
       <Heading title="Assignments list"></Heading>
       <AssignmentFilters></AssignmentFilters>
-      <div className="container-fluid">
-        <Modal buttonName="New Assignment" header="Create Assignment" body={<UpdateQuizInfo edit={false}></UpdateQuizInfo>}></Modal>
-      </div>
+      {user.user.type === "teacher" &&
+        <div className="container-fluid">
+          <Modal buttonName="New Assignment" header="Create Assignment" body={<UpdateQuizInfo edit={false}></UpdateQuizInfo>}></Modal>
+        </div>
+      }
       <p className="text-center mt-2">
         {checkedAssignments.length} assignments found.
       </p>

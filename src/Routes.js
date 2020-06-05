@@ -78,9 +78,7 @@ class Routes extends Component {
           <HeadmasterRoute exact path="/students">
             <Students></Students>
           </HeadmasterRoute>
-          <HeadmasterRoute exact path="/teachers">
-            <Teachers></Teachers>
-          </HeadmasterRoute>
+          <HeadmasterRoute exact path="/teachers" component={Teachers}></HeadmasterRoute>
           <PrivateRoute exact path="/quiz/:id" component={QuizPage}></PrivateRoute>
           <PrivateRoute exact path="/viewQuiz/:id" component={ViewQuizPage}></PrivateRoute>
           <PrivateRoute exact path="/results" component={ResultsPage}></PrivateRoute>
