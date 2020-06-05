@@ -42,7 +42,7 @@ export default function UpdateMyProfile({ history }) {
         const currentPassword = window.currentPassword.value
         const newPassword = window.newPassword.value
         let response = await UpdateMyPassword({ newPassword, currentPassword }, me.token)
-        const { success, error, data } = response.data
+        const { success, error } = response.data
         if (success) {
             reloadContent()
             window.Toast.fire({

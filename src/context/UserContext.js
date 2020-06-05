@@ -6,6 +6,7 @@ import {
   getCourses,
   getBooks,
   getSettings,
+  getMe,
 } from "../helpers/functions";
 const UserContext = React.createContext();
 
@@ -42,6 +43,13 @@ function UserProvider({ children }) {
       let tempUsers = await getUsers(user.token);
       setUsers(tempUsers);
       setFilteredUsers(tempUsers);
+
+      let tempMe = await getMe(user.token)
+      const { success, data } = tempMe.data
+      if (success) {
+        data.id = data._id
+        setUser({ ...user, user: { ...data } })
+      }
     }
     let tempClasses = await getClasses();
     setClasses(tempClasses);

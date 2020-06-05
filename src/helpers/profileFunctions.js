@@ -59,7 +59,7 @@ export const getPersonalInfo = (user) => {
       value: user.currentTerm,
     },
   ];
-  if (user.type === 1) {
+  if (user.type === "student") {
     personalInfo = [
       ...personalInfo,
       {
