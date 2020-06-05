@@ -9,6 +9,9 @@ export async function getSettings() {
   return response.data;
 }
 export async function getUsers(token) {
+  if (!token) {
+    return []
+  }
   let response;
   response = await axios
     .get(`http://localhost:5000/api/v1/users`, {
@@ -37,12 +40,23 @@ export async function getClasses() {
 
   return response.data;
 }
-export async function getCourses() {
+export async function getCourses(token) {
+  if (!token) {
+    return []
+  }
   let response;
   response = await axios
-    .get(`${url}/db/courses.json`)
+    .get(`http://localhost:5000/api/v1/courses`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
     .catch((err) => console.log(err));
-  return response.data;
+  if (response) {
+    return response.data.data
+  } else {
+    return []
+  }
 }
 export async function getTypes() {
   let response;
@@ -134,7 +148,7 @@ export async function deleteUser(id, token) {
 
 
 export async function UpdateMyDetails(updates, token) {
-  let response = await axios.post(`http://localhost:5000/api/v1/auth/updateProfile`, {
+  let response = await axios.put(`http://localhost:5000/api/v1/auth/updateProfile`, {
     ...updates
   }, {
     headers: {
@@ -146,7 +160,7 @@ export async function UpdateMyDetails(updates, token) {
 
 
 export async function UpdateMyPassword(passwords, token) {
-  let response = await axios.post(`http://localhost:5000/api/v1/auth/updatePassword`, {
+  let response = await axios.put(`http://localhost:5000/api/v1/auth/updatePassword`, {
     ...passwords
   }, {
     headers: {
@@ -156,6 +170,44 @@ export async function UpdateMyPassword(passwords, token) {
   return response
 }
 
+
+export async function editCourse(data, courseId, token) {
+  const { name, image } = data
+  let response = await axios.put(`http://localhost:5000/api/v1/courses/${courseId}`, {
+    name,
+    image
+  }, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }).catch(err => response = err.response)
+  return response
+}
+
+
+export async function createCourse(data, token) {
+  const { name, image } = data
+  console.log(data)
+  let response = await axios.post(`http://localhost:5000/api/v1/courses`, {
+    name,
+    image
+  },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).catch(err => response = err.response)
+  return response
+}
+
+export async function deleteCourse(id, token) {
+  let response = await axios.delete(`http://localhost:5000/api/v1/courses/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }).catch(err => response = err.response)
+  return response
+}
 
 // export async function formatUser(user) {
 //   let classes = await getClasses();

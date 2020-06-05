@@ -26,6 +26,7 @@ import MessagesPage from "./pages/secured/MessagesPage";
 import Classes from "./pages/secured/Classes";
 import LibraryBooks from "./pages/secured/LibraryBooks";
 import UpdateMyProfile from './pages/secured/UpdateMyProfile'
+import CoursesPage from "./pages/secured/CoursesPage";
 
 //import components
 import Alert from "./components/Alert";
@@ -81,6 +82,7 @@ class Routes extends Component {
             <Students></Students>
           </HeadmasterRoute>
           <HeadmasterRoute exact path="/teachers" component={Teachers}></HeadmasterRoute>
+          <HeadmasterRoute exact path="/courses" component={CoursesPage}></HeadmasterRoute>
           <PrivateRoute exact path="/quiz/:id" component={QuizPage}></PrivateRoute>
           <PrivateRoute exact path="/viewQuiz/:id" component={ViewQuizPage}></PrivateRoute>
           <PrivateRoute exact path="/results" component={ResultsPage}></PrivateRoute>

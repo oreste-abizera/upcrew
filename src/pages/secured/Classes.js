@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { UserContext } from "../../context/UserContext";
-import ClassesList from "../../components/CoursesPage/ClassesList";
+import ClassesList from "../../components/ClassesPage/ClassesList";
 
-export default function Courses() {
+export default function Classes() {
   const { sidebarOpen } = React.useContext(UserContext);
   return (
     <ClassesWrapper sidebarOpen={sidebarOpen}>

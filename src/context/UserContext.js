@@ -40,23 +40,28 @@ function UserProvider({ children }) {
   }, [reload]);
   async function mount() {
     if (user.token) {
+
+      //fetch users
       let tempUsers = await getUsers(user.token);
       setUsers(tempUsers);
       setFilteredUsers(tempUsers);
 
+      //getting my profile info
       let tempMe = await getMe(user.token)
       const { success, data } = tempMe.data
       if (success) {
         data.id = data._id
         setUser({ ...user, user: { ...data } })
       }
+
+      //fetching courses
+      let tempCourses = await getCourses(user.token);
+      setCourses(tempCourses);
     }
     let tempClasses = await getClasses();
     setClasses(tempClasses);
     let tempTypes = await getTypes();
     setTypes(tempTypes);
-    let tempCourses = await getCourses();
-    setCourses(tempCourses);
     let tempBooks = await getBooks();
     setBooks(tempBooks)
     let tempSettings = await getSettings();

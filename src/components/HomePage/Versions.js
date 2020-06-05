@@ -8,7 +8,7 @@ import defaultPoster from "../../assets/images/defaultPoster.png"
 export default function Versions() {
     return <VersionsWrapper>
         <Title title="Versions" center></Title>
-        <div className="container">
+        <div className="container mt-4">
             <div className="row">
                 {versionsData.map((record, index) => <div className="col-10 col-md-6 col-lg-4 my-3 mx-auto text-center" key={index}>
                     <h2 className="version-title">{record.title}</h2>

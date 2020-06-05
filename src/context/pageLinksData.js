@@ -36,6 +36,13 @@ export default [
     type: ("headmaster"),
   },
   {
+    id: 10,
+    url: "/courses",
+    icon: <FaList className="pagelink-icon"></FaList>,
+    text: "Courses",
+    type: ["headmaster"],
+  },
+  {
     id: 4,
     url: "/classes",
     icon: <FaList className="pagelink-icon"></FaList>,
@@ -81,7 +88,7 @@ export default [
     type: "all",
   },
   {
-    id: 10,
+    id: 11,
     url: "/books",
     icon: <FaBook className="pagelink-icon"></FaBook>,
     text: "Library Books",
