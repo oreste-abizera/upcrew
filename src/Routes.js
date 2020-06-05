@@ -25,6 +25,7 @@ import ExamsPage from "./pages/secured/ExamsPage";
 import MessagesPage from "./pages/secured/MessagesPage";
 import Classes from "./pages/secured/Classes";
 import LibraryBooks from "./pages/secured/LibraryBooks";
+import UpdateMyProfile from './pages/secured/UpdateMyProfile'
 
 //import components
 import Alert from "./components/Alert";
@@ -63,6 +64,7 @@ class Routes extends Component {
           <PrivateRoute exact path="/profile">
             <Profile></Profile>
           </PrivateRoute>
+          <PrivateRoute exact path="/updateProfile" component={UpdateMyProfile}></PrivateRoute>
           <PrivateRoute
             exact
             path="/profile/:slug"

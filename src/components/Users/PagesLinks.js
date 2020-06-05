@@ -11,7 +11,7 @@ export default function PagesLinks({ userType, me }) {
   let unreadMessages = messages.filter(record => record.to === me && record.status === "unread")
   if (userType) {
     pageLinksData = pageLinksData.filter(
-      (item) => item.type === "all" || item.type === userType
+      (item) => item.type === "all" || item.type.includes(userType)
     );
   } else {
     pageLinksData = pageLinksData.filter((item) => item.type === "all");

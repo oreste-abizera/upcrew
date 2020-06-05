@@ -26,14 +26,14 @@ export default [
     url: "/students",
     icon: <FaGraduationCap className="pagelink-icon"></FaGraduationCap>,
     text: "Students",
-    type: "headmaster",
+    type: ("headmaster"),
   },
   {
     id: 3,
     url: "/teachers",
     icon: <FaChalkboardTeacher className="pagelink-icon"></FaChalkboardTeacher>,
     text: "Teachers",
-    type: "headmaster",
+    type: ("headmaster"),
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ export default [
     url: "/assignments",
     icon: <MdAssignment className="pagelink-icon"></MdAssignment>,
     text: "Assignments",
-    type: "all",
+    type: ["student", "teacher"],
   },
   {
     id: 6,
@@ -56,7 +56,7 @@ export default [
       <MdAssignmentReturned className="pagelink-icon"></MdAssignmentReturned>
     ),
     text: "Results",
-    type: "student",
+    type: ["student", "teacher"],
   },
   {
     id: 8,
