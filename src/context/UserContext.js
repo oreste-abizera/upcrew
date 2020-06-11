@@ -24,14 +24,18 @@ function UserProvider({ children }) {
   const [users, setUsers] = React.useState([]);
   const [filteredUsers, setFilteredUsers] = React.useState([]);
   const [classes, setClasses] = React.useState([]);
+  const [filteredClasses, setFilteredClasses] = React.useState([]);
   const [types, setTypes] = React.useState([]);
   const [courses, setCourses] = React.useState([]);
-  const [books, setBooks] = React.useState([])
-  const [settings, setSettings] = React.useState([])
+  const [books, setBooks] = React.useState([]);
+  const [settings, setSettings] = React.useState([]);
   const [searchTerm, setSearchTerm] = React.useState("");
   const [searchClass, setSearchClass] = React.useState("all");
   const [searchCountry, setSearchCountry] = React.useState("all");
-  const [reload, setReload] = React.useState(false)
+  const [maxNbrOfStudents, setMaxNbrOfStudents] = React.useState(users.length);
+  const [nbrOfStudents, setNbrOfStudents] = React.useState(users.length);
+  const [classname, setClassname] = React.useState("");
+  const [reload, setReload] = React.useState(false);
 
   //useEffect
   React.useEffect(() => {
@@ -40,37 +44,41 @@ function UserProvider({ children }) {
   }, [reload]);
   async function mount() {
     if (user.token) {
-
       //fetch users
       let tempUsers = await getUsers(user.token);
       setUsers(tempUsers);
       setFilteredUsers(tempUsers);
+      setNbrOfStudents(tempUsers.length);
+      setMaxNbrOfStudents(tempUsers.length);
 
       //getting my profile info
-      let tempMe = await getMe(user.token)
-      const { success, data } = tempMe.data
+      let tempMe = await getMe(user.token);
+      const { success, data } = tempMe.data;
       if (success) {
-        data.id = data._id
-        setUser({ ...user, user: { ...data } })
+        data.id = data._id;
+        setUser({ ...user, user: { ...data } });
       }
 
       //fetching courses
       let tempCourses = await getCourses(user.token);
       setCourses(tempCourses);
+
+      //fetching classes
+      let tempClasses = await getClasses(user.token);
+      setClasses(tempClasses);
+      setFilteredClasses(tempClasses);
     }
-    let tempClasses = await getClasses();
-    setClasses(tempClasses);
     let tempTypes = await getTypes();
     setTypes(tempTypes);
     let tempBooks = await getBooks();
-    setBooks(tempBooks)
+    setBooks(tempBooks);
     let tempSettings = await getSettings();
-    setSettings(tempSettings)
+    setSettings(tempSettings);
   }
 
   const reloadContent = () => {
-    setReload(!reload)
-  }
+    setReload(!reload);
+  };
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
@@ -82,7 +90,7 @@ function UserProvider({ children }) {
   const userLogin = (user) => {
     setUser(user);
     sessionStorage.setItem("ado-user", JSON.stringify(user));
-    reloadContent()
+    reloadContent();
   };
   const userLogout = () => {
     setUser({ token: null, user: {} });
@@ -96,6 +104,12 @@ function UserProvider({ children }) {
   };
   const handleCountry = (e) => {
     setSearchCountry(e.target.value);
+  };
+  const handleNbrOfStudents = (e) => {
+    setNbrOfStudents(e.target.value);
+  };
+  const handleClassname = (e) => {
+    setClassname(e.target.value);
   };
   const resetCountry = () => {
     setSearchCountry("all");
@@ -112,6 +126,11 @@ function UserProvider({ children }) {
   };
 
   React.useEffect(() => {
+    //function to filter classes
+    filterClasses();
+  }, [classname, nbrOfStudents]);
+
+  React.useEffect(() => {
     //function to change filtered users
     filterUsers();
   }, [searchTerm, searchClass, searchCountry, users]);
@@ -123,9 +142,7 @@ function UserProvider({ children }) {
     let tempUsers = users;
     //filter by class
     if (searchClass !== "all") {
-      tempUsers = tempUsers.filter(
-        (item) => item.currentClass === parseInt(searchClass)
-      );
+      tempUsers = tempUsers.filter((item) => item.currentClass === searchClass);
     }
     //filter by country
     if (searchCountry !== "all") {
@@ -168,19 +185,41 @@ function UserProvider({ children }) {
     setFilteredUsers(tempUsers);
   };
 
+  const filterClasses = () => {
+    let tempClasses = classes;
+    //filter by number of students
+    tempClasses = tempClasses.filter((item) => {
+      //number of students in class
+      let tempClassStudents = users.filter((record) => {
+        if (record.currentClass) {
+          return record.currentClass.toString() === item._id.toString();
+        }
+        return false;
+      });
 
+      return tempClassStudents.length <= nbrOfStudents;
+    });
 
+    //filter by class name
+    if (classname !== "") {
+      tempClasses = tempClasses.filter(
+        (item) =>
+          item.name.slice(0, classname.length).toLowerCase() ===
+          classname.toLowerCase()
+      );
+    }
 
+    setFilteredClasses(tempClasses);
+  };
 
   //loaded data functions
 
   const formatUser = (user) => {
-    let tempClass = classes.find((item) => item.id === user.currentClass);
+    let tempClass = classes.find((item) => {
+      return item._id === user.currentClass;
+    });
     let userClass = tempClass ? tempClass.name : "N/A";
-
-    let classTeacher = tempClass
-      ? getUserNames(tempClass.classTeacher)
-      : "N/A";
+    let classTeacher = tempClass ? getUserNames(tempClass.classTeacher) : "N/A";
     //get parent info
     let mother;
     let father;
@@ -208,13 +247,15 @@ function UserProvider({ children }) {
     };
     // console.log(finalUser);
     return finalUser;
-  }
+  };
 
   const getUserNames = (userId) => {
-    let tempUser = users.find((item) => item.id.toString() === userId.toString());
+    let tempUser = users.find(
+      (item) => item.id.toString() === userId.toString()
+    );
     if (!tempUser) return "N/A";
     return `${tempUser.firstName} ${tempUser.lastName}`;
-  }
+  };
 
   const getNormalUser = (userId) => {
     let tempUser = users.find((item) => item.id === userId);
@@ -236,7 +277,7 @@ function UserProvider({ children }) {
       phoneNumber: tempUser.phoneNumber,
       userName: tempUser.userName,
     };
-  }
+  };
 
   const getChildren = (id) => {
     let tempChildren = users.filter(
@@ -246,13 +287,11 @@ function UserProvider({ children }) {
       tempChildren = undefined;
     }
     return tempChildren;
-  }
+  };
 
   const formatClass = (oldClass) => {
     let classCourses = oldClass.courses.map((item) => {
-      let match = courses.find(
-        (course) => course.id.toString() === item.toString()
-      );
+      let match = courses.find((course) => course.id === item);
       if (match) {
         return match.name;
       }
@@ -264,7 +303,7 @@ function UserProvider({ children }) {
       classTeacher,
       courses: [...classCourses],
     };
-  }
+  };
 
   const formatAssignment = (assignment) => {
     let matchClass = classes.find((record) => record.id === assignment.class);
@@ -274,9 +313,7 @@ function UserProvider({ children }) {
     let matchCourse = courses.find((record) => record.id === assignment.course);
     if (matchCourse) course = matchCourse.name;
     return { ...assignment, teacher, course, class: className };
-  }
-
-
+  };
 
   return (
     <UserContext.Provider
@@ -295,6 +332,7 @@ function UserProvider({ children }) {
         settings,
         loading,
         filteredUsers,
+        filteredClasses,
         searchClass,
         searchTerm,
         searchCountry,
@@ -310,8 +348,13 @@ function UserProvider({ children }) {
         getChildren,
         formatClass,
         formatAssignment,
+        maxNbrOfStudents,
+        nbrOfStudents,
+        classname,
+        handleClassname,
+        handleNbrOfStudents,
         reloadContent,
-        reload
+        reload,
       }}
     >
       {children}

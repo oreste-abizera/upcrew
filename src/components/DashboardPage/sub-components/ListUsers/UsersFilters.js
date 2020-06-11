@@ -47,30 +47,30 @@ export default function UsersFilters({ children, userClass }) {
               >
                 <option value="all">All</option>
                 {classes.map((item) => (
-                  <option key={item.id} value={item.id}>
+                  <option key={item._id} value={item._id}>
                     {item.name}
                   </option>
                 ))}
               </select>
             </div>
           ) : (
-              <div className="form-group col-md-6 col-lg-4">
-                <label htmlFor="country">Select Country</label>
-                <select
-                  className="form-control"
-                  id="country"
-                  value={searchCountry}
-                  onChange={handleCountry}
-                >
-                  <option value="all">All</option>
-                  {tempCountries.map((item, index) => (
-                    <option key={index} value={item}>
-                      {item}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            )}
+            <div className="form-group col-md-6 col-lg-4">
+              <label htmlFor="country">Select Country</label>
+              <select
+                className="form-control"
+                id="country"
+                value={searchCountry}
+                onChange={handleCountry}
+              >
+                <option value="all">All</option>
+                {tempCountries.map((item, index) => (
+                  <option key={index} value={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
           {/* end of single input */}
           {/* children */}
           <div className="col-md-6 col-lg-4 mt-md-4">{children}</div>

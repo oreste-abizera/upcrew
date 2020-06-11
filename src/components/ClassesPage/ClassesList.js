@@ -1,33 +1,27 @@
 import React from "react";
 import styled from "styled-components";
 import { UserContext } from "../../context/UserContext";
-import ClassListItem from "./ClassListItem";
 import Heading from "../Heading";
-import ClassesColumns from "./ClassesColumns";
+import DisplayClass from "./DisplayClass";
+import ClassesFilters from "./ClassesFilters";
 
 export default function ClassesList() {
-  const { classes } = React.useContext(UserContext);
-  const [shown, setShown] = React.useState();
-  const changeShown = (index) => {
-    if (shown === index) {
-      setShown(null);
-    } else {
-      setShown(index);
-    }
-  };
+  const { filteredClasses, user } = React.useContext(UserContext);
+  let classes = [...filteredClasses];
+  if (user.user.type === "teacher") {
+    classes = classes.filter((item) => item.classTeacher === user.user._id);
+  }
+
   return (
     <ClassesListWrapper>
       <Heading title="Classes list"></Heading>
-      <ClassesColumns></ClassesColumns>
-      {classes.map((item, index) => (
-        <ClassListItem
-          key={item.id}
-          cClass={item}
-          index={index}
-          shown={shown}
-          changeShown={changeShown}
-        ></ClassListItem>
-      ))}
+      <ClassesFilters></ClassesFilters>
+      <p className="text-center">{classes.length} results found.</p>
+      <div className="row">
+        {classes.map((record) => (
+          <DisplayClass currentClass={record} key={record._id}></DisplayClass>
+        ))}
+      </div>
     </ClassesListWrapper>
   );
 }

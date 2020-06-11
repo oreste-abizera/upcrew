@@ -10,52 +10,62 @@ export async function getSettings() {
 }
 export async function getUsers(token) {
   if (!token) {
-    return []
+    return [];
   }
   let response;
   response = await axios
     .get(`http://localhost:5000/api/v1/users`, {
       headers: {
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     })
-    .catch((err) => response = err.response);
-  const { success, data, error } = response.data
+    .catch((err) => (response = err.response));
+  const { success, data, error } = response.data;
   if (success) {
-    data.map(item => {
-      item.id = item._id
-      return item
-    })
-    return data
+    data.map((item) => {
+      item.id = item._id;
+      return item;
+    });
+    return data;
   }
-  console.log(error)
+  console.log(error);
   return [];
 }
 
-export async function getClasses() {
+export async function getClasses(token) {
+  if (!token) {
+    return [];
+  }
   let response;
   response = await axios
-    .get(`${url}/db/classes.json`)
+    .get(`http://localhost:5000/api/v1/classes`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     .catch((err) => console.log(err));
-
-  return response.data;
+  if (response) {
+    return response.data.data;
+  } else {
+    return [];
+  }
 }
 export async function getCourses(token) {
   if (!token) {
-    return []
+    return [];
   }
   let response;
   response = await axios
     .get(`http://localhost:5000/api/v1/courses`, {
       headers: {
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     })
     .catch((err) => console.log(err));
   if (response) {
-    return response.data.data
+    return response.data.data;
   } else {
-    return []
+    return [];
   }
 }
 export async function getTypes() {
@@ -98,115 +108,190 @@ export async function getMessages() {
 export async function getBooks() {
   let response = await axios
     .get(`${url}/db/books.json`)
-    .catch(err => console.log(err))
+    .catch((err) => console.log(err));
   return response.data;
 }
 
 export async function getMe(token) {
-  let errorResponse
+  let errorResponse;
   let response = await axios
     .get("http://localhost:5000/api/v1/auth/me", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
-    .catch((err) => errorResponse = err.response);
+    .catch((err) => (errorResponse = err.response));
   if (response) {
-    return response
+    return response;
   } else {
-    return errorResponse
+    return errorResponse;
   }
 }
 
-
 export async function addUser(user) {
-  let response = await axios.post("http://localhost:5000/api/v1/auth/register", {
-    ...user
-  }).catch(err => response = err.response)
-  return response
+  let response = await axios
+    .post("http://localhost:5000/api/v1/auth/register", {
+      ...user,
+    })
+    .catch((err) => (response = err.response));
+  return response;
 }
 
 export async function updateUser(user, id, token) {
-  let response = await axios.put(`http://localhost:5000/api/v1/users/${id}`, {
-    ...user
-  }, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  }).catch(err => response = err.response)
-  return response
+  let response = await axios
+    .put(
+      `http://localhost:5000/api/v1/users/${id}`,
+      {
+        ...user,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    .catch((err) => (response = err.response));
+  return response;
 }
 
 export async function deleteUser(id, token) {
-  let response = await axios.delete(`http://localhost:5000/api/v1/users/${id}`, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  }).catch(err => response = err.response)
-  return response
+  let response = await axios
+    .delete(`http://localhost:5000/api/v1/users/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .catch((err) => (response = err.response));
+  return response;
 }
-
 
 export async function UpdateMyDetails(updates, token) {
-  let response = await axios.put(`http://localhost:5000/api/v1/auth/updateProfile`, {
-    ...updates
-  }, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  }).catch(err => response = err.response)
-  return response
+  let response = await axios
+    .put(
+      `http://localhost:5000/api/v1/auth/updateProfile`,
+      {
+        ...updates,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    .catch((err) => (response = err.response));
+  return response;
 }
-
 
 export async function UpdateMyPassword(passwords, token) {
-  let response = await axios.put(`http://localhost:5000/api/v1/auth/updatePassword`, {
-    ...passwords
-  }, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  }).catch(err => response = err.response)
-  return response
+  let response = await axios
+    .put(
+      `http://localhost:5000/api/v1/auth/updatePassword`,
+      {
+        ...passwords,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    .catch((err) => (response = err.response));
+  return response;
 }
-
 
 export async function editCourse(data, courseId, token) {
-  const { name, image } = data
-  let response = await axios.put(`http://localhost:5000/api/v1/courses/${courseId}`, {
-    name,
-    image
-  }, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  }).catch(err => response = err.response)
-  return response
+  const { name, image } = data;
+  let response = await axios
+    .put(
+      `http://localhost:5000/api/v1/courses/${courseId}`,
+      {
+        name,
+        image,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    .catch((err) => (response = err.response));
+  return response;
 }
 
-
 export async function createCourse(data, token) {
-  const { name, image } = data
-  console.log(data)
-  let response = await axios.post(`http://localhost:5000/api/v1/courses`, {
-    name,
-    image
-  },
-    {
-      headers: {
-        Authorization: `Bearer ${token}`
+  const { name, image } = data;
+  console.log(data);
+  let response = await axios
+    .post(
+      `http://localhost:5000/api/v1/courses`,
+      {
+        name,
+        image,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       }
-    }).catch(err => response = err.response)
-  return response
+    )
+    .catch((err) => (response = err.response));
+  return response;
 }
 
 export async function deleteCourse(id, token) {
-  let response = await axios.delete(`http://localhost:5000/api/v1/courses/${id}`, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  }).catch(err => response = err.response)
-  return response
+  let response = await axios
+    .delete(`http://localhost:5000/api/v1/courses/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .catch((err) => (response = err.response));
+  return response;
+}
+
+export async function createClass(data, token) {
+  let response = await axios
+    .post(
+      `http://localhost:5000/api/v1/classes`,
+      {
+        ...data,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    .catch((err) => (response = err.response));
+  return response;
+}
+
+export async function updateClass(updates, id, token) {
+  let response = await axios
+    .put(
+      `http://localhost:5000/api/v1/classes/${id}`,
+      {
+        ...updates,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    .catch((err) => (response = err.response));
+  return response;
+}
+
+export async function deleteClass(id, token) {
+  let response = await axios
+    .delete(`http://localhost:5000/api/v1/classes/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .catch((err) => (response = err.response));
+  return response;
 }
 
 // export async function formatUser(user) {
