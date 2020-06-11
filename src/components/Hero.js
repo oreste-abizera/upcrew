@@ -6,7 +6,7 @@ export default function Hero({ img, children }) {
 }
 
 const HeroWrapper = styled.div`
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 100px);
   background: url(${(props) => props.img}) center/cover no-repeat;
   display: flex;
   align-items: center;

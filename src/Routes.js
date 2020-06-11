@@ -17,24 +17,25 @@ import Profile2 from "./pages/secured/Profile2";
 import Students from "./pages/secured/Students";
 import Teachers from "./pages/secured/Teachers";
 import Assignments from "./pages/secured/Assignments";
-import QuizPage from "./pages/secured/QuizPage"
+import QuizPage from "./pages/secured/QuizPage";
 import ViewQuizPage from "./pages/secured/ViewQuizPage";
-import ResultsPage from "./pages/secured/ResultsPage"
+import ResultsPage from "./pages/secured/ResultsPage";
 import SingleResultPage from "./pages/secured/SingleResultPage";
 import ExamsPage from "./pages/secured/ExamsPage";
 import MessagesPage from "./pages/secured/MessagesPage";
 import Classes from "./pages/secured/Classes";
 import LibraryBooks from "./pages/secured/LibraryBooks";
-import UpdateMyProfile from './pages/secured/UpdateMyProfile'
+import UpdateMyProfile from "./pages/secured/UpdateMyProfile";
 import CoursesPage from "./pages/secured/CoursesPage";
+import SingleClassPage from "./pages/secured/SingleClassPage";
 
 //import components
 import Alert from "./components/Alert";
 import { ScrollButton } from "./components/ScrollButton";
-import Route from "./components/Route"
+import Route from "./components/Route";
 import PrivateRoute from "./components/PrivateRoute";
 import HeadmasterRoute from "./components/HeadmasterRoute";
-
+import TeacherRoute from "./components/TeacherRoute";
 
 class Routes extends Component {
   static contextType = UserContext;
@@ -65,7 +66,11 @@ class Routes extends Component {
           <PrivateRoute exact path="/profile">
             <Profile></Profile>
           </PrivateRoute>
-          <PrivateRoute exact path="/updateProfile" component={UpdateMyProfile}></PrivateRoute>
+          <PrivateRoute
+            exact
+            path="/updateProfile"
+            component={UpdateMyProfile}
+          ></PrivateRoute>
           <PrivateRoute
             exact
             path="/profile/:slug"
@@ -77,23 +82,64 @@ class Routes extends Component {
           <PrivateRoute exact path="/assignments">
             <Assignments></Assignments>
           </PrivateRoute>
-          <PrivateRoute exact path="/books" component={LibraryBooks}></PrivateRoute>
+          <PrivateRoute
+            exact
+            path="/books"
+            component={LibraryBooks}
+          ></PrivateRoute>
           <HeadmasterRoute exact path="/students">
             <Students></Students>
           </HeadmasterRoute>
-          <HeadmasterRoute exact path="/teachers" component={Teachers}></HeadmasterRoute>
-          <HeadmasterRoute exact path="/courses" component={CoursesPage}></HeadmasterRoute>
-          <PrivateRoute exact path="/quiz/:id" component={QuizPage}></PrivateRoute>
-          <PrivateRoute exact path="/viewQuiz/:id" component={ViewQuizPage}></PrivateRoute>
-          <PrivateRoute exact path="/results" component={ResultsPage}></PrivateRoute>
-          <PrivateRoute exact path="/results/:id" component={SingleResultPage}></PrivateRoute>
-          <PrivateRoute exact path="/exams" component={ExamsPage}></PrivateRoute>
-          <PrivateRoute exact path="/messages" component={MessagesPage}></PrivateRoute>
-          {user.token ?
+          <HeadmasterRoute
+            exact
+            path="/teachers"
+            component={Teachers}
+          ></HeadmasterRoute>
+          <HeadmasterRoute
+            exact
+            path="/courses"
+            component={CoursesPage}
+          ></HeadmasterRoute>
+          <TeacherRoute
+            exact
+            path="/myClasses/:id"
+            component={SingleClassPage}
+          ></TeacherRoute>
+          <PrivateRoute
+            exact
+            path="/quiz/:id"
+            component={QuizPage}
+          ></PrivateRoute>
+          <PrivateRoute
+            exact
+            path="/viewQuiz/:id"
+            component={ViewQuizPage}
+          ></PrivateRoute>
+          <PrivateRoute
+            exact
+            path="/results"
+            component={ResultsPage}
+          ></PrivateRoute>
+          <PrivateRoute
+            exact
+            path="/results/:id"
+            component={SingleResultPage}
+          ></PrivateRoute>
+          <PrivateRoute
+            exact
+            path="/exams"
+            component={ExamsPage}
+          ></PrivateRoute>
+          <PrivateRoute
+            exact
+            path="/messages"
+            component={MessagesPage}
+          ></PrivateRoute>
+          {user.token ? (
             <PrivateRoute path="*" component={ErrorPage}></PrivateRoute>
-            :
+          ) : (
             <Route path="*" component={ErrorPage}></Route>
-          }
+          )}
         </Switch>
       </>
     );
