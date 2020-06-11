@@ -121,7 +121,7 @@ export default function DisplayClass({ currentClass = {} }) {
             <h5 className="panel-title">{currentClass.name}</h5>
           </div>
           <div className="panel-body row mx-auto">
-            <div className="col-10 col-md-5 d-flex">
+            <div className="col-10 col-lg-5 d-flex">
               {/* {iteration > 0 && ( */}
               <div className="course-icon col-1">
                 <FaCaretLeft onClick={previousCourse}></FaCaretLeft>
@@ -154,7 +154,7 @@ export default function DisplayClass({ currentClass = {} }) {
               </div>
               {/* )} */}
             </div>
-            <div className="col-10 col-md-5 mx-auto">
+            <div className="col-10 col-lg-5 mx-auto">
               <div className="class-data">
                 <div>
                   <h6>Students</h6>

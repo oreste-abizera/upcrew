@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { UserContext } from "../../context/UserContext";
+import Loader from "../../components/Loader";
+import CustomizeClass from "../../components/SingleClassPage/CustomizeClass";
 
 export default function SingleClassPage(props) {
   const { id } = props.match.params;
@@ -8,10 +10,13 @@ export default function SingleClassPage(props) {
   const findClass = classes.find(
     (item) => item._id === id && item.classTeacher === user.user._id
   );
-  console.log(findClass);
   return (
     <SingleClassPageWrapper sidebarOpen={sidebarOpen}>
-      {findClass && <div>{findClass.name}</div>}
+      {findClass ? (
+        <CustomizeClass cClass={findClass}></CustomizeClass>
+      ) : (
+        <Loader text="Class loading"></Loader>
+      )}
     </SingleClassPageWrapper>
   );
 }

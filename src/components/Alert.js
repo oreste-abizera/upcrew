@@ -36,7 +36,7 @@ const AlertWrapper = styled.div`
   position: fixed;
   min-width: 40rem;
   top: 20%;
-  right: -10%;
+  right: -30%;
   z-index: 5;
   .alert-container {
     display: none;
@@ -66,9 +66,9 @@ const AlertWrapper = styled.div`
   .alert-icon:hover {
     background: var(--darkGrey);
   }
-  @media screen and (min-width: 576px) {
+  @media screen and (min-width: 786px) {
     .alert-container {
-      right: 85%;
+      right: 130%;
     }
   }
 `;

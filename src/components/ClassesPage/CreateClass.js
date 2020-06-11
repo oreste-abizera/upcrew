@@ -42,7 +42,7 @@ export default function CreateClass({
         title: message,
       });
       reloadContent();
-      if (modal) modal.style.display = "none";
+      modal.style.display = "none";
     } else {
       showAlert({
         message: error || "something went wrong",
@@ -65,7 +65,7 @@ export default function CreateClass({
       <div className="form-group">
         <input
           type="submit"
-          value={edit ? "Edit Course" : "Create class"}
+          value={edit ? "Edit Class" : "Create class"}
           className="ado-btn-outline form-control"
         ></input>
       </div>
