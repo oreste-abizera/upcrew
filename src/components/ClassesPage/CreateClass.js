@@ -8,11 +8,11 @@ export default function CreateClass({
   currentClass = {},
   edit = false,
 }) {
-  let modal = document.getElementById(id);
   const { user, reloadContent } = React.useContext(UserContext);
   const { showAlert } = React.useContext(AdoContext);
   const handleCreateClass = async (e) => {
     e.preventDefault();
+    let modal = document.getElementById(id);
     const name = document.getElementById(`${currentClass._id}className`);
     let classname = name ? name.value : "";
     let classTeacher;

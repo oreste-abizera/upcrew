@@ -11,12 +11,12 @@ export default function AddCourse({
   const [course, setCourse] = React.useState("");
   const { reloadContent, courses, user } = React.useContext(UserContext);
   const { showAlert } = React.useContext(AdoContext);
-  let modal = document.getElementById(id);
   const handleCourse = (e) => {
     setCourse(e.target.value);
   };
   const handleAddCourse = async (e) => {
     e.preventDefault();
+    let modal = document.getElementById(id);
     let finalCourses = new Set();
     for (let i = 0; i < classCourses.length; i++) {
       finalCourses.add(classCourses[i]);
