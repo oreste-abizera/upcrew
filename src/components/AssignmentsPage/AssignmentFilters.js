@@ -15,7 +15,7 @@ export default function AssignmentFilters() {
   let coursesOptions = new Set();
   for (let i = 0; i < courses.length; i++) {
     coursesOptions.add(
-      <option value={courses[i].id} key={courses[i].id}>
+      <option value={courses[i]._id} key={courses[i]._id}>
         {courses[i].name}
       </option>
     );

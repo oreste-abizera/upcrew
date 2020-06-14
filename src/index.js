@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css"
+import "./index.css";
 import "./panel.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
@@ -9,21 +9,38 @@ import { AdoProvider } from "./context";
 import { UserProvider } from "./context/UserContext";
 import { AssignmentsProvider } from "./context/AssignmentsContext";
 import { MessagesProvider } from "./context/MessagesContext";
+import Swal from "sweetalert2";
+window.Swal = Swal;
+window.displayError = (error) => {
+  Swal.fire({
+    icon: "error",
+    text: error || "something went wrong",
+  });
+};
+
+const toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  timer: 3000,
+  timerProgressBar: true,
+  showConfirmButton: false,
+  icon: "success",
+});
+
+window.Toast = toast;
 
 ReactDOM.render(
   <UserProvider>
     <MessagesProvider>
       <AssignmentsProvider>
-
         <AdoProvider>
           <Router>
             <App />
           </Router>
         </AdoProvider>
-
       </AssignmentsProvider>
     </MessagesProvider>
-  </UserProvider >,
+  </UserProvider>,
   document.getElementById("root")
 );
 

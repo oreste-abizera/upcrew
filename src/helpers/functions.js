@@ -76,12 +76,23 @@ export async function getTypes() {
   return response.data;
 }
 
-export async function getAssignments() {
+export async function getAssignments(token) {
+  if (!token) {
+    return [];
+  }
   let response;
   response = await axios
-    .get(`${url}/db/assignments.json`)
+    .get(`http://localhost:5000/api/v1/assignments`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     .catch((err) => console.log(err));
-  return response.data;
+  if (response) {
+    return response.data.data;
+  } else {
+    return [];
+  }
 }
 
 export async function getQuestions() {
@@ -286,6 +297,51 @@ export async function updateClass(updates, id, token) {
 export async function deleteClass(id, token) {
   let response = await axios
     .delete(`http://localhost:5000/api/v1/classes/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .catch((err) => (response = err.response));
+  return response;
+}
+
+export async function addAssignment(assignment, token) {
+  let response = await axios
+    .post(
+      "http://localhost:5000/api/v1/assignments",
+      {
+        ...assignment,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    .catch((err) => (response = err.response));
+  return response;
+}
+
+export async function editAssignment(data, assignmentId, token) {
+  let response = await axios
+    .put(
+      `http://localhost:5000/api/v1/assignments/${assignmentId}`,
+      {
+        ...data,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    .catch((err) => (response = err.response));
+  return response;
+}
+
+export async function deleteQuiz(id, token) {
+  let response = await axios
+    .delete(`http://localhost:5000/api/v1/assignments/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

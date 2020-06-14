@@ -1,5 +1,12 @@
 import React from "react";
-import { getAssignments, getCourses, getQuestions, getResults } from "../helpers/functions";
+import {
+  getAssignments,
+  getQuestions,
+  getResults,
+  addAssignment,
+  editAssignment,
+  deleteQuiz,
+} from "../helpers/functions";
 import { UserContext } from "./UserContext";
 const AssignmentsContext = React.createContext();
 
@@ -9,12 +16,12 @@ function AssignmentsProvider({ children }) {
   const [title, setTitle] = React.useState("");
   const [questions, setQuestions] = React.useState([]);
   const [results, setResults] = React.useState([]);
-  const [courses, setCourses] = React.useState([]);
   const [course, setCourse] = React.useState("all");
   const [duration, setDuration] = React.useState(0);
   const [maxDuration, setMaxDuration] = React.useState(0);
-  const { reload } = React.useContext(UserContext)
-
+  const { reload, user, courses, solveResponse } = React.useContext(
+    UserContext
+  );
 
   React.useEffect(() => {
     mount();
@@ -25,18 +32,23 @@ function AssignmentsProvider({ children }) {
   }, [course, duration, title]);
 
   async function mount() {
-    let tempAssignments = await getAssignments();
-    let tempCourses = await getCourses();
+    if (user.token) {
+      //load assignments
+      let tempAssignments = await getAssignments(user.token);
+      setAssignments(tempAssignments);
+      setFilteredAssignments(tempAssignments);
+      let maxMin = Math.max(
+        ...tempAssignments.map((record) => record.duration)
+      );
+      setMaxDuration(maxMin);
+      setDuration(maxMin);
+
+      //load questions
+    }
     let tempQuestions = await getQuestions();
     let tempResults = await getResults();
-    setQuestions(tempQuestions)
-    setResults(tempResults)
-    setCourses(tempCourses);
-    setAssignments(tempAssignments);
-    setFilteredAssignments(tempAssignments);
-    let maxMin = Math.max(...tempAssignments.map((record) => record.duration));
-    setMaxDuration(maxMin);
-    setDuration(maxMin);
+    setQuestions(tempQuestions);
+    setResults(tempResults);
   }
 
   function handleTitle(e) {
@@ -56,7 +68,7 @@ function AssignmentsProvider({ children }) {
     //filter by course
     if (course !== "all") {
       tempAssignments = tempAssignments.filter(
-        (record) => record.course === parseInt(course)
+        (record) => record.course === course
       );
     }
 
@@ -79,43 +91,45 @@ function AssignmentsProvider({ children }) {
   }
 
   function sortQuestions(quizId) {
-    let tempQuestions = questions.filter(record => {
-      return record.quiz_id.toString() === quizId.toString()
-    })
-    return tempQuestions
+    let tempQuestions = questions.filter((record) => {
+      return record.quiz_id.toString() === quizId.toString();
+    });
+    return tempQuestions;
   }
 
   function submitAssignment(answers, assignment_id) {
-    console.log(answers)
-    console.log(assignment_id)
+    console.log(answers);
+    console.log(assignment_id);
   }
 
   function EditQuestion(finalQuestion) {
     //sending request to edit the question
-    console.log(finalQuestion)
+    console.log(finalQuestion);
   }
 
   function deleteQuestion(questionId) {
-    console.log(`delete question ${questionId}`)
+    console.log(`delete question ${questionId}`);
   }
 
-  function deleteAssignment(assignmentId) {
-    console.log(`delete assignment ${assignmentId}`)
+  async function deleteAssignment(assignmentId) {
+    let response = await deleteQuiz(assignmentId, user.token);
+    solveResponse(response, "Assignment successifully deleted");
   }
 
-  function updateAssignment(finalQuiz) {
-    console.log(finalQuiz)
+  async function updateAssignment(finalQuiz) {
+    let response = await editAssignment(finalQuiz, finalQuiz._id, user.token);
+    solveResponse(response, "Assignment successifully updated");
   }
 
   function AddQuestion(finalQuiz, quizId) {
-    console.log(finalQuiz)
-    console.log(quizId)
+    console.log(finalQuiz);
+    console.log(quizId);
   }
 
-  function AddAssignment(newAssignment) {
-    console.log("add assignment")
-    console.log(newAssignment)
-  }
+  const AddAssignment = async function AddAssignment(newAssignment) {
+    let response = await addAssignment(newAssignment, user.token);
+    solveResponse(response, "Assignment successifully added");
+  };
   return (
     <AssignmentsContext.Provider
       value={{

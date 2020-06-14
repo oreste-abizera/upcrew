@@ -5,27 +5,29 @@ import SingleAssignmentItem from "./SingleAssignmentItem";
 import Heading from "../Heading";
 import AssignmentsColumns from "./AssignmentsColumns";
 import AssignmentFilters from "./AssignmentFilters";
-import Modal from "../Modal"
+import Modal from "../Modal";
 import UpdateQuizInfo from "../ViewQuizPage/UpdateQuizInfo";
 
 export default function AssignmentsList() {
   const { user, users } = React.useContext(UserContext);
   const { filteredAssignments } = React.useContext(AssignmentsContext);
-  let [stateUser, setStateUser] = React.useState({});
-  let [checkedAssignments, setCheckedAssignments] = React.useState([]);
+  const [stateUser, setStateUser] = React.useState({});
+  const [checkedAssignments, setCheckedAssignments] = React.useState([]);
   React.useEffect(() => {
-    let tempUser = users.find((record) => record.id === user.user.id);
+    let tempUser = users.find((record) => record._id === user.user._id);
     if (tempUser) {
       setStateUser(tempUser);
     }
   }, [users]);
 
   React.useEffect(() => {
-    let tempAssignments
+    let tempAssignments;
 
     //if user is a teacher
     if (user.user.type === "teacher") {
-      tempAssignments = filteredAssignments.filter(record => record.teacher === user.user.id)
+      tempAssignments = filteredAssignments.filter(
+        (record) => record.teacher === user.user._id
+      );
     } else {
       tempAssignments = filteredAssignments.filter(
         (record) => record.class === stateUser.currentClass
@@ -38,11 +40,15 @@ export default function AssignmentsList() {
     <>
       <Heading title="Assignments list"></Heading>
       <AssignmentFilters></AssignmentFilters>
-      {user.user.type === "teacher" &&
+      {user.user.type === "teacher" && (
         <div className="container-fluid">
-          <Modal buttonName="New Assignment" header="Create Assignment" body={<UpdateQuizInfo edit={false}></UpdateQuizInfo>}></Modal>
+          <Modal
+            buttonName="New Assignment"
+            header="Create Assignment"
+            body={<UpdateQuizInfo edit={false}></UpdateQuizInfo>}
+          ></Modal>
         </div>
-      }
+      )}
       <p className="text-center mt-2">
         {checkedAssignments.length} assignments found.
       </p>
@@ -52,7 +58,7 @@ export default function AssignmentsList() {
       )}
       {checkedAssignments.map((record, index) => (
         <SingleAssignmentItem
-          key={record.id}
+          key={record._id}
           data={record}
           index={index}
           type={user.user.type}

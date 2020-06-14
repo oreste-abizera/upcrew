@@ -76,6 +76,17 @@ function UserProvider({ children }) {
     setSettings(tempSettings);
   }
 
+  const solveResponse = (response, message) => {
+    const { success, error } = response.data;
+    if (success) {
+      window.Toast.fire({
+        title: message || "something happened",
+      });
+      reloadContent();
+    } else {
+      window.displayError(error);
+    }
+  };
   const reloadContent = () => {
     setReload(!reload);
   };
@@ -118,7 +129,7 @@ function UserProvider({ children }) {
     setSearchClass("all");
   };
   const getUser = (id) => {
-    let tempUser = users.find((item) => item.id.toString() === id);
+    let tempUser = users.find((item) => item._id.toString() === id);
     if (tempUser) {
       tempUser = formatUser(tempUser);
     }
@@ -232,7 +243,7 @@ function UserProvider({ children }) {
 
     //children info
     let children;
-    children = getChildren(user.id);
+    children = getChildren(user._id);
 
     let finalUser = {
       ...user,
@@ -242,7 +253,7 @@ function UserProvider({ children }) {
       currentTerm: settings.currentTerm,
       mother,
       father,
-      rollNumber: user.id,
+      rollNumber: user._id,
       children,
     };
     // console.log(finalUser);
@@ -250,15 +261,13 @@ function UserProvider({ children }) {
   };
 
   const getUserNames = (userId) => {
-    let tempUser = users.find(
-      (item) => item.id.toString() === userId.toString()
-    );
+    let tempUser = users.find((item) => item._id === userId);
     if (!tempUser) return "N/A";
     return `${tempUser.firstName} ${tempUser.lastName}`;
   };
 
   const getNormalUser = (userId) => {
-    let tempUser = users.find((item) => item.id === userId);
+    let tempUser = users.find((item) => item._id === userId);
     if (!tempUser) {
       return {
         id: 0,
@@ -270,7 +279,7 @@ function UserProvider({ children }) {
       };
     }
     return {
-      id: tempUser.id,
+      id: tempUser._id,
       names: `${tempUser.firstName} ${tempUser.lastName}`,
       email: tempUser.userEmail,
       occupation: tempUser.occupation,
@@ -291,7 +300,7 @@ function UserProvider({ children }) {
 
   const formatClass = (oldClass) => {
     let classCourses = oldClass.courses.map((item) => {
-      let match = courses.find((course) => course.id === item);
+      let match = courses.find((course) => course._id === item);
       if (match) {
         return match.name;
       }
@@ -306,11 +315,13 @@ function UserProvider({ children }) {
   };
 
   const formatAssignment = (assignment) => {
-    let matchClass = classes.find((record) => record.id === assignment.class);
-    let className = matchClass.name;
+    let matchClass = classes.find((record) => record._id === assignment.class);
+    let className = matchClass ? matchClass.name : "N/A";
     let teacher = getUserNames(assignment.teacher);
-    let course;
-    let matchCourse = courses.find((record) => record.id === assignment.course);
+    let course = "N/A";
+    let matchCourse = courses.find(
+      (record) => record._id === assignment.course
+    );
     if (matchCourse) course = matchCourse.name;
     return { ...assignment, teacher, course, class: className };
   };
@@ -355,6 +366,7 @@ function UserProvider({ children }) {
         handleNbrOfStudents,
         reloadContent,
         reload,
+        solveResponse,
       }}
     >
       {children}
