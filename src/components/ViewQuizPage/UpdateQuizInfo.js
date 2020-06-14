@@ -52,7 +52,7 @@ export default function UpdateQuizInfo({
   };
 
   const handleQuizDuration = (e) => {
-    setQuizDuration(parseInt(e.target.value));
+    setQuizDuration(e.target.value);
   };
 
   const handleUpdate = (e) => {

@@ -6,6 +6,10 @@ import {
   addAssignment,
   editAssignment,
   deleteQuiz,
+  deleteQuestions,
+  editQuestion,
+  addQuestion,
+  submitQuiz,
 } from "../helpers/functions";
 import { UserContext } from "./UserContext";
 const AssignmentsContext = React.createContext();
@@ -44,11 +48,13 @@ function AssignmentsProvider({ children }) {
       setDuration(maxMin);
 
       //load questions
+      let tempQuestions = await getQuestions(user.token);
+      setQuestions(tempQuestions);
+
+      //load results
+      let tempResults = await getResults(user.token);
+      setResults(tempResults);
     }
-    let tempQuestions = await getQuestions();
-    let tempResults = await getResults();
-    setQuestions(tempQuestions);
-    setResults(tempResults);
   }
 
   function handleTitle(e) {
@@ -92,23 +98,30 @@ function AssignmentsProvider({ children }) {
 
   function sortQuestions(quizId) {
     let tempQuestions = questions.filter((record) => {
-      return record.quiz_id.toString() === quizId.toString();
+      return record.quiz_id === quizId;
     });
     return tempQuestions;
   }
 
-  function submitAssignment(answers, assignment_id) {
-    console.log(answers);
-    console.log(assignment_id);
+  async function submitAssignment(answers, assignment_id) {
+    // console.log(answers);
+    // console.log(assignment_id);
+    let response = await submitQuiz(answers, user.token);
+    solveResponse(response, "quiz successifully submited");
   }
 
-  function EditQuestion(finalQuestion) {
-    //sending request to edit the question
-    console.log(finalQuestion);
+  async function EditQuestion(finalQuestion) {
+    let response = await editQuestion(
+      finalQuestion,
+      finalQuestion._id,
+      user.token
+    );
+    solveResponse(response, "question successifully updated");
   }
 
-  function deleteQuestion(questionId) {
-    console.log(`delete question ${questionId}`);
+  async function deleteQuestion(questionId) {
+    let response = await deleteQuestions(questionId, user.token);
+    solveResponse(response, "question successifully deleted");
   }
 
   async function deleteAssignment(assignmentId) {
@@ -121,9 +134,10 @@ function AssignmentsProvider({ children }) {
     solveResponse(response, "Assignment successifully updated");
   }
 
-  function AddQuestion(finalQuiz, quizId) {
-    console.log(finalQuiz);
-    console.log(quizId);
+  async function AddQuestion(finalQuestion, quizId) {
+    finalQuestion.quiz_id = quizId;
+    let response = await addQuestion(finalQuestion, user.token);
+    solveResponse(response, "question successifully added");
   }
 
   const AddAssignment = async function AddAssignment(newAssignment) {

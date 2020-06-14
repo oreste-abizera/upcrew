@@ -1,28 +1,37 @@
 import React from "react";
 import styled from "styled-components";
 import { UserContext } from "../../context/UserContext";
-import { AssignmentsContext } from "../../context/AssignmentsContext"
+import { AssignmentsContext } from "../../context/AssignmentsContext";
 import QuestionsList from "../../components/QuizPage/QuestionsList";
 import Loader from "../../components/Loader";
 
 export default function QuizPage(props) {
-  const { history } = props
-  const { id } = props.match.params
+  const { history } = props;
+  const { id } = props.match.params;
   const { sidebarOpen, user } = React.useContext(UserContext);
-  const { assignments, questions, results } = React.useContext(AssignmentsContext);
-  const found = assignments.find(record => record.id.toString() === id)
-  
+  const { assignments, questions, results } = React.useContext(
+    AssignmentsContext
+  );
+  const found = assignments.find((record) => record._id === id);
+
   if (!found) {
-    return <QuizPageWrapper sidebarOpen={sidebarOpen}>
-      <Loader text="Quiz info loading..."></Loader>
-    </QuizPageWrapper>
+    return (
+      <QuizPageWrapper sidebarOpen={sidebarOpen}>
+        <Loader text="Quiz info loading..."></Loader>
+      </QuizPageWrapper>
+    );
   } else {
-    let tempQuestions = questions.filter(record => record.quiz_id === found.id)
+    let tempQuestions = questions.filter(
+      (record) => record.quiz_id === found._id
+    );
     for (let i = 0; i < tempQuestions.length; i++) {
       const element = tempQuestions[i];
-      let tempResults = results.find(item => item.question_id === element.question_id && item.student_id === user.user.id)
+      let tempResults = results.find(
+        (item) =>
+          item.question_id === element._id && item.student_id === user.user._id
+      );
       if (tempResults) {
-        history.push(`/results/${id}`)
+        history.push(`/results/${id}`);
       }
     }
   }

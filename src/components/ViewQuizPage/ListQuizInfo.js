@@ -12,6 +12,7 @@ export default function ListQuizInfo({ id }) {
     sortQuestions,
     deleteAssignment,
     updateAssignment,
+    questions,
   } = React.useContext(AssignmentsContext);
   const [marks, setMarks] = React.useState(0);
   const [time, setTime] = React.useState(0);
@@ -25,7 +26,7 @@ export default function ListQuizInfo({ id }) {
   React.useEffect(() => {
     let tempQuestions = sortQuestions(id);
     setFilteredQuestions(tempQuestions);
-  }, [id]);
+  }, [id, questions]);
 
   React.useEffect(() => {
     let totalMarks = filteredQuestions.reduce((pr, curr) => {
@@ -51,7 +52,7 @@ export default function ListQuizInfo({ id }) {
           )}
           {filteredQuestions.map((record, index) => (
             <ListQuestion
-              key={record.question_id}
+              key={record._id}
               index={index}
               data={record}
             ></ListQuestion>
