@@ -19,7 +19,7 @@ export default function Footer() {
               <a href={item.url} key={item.id} target="_new" title={item.title}>
                 {item.icon}
               </a>
-           ))}
+            ))}
           </div>
         </div>
       </div>
@@ -31,12 +31,12 @@ const FooterWrapper = styled.footer`
   background-color: var(--darkGrey);
   color: var(--mainWhite);
   min-height: 44px;
-  .icon{
-      font-size: 1.5rem;
-      color: var(--mainWhite);
-      transition: var(--mainTransition);
+  .icon {
+    font-size: 1.5rem;
+    color: var(--mainWhite);
+    transition: var(--mainTransition);
   }
-  .icon:hover{
-      color: var(--primaryColor);
+  .icon:hover {
+    color: var(--primaryColor);
   }
 `;

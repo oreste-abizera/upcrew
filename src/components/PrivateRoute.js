@@ -11,20 +11,19 @@ export default function PrivateRoute({ children, component, ...rest }) {
     <>
       <Navbar></Navbar>
       <Sidebar></Sidebar>
-      {component
-        ?
+      {component ? (
         <Route
           {...rest}
           component={user.token ? component : AccessDenied}
         ></Route>
-        :
+      ) : (
         <Route
           {...rest}
           render={() => {
             return user.token ? children : <Redirect to="/login"></Redirect>;
           }}
         ></Route>
-      }
+      )}
     </>
   );
 }

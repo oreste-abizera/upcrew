@@ -10,7 +10,9 @@ import UpdateQuizInfo from "../ViewQuizPage/UpdateQuizInfo";
 
 export default function AssignmentsList() {
   const { user, users } = React.useContext(UserContext);
-  const { filteredAssignments } = React.useContext(AssignmentsContext);
+  const { filteredAssignments, questions, results } = React.useContext(
+    AssignmentsContext
+  );
   const [stateUser, setStateUser] = React.useState({});
   const [checkedAssignments, setCheckedAssignments] = React.useState([]);
   React.useEffect(() => {
@@ -32,9 +34,35 @@ export default function AssignmentsList() {
       tempAssignments = filteredAssignments.filter(
         (record) => record.class === stateUser.currentClass
       );
+      //check if it is done
+      for (let i = 0; i < tempAssignments.length; i++) {
+        let quizQuestions = questions.filter(
+          // eslint-disable-next-line
+          (item) => item.quiz_id === tempAssignments[i]._id
+        );
+        let done = false;
+        //check results of the question by me
+        for (let j = 0; j < quizQuestions.length; j++) {
+          let quizResults = results.find(
+            (item) =>
+              item.question_id === quizQuestions[j]._id &&
+              item.student_id === user.user._id
+          );
+          if (quizResults) {
+            done = true;
+            break;
+          }
+        }
+        if (done) {
+          tempAssignments = tempAssignments.filter(
+            // eslint-disable-next-line
+            (item) => item._id !== tempAssignments[i]._id
+          );
+        }
+      }
     }
     setCheckedAssignments(tempAssignments);
-  }, [filteredAssignments, stateUser]);
+  }, [filteredAssignments, stateUser, questions, results]);
 
   return (
     <>

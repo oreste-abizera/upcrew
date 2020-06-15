@@ -13,7 +13,14 @@ import { Link } from "react-router-dom";
 export default function Profile2(props) {
   const { slug } = props.match.params;
   const [user, setUser] = React.useState({});
-  const { getUser, users, classes, settings, sidebarOpen, user: me } = React.useContext(UserContext);
+  const {
+    getUser,
+    users,
+    classes,
+    settings,
+    sidebarOpen,
+    user: me,
+  } = React.useContext(UserContext);
   const [personalInfo, setPersonalInfo] = React.useState([]);
   const [parentInfo, setParentInfo] = React.useState([]);
   const [childrenInfo, setChildrenInfo] = React.useState([]);
@@ -56,18 +63,21 @@ export default function Profile2(props) {
           data={personalInfo}
         ></ProfileData>
 
-
         {/* update info button */}
-        {user.id === me.user.id && <div className="text-center mb-5">
-          <Link to="/updateProfile" className="ado-btn">Update info</Link>
-        </div>}
+        {user.id === me.user.id && (
+          <div className="text-center mb-5">
+            <Link to="/updateProfile" className="ado-btn">
+              Update info
+            </Link>
+          </div>
+        )}
         {user.type === "student" && (
           <div>
             <ProfileData
               title="Parent Information"
               data={parentInfo}
             ></ProfileData>
-            <ProfileData title="Payment History"></ProfileData>
+            {/* <ProfileData title="Payment History"></ProfileData> */}
           </div>
         )}
         {user.type === "parent" && (
@@ -77,7 +87,7 @@ export default function Profile2(props) {
               data={childrenInfo}
               columns
             ></ProfileData>
-            <ProfileData title="Payment History"></ProfileData>
+            {/* <ProfileData title="Payment History"></ProfileData> */}
           </div>
         )}
       </div>

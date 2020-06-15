@@ -31,7 +31,7 @@ export default function SingleAssignmentItem({ data = {}, index, type }) {
       for (let i = 0; i < checkQuestions.length; i++) {
         let doneQuestions = results.find(
           (record) =>
-            record.question_id === checkQuestions[i].question_id &&
+            record.question_id === checkQuestions[i]._id &&
             record.student_id === user.user.id
         );
         if (doneQuestions) {

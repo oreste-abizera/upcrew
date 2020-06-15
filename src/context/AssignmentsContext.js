@@ -1,4 +1,5 @@
 import React from "react";
+import swal from "sweetalert2";
 import {
   getAssignments,
   getQuestions,
@@ -106,11 +107,17 @@ function AssignmentsProvider({ children }) {
   async function submitAssignment(answers, assignment_id) {
     // console.log(answers);
     // console.log(assignment_id);
+    swal.fire({
+      title: "Accessing your data. Please wait...",
+    });
     let response = await submitQuiz(answers, user.token);
     solveResponse(response, "quiz successifully submited");
   }
 
   async function EditQuestion(finalQuestion) {
+    swal.fire({
+      title: "Accessing your data. Please wait...",
+    });
     let response = await editQuestion(
       finalQuestion,
       finalQuestion._id,
@@ -120,27 +127,42 @@ function AssignmentsProvider({ children }) {
   }
 
   async function deleteQuestion(questionId) {
+    swal.fire({
+      title: "Accessing your data. Please wait...",
+    });
     let response = await deleteQuestions(questionId, user.token);
     solveResponse(response, "question successifully deleted");
   }
 
   async function deleteAssignment(assignmentId) {
+    swal.fire({
+      title: "Accessing your data. Please wait...",
+    });
     let response = await deleteQuiz(assignmentId, user.token);
     solveResponse(response, "Assignment successifully deleted");
   }
 
   async function updateAssignment(finalQuiz) {
+    swal.fire({
+      title: "Accessing your data. Please wait...",
+    });
     let response = await editAssignment(finalQuiz, finalQuiz._id, user.token);
     solveResponse(response, "Assignment successifully updated");
   }
 
   async function AddQuestion(finalQuestion, quizId) {
+    swal.fire({
+      title: "Accessing your data. Please wait...",
+    });
     finalQuestion.quiz_id = quizId;
     let response = await addQuestion(finalQuestion, user.token);
     solveResponse(response, "question successifully added");
   }
 
   const AddAssignment = async function AddAssignment(newAssignment) {
+    swal.fire({
+      title: "Accessing your data. Please wait...",
+    });
     let response = await addAssignment(newAssignment, user.token);
     solveResponse(response, "Assignment successifully added");
   };

@@ -11,18 +11,27 @@ export default function HeadmasterRoute({ children, component, ...rest }) {
     <>
       <Navbar></Navbar>
       <Sidebar></Sidebar>
-      {component ?
+      {component ? (
         <Route
           {...rest}
-          component={user.token && user.user.type === "headmaster" ? component : AccessDenied}
+          component={
+            user.token && user.user.type === "headmaster"
+              ? component
+              : AccessDenied
+          }
         ></Route>
-        :
+      ) : (
         <Route
           {...rest}
-          render={() => (user.token && user.user.type === "headmaster" ? children : <Redirect to="/login"></Redirect>)}
+          render={() =>
+            user.token && user.user.type === "headmaster" ? (
+              children
+            ) : (
+              <Redirect to="/login"></Redirect>
+            )
+          }
         ></Route>
-      }
-
+      )}
     </>
   );
 }

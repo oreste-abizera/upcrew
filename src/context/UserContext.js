@@ -1,4 +1,5 @@
 import React from "react";
+import swal from "sweetalert2";
 import {
   getUsers,
   getClasses,
@@ -77,11 +78,17 @@ function UserProvider({ children }) {
   }
 
   const solveResponse = (response, message) => {
+    // swal.fire({
+    //   title: "Accessing your data. Please wait...",
+    // });
     const { success, error } = response.data;
+    swal.close();
     if (success) {
-      window.Toast.fire({
-        title: message || "something happened",
-      });
+      if (message) {
+        window.Toast.fire({
+          title: message || "something happened",
+        });
+      }
       reloadContent();
     } else {
       window.displayError(error);

@@ -133,11 +133,23 @@ export async function getResults(token) {
   }
 }
 
-export async function getMessages() {
-  let response = await axios
-    .get(`${url}/db/messages.json`)
+export async function getMessages(token) {
+  if (!token) {
+    return [];
+  }
+  let response;
+  response = await axios
+    .get(`http://localhost:5000/api/v1/messages`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     .catch((err) => console.log(err));
-  return response.data;
+  if (response) {
+    return response.data.data;
+  } else {
+    return [];
+  }
 }
 
 export async function getBooks() {
@@ -471,6 +483,40 @@ export async function submitQuiz(data, token) {
         Authorization: `Bearer ${token}`,
       },
     })
+    .catch((err) => (response = err.response));
+  return response;
+}
+
+export async function addMessage(message, token) {
+  let response = await axios
+    .post(
+      "http://localhost:5000/api/v1/messages",
+      {
+        ...message,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    .catch((err) => (response = err.response));
+  return response;
+}
+
+export async function editMessage(data, messageId, token) {
+  let response = await axios
+    .put(
+      `http://localhost:5000/api/v1/messages/${messageId}`,
+      {
+        ...data,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
     .catch((err) => (response = err.response));
   return response;
 }
