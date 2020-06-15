@@ -14,6 +14,7 @@ import {
   FaWhatsapp,
   FaInstagram,
 } from "react-icons/fa";
+import { defaultImg } from "../../helpers/url";
 
 export default class OurTeam extends Component {
   state = {
@@ -110,7 +111,7 @@ export default class OurTeam extends Component {
                 <div className="team-item col-12 col-md-10 mx-auto pb-4 pt-5 my-5">
                   <div className="text-center img-container">
                     <img
-                      src={item.image || "/assets/images/avatar.jpg"}
+                      src={item.image || defaultImg}
                       alt={item.names}
                       className="img-fluid img-thumbnail"
                     ></img>

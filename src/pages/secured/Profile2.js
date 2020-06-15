@@ -9,6 +9,7 @@ import {
 import ProfileData from "../../components/ProfilePage/ProfileData";
 import Loader from "../../components/Loader";
 import { Link } from "react-router-dom";
+import { url, defaultImg } from "../../helpers/url";
 
 export default function Profile2(props) {
   const { slug } = props.match.params;
@@ -52,7 +53,7 @@ export default function Profile2(props) {
     <ProfileWrapper sidebarOpen={sidebarOpen}>
       <div className="personal-data mx-auto">
         <img
-          src={user.image ? user.image : "/assets/images/avatar.jpg"}
+          src={user.image ? `${url}/uploads/${user.image}` : defaultImg}
           alt={user.userName}
           className="img-thumbnail"
         ></img>

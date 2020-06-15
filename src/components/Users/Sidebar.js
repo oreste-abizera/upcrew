@@ -4,6 +4,7 @@ import { UserContext } from "../../context/UserContext";
 import { AdoContext } from "../../context";
 import { Link } from "react-router-dom";
 import PagesLinks from "./PagesLinks";
+import { url, defaultImg } from "../../helpers/url";
 
 export default function Sidebar() {
   let {
@@ -18,7 +19,7 @@ export default function Sidebar() {
           <h2 className="names">{`${user.firstName} ${user.lastName}`}</h2>
           <h6 className="email text-muted">{user.userEmail}</h6>
           <img
-            src={user.image ? user.image : "/assets/images/avatar.jpg"}
+            src={user.image ? `${url}/uploads/${user.image}` : defaultImg}
             alt={user.userName}
             className="img-thumbnail"
           ></img>

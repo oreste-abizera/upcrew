@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { updateUser } from "../../../../../helpers/functions";
 import { UserContext } from "../../../../../context/UserContext";
 import { AdoContext } from "../../../../../context/context";
+import { url, defaultImg } from "../../../../../helpers/url";
 
 export default function EditUser({ user, id }) {
   const { showAlert } = React.useContext(AdoContext);
@@ -125,7 +126,7 @@ export default function EditUser({ user, id }) {
           {/* single input */}
           <div className="form-group">
             <img
-              src={user.image || "/assets/images/avatar.jpg"}
+              src={user.image ? `${url}/uploads/${user.image}` : defaultImg}
               alt={user.userName}
               className="img img-fluid"
               width="100"

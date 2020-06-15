@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { UserContext } from "../../context/UserContext";
 import { Link } from "react-router-dom";
+import { url, defaultImg } from "../../helpers/url";
 
 export default function ProfileDisplay({ user = {} }) {
   const { users } = React.useContext(UserContext);
@@ -11,7 +12,11 @@ export default function ProfileDisplay({ user = {} }) {
       <div>
         <img
           alt={currentUser.firstName}
-          src={currentUser.image || "/assets/images/avatar.jpg"}
+          src={
+            currentUser.image
+              ? `${url}/uploads/${currentUser.image}`
+              : defaultImg
+          }
           className="img-thumbnail img img-fluid"
         ></img>
       </div>
