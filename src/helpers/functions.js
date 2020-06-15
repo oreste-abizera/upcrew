@@ -14,7 +14,7 @@ export async function getUsers(token) {
   }
   let response;
   response = await axios
-    .get(`http://localhost:5000/api/v1/users`, {
+    .get(`${url}/api/v1/users`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -38,7 +38,7 @@ export async function getClasses(token) {
   }
   let response;
   response = await axios
-    .get(`http://localhost:5000/api/v1/classes`, {
+    .get(`${url}/api/v1/classes`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -56,7 +56,7 @@ export async function getCourses(token) {
   }
   let response;
   response = await axios
-    .get(`http://localhost:5000/api/v1/courses`, {
+    .get(`${url}/api/v1/courses`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -68,13 +68,6 @@ export async function getCourses(token) {
     return [];
   }
 }
-export async function getTypes() {
-  let response;
-  response = await axios
-    .get(`${url}/db/types.json`)
-    .catch((err) => console.log(err));
-  return response.data;
-}
 
 export async function getAssignments(token) {
   if (!token) {
@@ -82,7 +75,7 @@ export async function getAssignments(token) {
   }
   let response;
   response = await axios
-    .get(`http://localhost:5000/api/v1/assignments`, {
+    .get(`${url}/api/v1/assignments`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -101,7 +94,7 @@ export async function getQuestions(token) {
   }
   let response;
   response = await axios
-    .get(`http://localhost:5000/api/v1/questions`, {
+    .get(`${url}/api/v1/questions`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -120,7 +113,7 @@ export async function getResults(token) {
   }
   let response;
   response = await axios
-    .get(`http://localhost:5000/api/v1/results`, {
+    .get(`${url}/api/v1/results`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -139,7 +132,7 @@ export async function getMessages(token) {
   }
   let response;
   response = await axios
-    .get(`http://localhost:5000/api/v1/messages`, {
+    .get(`${url}/api/v1/messages`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -162,7 +155,7 @@ export async function getBooks() {
 export async function getMe(token) {
   let errorResponse;
   let response = await axios
-    .get("http://localhost:5000/api/v1/auth/me", {
+    .get(`${url}/api/v1/auth/me`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -177,7 +170,7 @@ export async function getMe(token) {
 
 export async function addUser(user) {
   let response = await axios
-    .post("http://localhost:5000/api/v1/auth/register", {
+    .post(`${url}/api/v1/auth/register`, {
       ...user,
     })
     .catch((err) => (response = err.response));
@@ -187,7 +180,7 @@ export async function addUser(user) {
 export async function updateUser(user, id, token) {
   let response = await axios
     .put(
-      `http://localhost:5000/api/v1/users/${id}`,
+      `${url}/api/v1/users/${id}`,
       {
         ...user,
       },
@@ -203,7 +196,7 @@ export async function updateUser(user, id, token) {
 
 export async function deleteUser(id, token) {
   let response = await axios
-    .delete(`http://localhost:5000/api/v1/users/${id}`, {
+    .delete(`${url}/api/v1/users/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -215,7 +208,7 @@ export async function deleteUser(id, token) {
 export async function UpdateMyDetails(updates, token) {
   let response = await axios
     .put(
-      `http://localhost:5000/api/v1/auth/updateProfile`,
+      `${url}/api/v1/auth/updateProfile`,
       {
         ...updates,
       },
@@ -232,7 +225,7 @@ export async function UpdateMyDetails(updates, token) {
 export async function UpdateMyPassword(passwords, token) {
   let response = await axios
     .put(
-      `http://localhost:5000/api/v1/auth/updatePassword`,
+      `${url}/api/v1/auth/updatePassword`,
       {
         ...passwords,
       },
@@ -250,7 +243,7 @@ export async function editCourse(data, courseId, token) {
   const { name, image } = data;
   let response = await axios
     .put(
-      `http://localhost:5000/api/v1/courses/${courseId}`,
+      `${url}/api/v1/courses/${courseId}`,
       {
         name,
         image,
@@ -270,7 +263,7 @@ export async function createCourse(data, token) {
   console.log(data);
   let response = await axios
     .post(
-      `http://localhost:5000/api/v1/courses`,
+      `${url}/api/v1/courses`,
       {
         name,
         image,
@@ -287,7 +280,7 @@ export async function createCourse(data, token) {
 
 export async function deleteCourse(id, token) {
   let response = await axios
-    .delete(`http://localhost:5000/api/v1/courses/${id}`, {
+    .delete(`${url}/api/v1/courses/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -299,7 +292,7 @@ export async function deleteCourse(id, token) {
 export async function createClass(data, token) {
   let response = await axios
     .post(
-      `http://localhost:5000/api/v1/classes`,
+      `${url}/api/v1/classes`,
       {
         ...data,
       },
@@ -316,7 +309,7 @@ export async function createClass(data, token) {
 export async function updateClass(updates, id, token) {
   let response = await axios
     .put(
-      `http://localhost:5000/api/v1/classes/${id}`,
+      `${url}/api/v1/classes/${id}`,
       {
         ...updates,
       },
@@ -332,7 +325,7 @@ export async function updateClass(updates, id, token) {
 
 export async function deleteClass(id, token) {
   let response = await axios
-    .delete(`http://localhost:5000/api/v1/classes/${id}`, {
+    .delete(`${url}/api/v1/classes/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -344,7 +337,7 @@ export async function deleteClass(id, token) {
 export async function addAssignment(assignment, token) {
   let response = await axios
     .post(
-      "http://localhost:5000/api/v1/assignments",
+      `${url}/api/v1/assignments`,
       {
         ...assignment,
       },
@@ -361,7 +354,7 @@ export async function addAssignment(assignment, token) {
 export async function editAssignment(data, assignmentId, token) {
   let response = await axios
     .put(
-      `http://localhost:5000/api/v1/assignments/${assignmentId}`,
+      `${url}/api/v1/assignments/${assignmentId}`,
       {
         ...data,
       },
@@ -377,7 +370,7 @@ export async function editAssignment(data, assignmentId, token) {
 
 export async function deleteQuiz(id, token) {
   let response = await axios
-    .delete(`http://localhost:5000/api/v1/assignments/${id}`, {
+    .delete(`${url}/api/v1/assignments/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -389,7 +382,7 @@ export async function deleteQuiz(id, token) {
 export async function addQuestion(question, token) {
   let response = await axios
     .post(
-      "http://localhost:5000/api/v1/questions",
+      `${url}/api/v1/questions`,
       {
         ...question,
       },
@@ -406,7 +399,7 @@ export async function addQuestion(question, token) {
 export async function editQuestion(data, questionId, token) {
   let response = await axios
     .put(
-      `http://localhost:5000/api/v1/questions/${questionId}`,
+      `${url}/api/v1/questions/${questionId}`,
       {
         ...data,
       },
@@ -422,7 +415,7 @@ export async function editQuestion(data, questionId, token) {
 
 export async function deleteQuestions(id, token) {
   let response = await axios
-    .delete(`http://localhost:5000/api/v1/questions/${id}`, {
+    .delete(`${url}/api/v1/questions/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -434,7 +427,7 @@ export async function deleteQuestions(id, token) {
 export async function addResult(result, token) {
   let response = await axios
     .post(
-      "http://localhost:5000/api/v1/results",
+      `${url}/api/v1/results`,
       {
         ...result,
       },
@@ -451,7 +444,7 @@ export async function addResult(result, token) {
 export async function editResult(data, resultId, token) {
   let response = await axios
     .put(
-      `http://localhost:5000/api/v1/results/${resultId}`,
+      `${url}/api/v1/results/${resultId}`,
       {
         ...data,
       },
@@ -467,7 +460,7 @@ export async function editResult(data, resultId, token) {
 
 export async function deleteResult(id, token) {
   let response = await axios
-    .delete(`http://localhost:5000/api/v1/results/${id}`, {
+    .delete(`${url}/api/v1/results/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -478,7 +471,7 @@ export async function deleteResult(id, token) {
 
 export async function submitQuiz(data, token) {
   let response = await axios
-    .post("http://localhost:5000/api/v1/results/submitQuiz", [...data], {
+    .post(`${url}/api/v1/results/submitQuiz`, [...data], {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -490,7 +483,7 @@ export async function submitQuiz(data, token) {
 export async function addMessage(message, token) {
   let response = await axios
     .post(
-      "http://localhost:5000/api/v1/messages",
+      `${url}/api/v1/messages`,
       {
         ...message,
       },
@@ -507,7 +500,7 @@ export async function addMessage(message, token) {
 export async function editMessage(data, messageId, token) {
   let response = await axios
     .put(
-      `http://localhost:5000/api/v1/messages/${messageId}`,
+      `${url}/api/v1/messages/${messageId}`,
       {
         ...data,
       },

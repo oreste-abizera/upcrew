@@ -3,7 +3,6 @@ import swal from "sweetalert2";
 import {
   getUsers,
   getClasses,
-  getTypes,
   getCourses,
   getBooks,
   getSettings,
@@ -26,7 +25,6 @@ function UserProvider({ children }) {
   const [filteredUsers, setFilteredUsers] = React.useState([]);
   const [classes, setClasses] = React.useState([]);
   const [filteredClasses, setFilteredClasses] = React.useState([]);
-  const [types, setTypes] = React.useState([]);
   const [courses, setCourses] = React.useState([]);
   const [books, setBooks] = React.useState([]);
   const [settings, setSettings] = React.useState([]);
@@ -69,8 +67,6 @@ function UserProvider({ children }) {
       setClasses(tempClasses);
       setFilteredClasses(tempClasses);
     }
-    let tempTypes = await getTypes();
-    setTypes(tempTypes);
     let tempBooks = await getBooks();
     setBooks(tempBooks);
     let tempSettings = await getSettings();
@@ -344,7 +340,6 @@ function UserProvider({ children }) {
         closeSidebar: closeSidebar,
         users,
         classes,
-        types,
         courses,
         books,
         settings,
