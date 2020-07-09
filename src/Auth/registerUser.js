@@ -1,4 +1,5 @@
 import axios from "axios";
+import { url } from "../helpers/url";
 
 async function registerUser({
   firstName,
@@ -8,11 +9,11 @@ async function registerUser({
   password,
   gender,
   dateOfBirth,
-  userCountry
+  userCountry,
 }) {
-  let errorResponse
+  let errorResponse;
   let response = await axios
-    .post("http://localhost:5000/api/v1/auth/register", {
+    .post(`${url}/api/v1/auth/register`, {
       firstName,
       lastName,
       userName,
@@ -20,13 +21,13 @@ async function registerUser({
       userPassword: password,
       gender,
       dateOfBirth,
-      userCountry
+      userCountry,
     })
-    .catch((err) => errorResponse = err.response);
+    .catch((err) => (errorResponse = err.response));
   if (response) {
     return response;
   } else {
-    return errorResponse
+    return errorResponse;
   }
 }
 

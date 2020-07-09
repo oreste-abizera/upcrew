@@ -1,13 +1,31 @@
 import React from "react";
 import styled from "styled-components";
-import { updateUser } from "../../../../../helpers/functions";
+import {
+  updateUser,
+  UpdateProfilePicture,
+} from "../../../../../helpers/functions";
 import { UserContext } from "../../../../../context/UserContext";
 import { AdoContext } from "../../../../../context/context";
 import { url, defaultImg } from "../../../../../helpers/url";
 
 export default function EditUser({ user, id }) {
+  const [imageData, setImageData] = React.useState();
   const { showAlert } = React.useContext(AdoContext);
-  const { user: me, reloadContent } = React.useContext(UserContext);
+  const { user: me, reloadContent, solveResponse } = React.useContext(
+    UserContext
+  );
+  const handleImage = (e) => {
+    let file = e.target.files[0];
+    if (file) {
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        setImageData(reader.result);
+      };
+    } else {
+      setImageData(undefined);
+    }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     let modal = document.getElementById(id);
@@ -33,6 +51,17 @@ export default function EditUser({ user, id }) {
         message: error || "Something went wrong",
         type: "danger",
       });
+    }
+
+    //check image
+    window.Swal.fire("Accessing your data. please wait...");
+    if (imageData) {
+      let imageResponse = await UpdateProfilePicture(
+        imageData,
+        user.id,
+        me.token
+      );
+      solveResponse(imageResponse, "User info updated successifully");
     }
   };
   return (
@@ -136,6 +165,7 @@ export default function EditUser({ user, id }) {
               type="file"
               className="form-control"
               id={`image${user.id}`}
+              onChange={handleImage}
             ></input>
           </div>
           {/* end of single input */}

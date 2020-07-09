@@ -239,6 +239,25 @@ export async function UpdateMyPassword(passwords, token) {
   return response;
 }
 
+export async function UpdateProfilePicture(image, userId, token) {
+  console.log(image);
+  let response = await axios
+    .put(
+      `${url}/api/v1/users/${userId}/photoupload`,
+      {
+        file: image,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    .catch((err) => (response = err.response));
+  console.log(response);
+  return response;
+}
+
 export async function editCourse(data, courseId, token) {
   const { name, image } = data;
   let response = await axios
