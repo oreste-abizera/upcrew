@@ -6,7 +6,8 @@ export async function getSettings() {
   response = await axios
     .get(`${url}/db/settings.json`)
     .catch((err) => console.log(err));
-  return response.data;
+  response = response ? response : {};
+  return response.data || {};
 }
 export async function getUsers(token) {
   if (!token) {
@@ -146,10 +147,13 @@ export async function getMessages(token) {
 }
 
 export async function getBooks() {
-  let response = await axios
+  let response;
+  response = await axios
     .get(`${url}/db/books.json`)
     .catch((err) => console.log(err));
-  return response.data;
+  console.log(response);
+  response = response ? response : {};
+  return response.data || [];
 }
 
 export async function getMe(token) {
