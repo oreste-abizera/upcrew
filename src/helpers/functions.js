@@ -151,7 +151,7 @@ export async function getBooks() {
   response = await axios
     .get(`${url}/db/books.json`)
     .catch((err) => console.log(err));
-  console.log(response);
+  // console.log(response);
   response = response ? response : {};
   return response.data || [];
 }

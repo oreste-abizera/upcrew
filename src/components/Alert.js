@@ -34,12 +34,13 @@ export default function Alert() {
 
 const AlertWrapper = styled.div`
   position: fixed;
-  min-width: 40rem;
+  min-width: 30rem;
   top: 20%;
-  right: -30%;
+  left: -3rem;
   z-index: 5;
   .alert-container {
     display: none;
+    position: relative;
   }
   .alert-show {
     display: block;
@@ -53,9 +54,6 @@ const AlertWrapper = styled.div`
   .alert-container p {
     color: white;
   }
-  .alert-container {
-    position: relative;
-  }
   .alert-icon {
     font-size: 1.5rem;
     position: absolute;
@@ -66,9 +64,15 @@ const AlertWrapper = styled.div`
   .alert-icon:hover {
     background: var(--darkGrey);
   }
-  @media screen and (min-width: 786px) {
-    .alert-container {
-      right: 130%;
-    }
+  @media screen and (min-width: 768px) {
+    left: 10rem;
+  }
+
+  @media screen and (min-width: 1024px) {
+    left: 20rem;
+  }
+
+  @media screen and (min-width: 1116px) {
+    left: 30rem;
   }
 `;

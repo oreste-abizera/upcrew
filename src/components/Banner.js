@@ -23,7 +23,7 @@ const BannerWrapper = styled.div`
     z-index: -1;
   }
 
-  @media screen and (min-width: 786px) {
+  @media screen and (min-width: 768px) {
     .banner-img {
       top: -11rem;
       left: -20rem;

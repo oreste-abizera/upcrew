@@ -89,7 +89,7 @@ const SidebarWrapper = styled.nav`
     border-radius: 50%;
     max-width: 9rem;
   }
-  @media screen and (min-width: 786px) {
+  @media screen and (min-width: 768px) {
     width: 25%;
   }
 `;

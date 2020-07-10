@@ -105,7 +105,7 @@ const ProfileWrapper = styled.div`
     max-width: 10rem;
     border-radius: 50%;
   }
-  @media screen and (min-width: 786px) {
+  @media screen and (min-width: 768px) {
     margin-left: ${(props) => (props.sidebarOpen === true ? "26%" : "1%")};
     .personal-data {
       width: 100%;

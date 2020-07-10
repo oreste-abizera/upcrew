@@ -6,12 +6,12 @@ import {
   FaGithub,
   FaYoutube,
   FaGlobe,
-  FaTwitter,
-  FaLinkedin,
-  FaGitlab,
-  FaBitbucket,
-  FaSkype,
-  FaWhatsapp,
+  // FaTwitter,
+  // FaLinkedin,
+  // FaGitlab,
+  // FaBitbucket,
+  // FaSkype,
+  // FaWhatsapp,
   FaInstagram,
 } from "react-icons/fa";
 import { defaultImg } from "../../helpers/url";
@@ -52,52 +52,52 @@ export default class OurTeam extends Component {
           },
         ],
       },
-      {
-        id: 2,
-        image: "",
-        names: "John Doe",
-        role: "Frontend developer",
-        links: [
-          {
-            username: "John Doe",
-            url: "https://web.twitter.com",
-            icon: <FaTwitter className="link-icon"></FaTwitter>,
-          },
-          {
-            username: "John Doe",
-            url: "https://www.gitlab.com/",
-            icon: <FaGitlab className="link-icon"></FaGitlab>,
-          },
-          {
-            username: "john-doe",
-            url: "https://www.linkedin.com",
-            icon: <FaLinkedin className="link-icon"></FaLinkedin>,
-          },
-        ],
-      },
-      {
-        id: 3,
-        image: "",
-        names: "Jane Doe",
-        role: "Backend developer",
-        links: [
-          {
-            username: "Jane Doe",
-            url: "https://web.bitbucket.com",
-            icon: <FaBitbucket className="link-icon"></FaBitbucket>,
-          },
-          {
-            username: "Jane Doe",
-            url: "https://www.skype.com/",
-            icon: <FaSkype className="link-icon"></FaSkype>,
-          },
-          {
-            username: "Jane-doe",
-            url: "https://www.whatsapp.com",
-            icon: <FaWhatsapp className="link-icon"></FaWhatsapp>,
-          },
-        ],
-      },
+      // {
+      //   id: 2,
+      //   image: "",
+      //   names: "John Doe",
+      //   role: "Frontend developer",
+      //   links: [
+      //     {
+      //       username: "John Doe",
+      //       url: "https://web.twitter.com",
+      //       icon: <FaTwitter className="link-icon"></FaTwitter>,
+      //     },
+      //     {
+      //       username: "John Doe",
+      //       url: "https://www.gitlab.com/",
+      //       icon: <FaGitlab className="link-icon"></FaGitlab>,
+      //     },
+      //     {
+      //       username: "john-doe",
+      //       url: "https://www.linkedin.com",
+      //       icon: <FaLinkedin className="link-icon"></FaLinkedin>,
+      //     },
+      //   ],
+      // },
+      // {
+      //   id: 3,
+      //   image: "",
+      //   names: "Jane Doe",
+      //   role: "Backend developer",
+      //   links: [
+      //     {
+      //       username: "Jane Doe",
+      //       url: "https://web.bitbucket.com",
+      //       icon: <FaBitbucket className="link-icon"></FaBitbucket>,
+      //     },
+      //     {
+      //       username: "Jane Doe",
+      //       url: "https://www.skype.com/",
+      //       icon: <FaSkype className="link-icon"></FaSkype>,
+      //     },
+      //     {
+      //       username: "Jane-doe",
+      //       url: "https://www.whatsapp.com",
+      //       icon: <FaWhatsapp className="link-icon"></FaWhatsapp>,
+      //     },
+      //   ],
+      // },
     ],
   };
   render() {

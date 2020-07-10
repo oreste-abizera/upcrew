@@ -63,7 +63,7 @@ export default function SingleResultPage(props) {
 }
 
 const SingleResultPageWrapper = styled.div`
-  @media screen and (min-width: 786px) {
+  @media screen and (min-width: 768px) {
     margin-left: ${(props) => (props.sidebarOpen === true ? "26%" : "1%")};
   }
 `;

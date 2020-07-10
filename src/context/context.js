@@ -27,46 +27,33 @@ class AdoProvider extends Component {
       gender: "",
       dateOfBirth: "",
       country: "",
-      touched: {
-        login: false,
-        register: false,
-      },
+      touched: { login: false, register: false },
       alert: { show: false, message: "", type: "success" },
       height: 0,
     };
   }
   componentDidMount() {
     window.addEventListener("scroll", () => {
-      this.setState({
-        height: window.pageYOffset,
-      });
+      this.setState({ height: window.pageYOffset });
     });
-    return () => window.removeEventListener("scroll", () => { });
+    return () => window.removeEventListener("scroll", () => {});
   }
 
   showAlert = ({ message, type = "success" }) => {
-    this.setState({
-      alert: { show: true, message, type },
-    });
+    this.setState({ alert: { show: true, message, type } });
   };
   hideAlert = () => {
-    this.setState({
-      alert: { ...this.state.alert, show: false },
-    });
+    this.setState({ alert: { ...this.state.alert, show: false } });
   };
 
   changeIsMember = (value) => {
-    this.setState({
-      isMember: value,
-    });
+    this.setState({ isMember: value });
   };
   handleChange = (e) => {
     const target = e.target;
     const name = target.name;
     const value = target.type === "checkbox" ? target.checked : target.value;
-    this.setState({
-      [name]: value,
-    });
+    this.setState({ [name]: value });
   };
   handleSubmit = async (e) => {
     e.preventDefault();
@@ -88,23 +75,36 @@ class AdoProvider extends Component {
         password: this.state.password,
         gender: this.state.gender,
         dateOfBirth: this.state.dateOfBirth,
-        userCountry: this.state.country
+        userCountry: this.state.country,
       };
       //register user
       response = await registerUser({ ...registerData });
     }
+    if (!response) {
+      response = {
+        data: {
+          success: false,
+          error:
+            "Error Occured While accessing your data. Please try again later",
+        },
+      };
+    }
 
-    const { success: responseSuccess, error: responseError, token } = response.data
+    const {
+      success: responseSuccess,
+      error: responseError,
+      token,
+    } = response.data;
     if (responseSuccess) {
       const { userLogin } = this.context;
       const newUser = { token };
-      let userInfo = await getMe(token)
-      let { data, success, error } = userInfo.data
+      let userInfo = await getMe(token);
+      let { data, success, error } = userInfo.data;
       if (success) {
-        data.id = data._id
-        newUser.user = data
+        data.id = data._id;
+        newUser.user = data;
         userLogin(newUser);
-        this.hideAlert()
+        this.hideAlert();
       } else {
         this.showAlert({
           message: error || "Something went wrong. Please try again later.",
@@ -113,7 +113,8 @@ class AdoProvider extends Component {
       }
     } else {
       this.showAlert({
-        message: responseError || "Something went wrong. Please try again later.",
+        message:
+          responseError || "Something went wrong. Please try again later.",
         type: "danger",
       });
     }
@@ -123,14 +124,10 @@ class AdoProvider extends Component {
   changeTouched = (type) => {
     if (type === "login") {
       if (!this.state.touched.login)
-        this.setState({
-          touched: { ...this.state.touched, login: true },
-        });
+        this.setState({ touched: { ...this.state.touched, login: true } });
     } else {
       if (!this.state.touched.register)
-        this.setState({
-          touched: { ...this.state.touched, register: true },
-        });
+        this.setState({ touched: { ...this.state.touched, register: true } });
     }
   };
 

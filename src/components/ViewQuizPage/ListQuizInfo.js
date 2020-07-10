@@ -132,7 +132,7 @@ const ListQuizInfoWrapper = styled.div`
       right: 7rem;
     }
   }
-  @media screen and (min-width: 786px) {
+  @media screen and (min-width: 768px) {
     margin-right: 3rem;
   }
 `;
