@@ -21,6 +21,7 @@ export async function getUsers(token) {
       },
     })
     .catch((err) => (response = err.response));
+  response = response ? response : { data: {} };
   const { success, data, error } = response.data;
   if (success) {
     data.map((item) => {

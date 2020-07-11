@@ -44,14 +44,14 @@ function UserProvider({ children }) {
   async function mount() {
     if (user.token) {
       //fetch users
-      let tempUsers = await getUsers(user.token);
+      let tempUsers = (await getUsers(user.token)) || [];
       setUsers(tempUsers);
       setFilteredUsers(tempUsers);
       setNbrOfStudents(tempUsers.length);
       setMaxNbrOfStudents(tempUsers.length);
 
       //getting my profile info
-      let tempMe = await getMe(user.token);
+      let tempMe = (await getMe(user.token)) || { data: {} };
       const { success, data } = tempMe.data;
       if (success) {
         data.id = data._id;
@@ -59,17 +59,17 @@ function UserProvider({ children }) {
       }
 
       //fetching courses
-      let tempCourses = await getCourses(user.token);
+      let tempCourses = (await getCourses(user.token)) || [];
       setCourses(tempCourses);
 
       //fetching classes
-      let tempClasses = await getClasses(user.token);
+      let tempClasses = (await getClasses(user.token)) || [];
       setClasses(tempClasses);
       setFilteredClasses(tempClasses);
     }
-    let tempBooks = await getBooks();
+    let tempBooks = (await getBooks()) || [];
     setBooks(tempBooks);
-    let tempSettings = await getSettings();
+    let tempSettings = (await getSettings()) || {};
     setSettings(tempSettings);
   }
 

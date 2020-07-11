@@ -19,7 +19,7 @@ export default function AnswerListItem({ index, question, userId, results }) {
           {index + 1}. {question.question}
         </div>
         <div className="answer-description ml-4">
-          {question.type === 1 && (
+          {question.type === "MCQ" && (
             <div className="options">
               <p className="">
                 {" "}

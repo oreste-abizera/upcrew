@@ -16,6 +16,7 @@ export default function DisplayClass({ currentClass = {} }) {
     users,
     user: { user },
     user: me,
+    getUserNames,
   } = React.useContext(UserContext);
   const { showAlert } = React.useContext(AdoContext);
   const [classCourses, setClassCourses] = React.useState([]);
@@ -173,6 +174,11 @@ export default function DisplayClass({ currentClass = {} }) {
               </div>
             </div>
           </div>
+          {currentClass.classTeacher && (
+            <p className="ml-5 text-main">
+              Teacher: {getUserNames(currentClass.classTeacher)}
+            </p>
+          )}
           <div className="panel-footer pl-4">
             {user.type === "student" && user.currentClass === currentClass._id && (
               <button className="btn" onClick={leaveClass}>
