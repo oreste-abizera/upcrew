@@ -22,6 +22,7 @@ function AssignmentsProvider({ children }) {
   const [questions, setQuestions] = React.useState([]);
   const [results, setResults] = React.useState([]);
   const [course, setCourse] = React.useState("all");
+  const [status, setStatus] = React.useState("all");
   const [duration, setDuration] = React.useState(0);
   const [maxDuration, setMaxDuration] = React.useState(0);
   const { reload, user, courses, solveResponse } = React.useContext(
@@ -34,7 +35,7 @@ function AssignmentsProvider({ children }) {
 
   React.useEffect(() => {
     sortAssignments();
-  }, [course, duration, title]);
+  }, [course, duration, title, status]);
 
   async function mount() {
     if (user.token) {
@@ -70,6 +71,10 @@ function AssignmentsProvider({ children }) {
     setCourse(e.target.value);
   }
 
+  function handleStatus(e) {
+    setStatus(e.target.value);
+  }
+
   function sortAssignments() {
     let tempAssignments = assignments;
     //filter by course
@@ -83,6 +88,13 @@ function AssignmentsProvider({ children }) {
     if (duration < maxDuration) {
       tempAssignments = tempAssignments.filter(
         (record) => record.duration <= duration
+      );
+    }
+
+    //filter by status
+    if (status !== "all") {
+      tempAssignments = tempAssignments.filter(
+        (item) => item.status === status
       );
     }
 
@@ -184,11 +196,13 @@ function AssignmentsProvider({ children }) {
         title,
         courses,
         course,
+        status,
         duration,
         maxDuration,
         handleTitle,
         handleDuration,
         handleCourse,
+        handleStatus,
       }}
     >
       {children}

@@ -5,6 +5,8 @@ import ListQuestion from "./ListQuestion";
 import Modal from "../Modal";
 import UpdateQuizInfo from "./UpdateQuizInfo";
 import EditQuestion from "./EditQuestion";
+import { editAssignment } from "../../helpers/functions";
+import { UserContext } from "../../context/UserContext";
 
 export default function ListQuizInfo({ id }) {
   const {
@@ -14,6 +16,7 @@ export default function ListQuizInfo({ id }) {
     updateAssignment,
     questions,
   } = React.useContext(AssignmentsContext);
+  const { user: me, solveResponse } = React.useContext(UserContext);
   const [marks, setMarks] = React.useState(0);
   const [time, setTime] = React.useState(0);
   const [filteredQuestions, setFilteredQuestions] = React.useState([]);
@@ -35,9 +38,39 @@ export default function ListQuizInfo({ id }) {
     setMarks(totalMarks);
   }, [filteredQuestions]);
 
+  const changeStatus = async (value) => {
+    value = value === "completeed" ? "completed" : value;
+    let response = await editAssignment(
+      { status: value },
+      currentAssignment._id,
+      me.token
+    );
+    solveResponse(response, "Quiz status changed");
+  };
+
+  let value =
+    currentAssignment.status === "unpublished" &&
+    currentAssignment.status === "completed"
+      ? "publish"
+      : currentAssignment.status === "published"
+      ? "complete"
+      : "publish";
+
   return (
     <ListQuizInfoWrapper>
       <div className="container col-lg-8 mx-auto">
+        <p className="status p-3">
+          status:{" "}
+          <span className="badge badge-success p-2">
+            {currentAssignment.status}
+          </span>
+          <button
+            onClick={() => changeStatus(`${value}ed`)}
+            className="btn ado-btn-outline btn-sm ml-4"
+          >
+            {value}
+          </button>
+        </p>
         <h2>
           {currentAssignment.title}{" "}
           <span className="main-text"> /{marks} marks</span>

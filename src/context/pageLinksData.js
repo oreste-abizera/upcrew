@@ -63,7 +63,7 @@ export default [
       <MdAssignmentReturned className="pagelink-icon"></MdAssignmentReturned>
     ),
     text: "Results",
-    type: ["student", "teacher"],
+    type: ["student"],
   },
   {
     id: 8,

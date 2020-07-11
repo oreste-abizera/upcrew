@@ -5,12 +5,14 @@ export default function AssignmentFilters() {
   const {
     title,
     course,
+    status,
     courses,
     duration,
     maxDuration,
     handleTitle,
     handleDuration,
     handleCourse,
+    handleStatus,
   } = React.useContext(AssignmentsContext);
   let coursesOptions = new Set();
   for (let i = 0; i < courses.length; i++) {
@@ -40,6 +42,23 @@ export default function AssignmentFilters() {
           {coursesOptions}
         </select>
       </div>
+
+      <div className="form-group col-md-4">
+        <label>Status</label>
+        <select className="form-control" value={status} onChange={handleStatus}>
+          <option value="all">All</option>
+          {[
+            { id: 1, value: "unpublished" },
+            { id: 2, value: "published" },
+            { id: 3, value: "completed" },
+          ].map((item) => (
+            <option key={item.id} value={item.value}>
+              {item.value}
+            </option>
+          ))}
+        </select>
+      </div>
+
       <div className="form-group col-md-4">
         <label>Duration: {duration} mins</label>
         <input

@@ -77,17 +77,24 @@ function UserProvider({ children }) {
     // swal.fire({
     //   title: "Accessing your data. Please wait...",
     // });
-    const { success, error } = response.data;
-    swal.close();
-    if (success) {
-      if (message) {
-        window.Toast.fire({
-          title: message || "something happened",
-        });
-      }
-      reloadContent();
+    if (!response) {
+      swal.fire({
+        title: "Error occured.",
+        icon: "error",
+      });
     } else {
-      window.displayError(error);
+      const { success, error } = response.data;
+      swal.close();
+      if (success) {
+        if (message) {
+          window.Toast.fire({
+            title: message || "something happened",
+          });
+        }
+        reloadContent();
+      } else {
+        window.displayError(error);
+      }
     }
   };
   const reloadContent = () => {
