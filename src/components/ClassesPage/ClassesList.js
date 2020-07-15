@@ -6,11 +6,11 @@ import DisplayClass from "./DisplayClass";
 import ClassesFilters from "./ClassesFilters";
 
 export default function ClassesList() {
-  const { filteredClasses, user } = React.useContext(UserContext);
+  const { filteredClasses } = React.useContext(UserContext);
   let classes = [...filteredClasses];
-  if (user.user.type === "teacher") {
-    classes = classes.filter((item) => item.classTeacher === user.user._id);
-  }
+  // if (user.user.type === "teacher") {
+  //   classes = classes.filter((item) => item.classTeacher === user.user._id);
+  // }
 
   return (
     <ClassesListWrapper>

@@ -46,7 +46,10 @@ function MessagesProvider({ children }) {
       let slice1 = concat1.slice(0, name.length);
       let slice2 = concat2.slice(0, name.length);
 
-      return slice1 === name.toLowerCase() || slice2 === name.toLowerCase();
+      return (
+        (slice1 === name.toLowerCase() || slice2 === name.toLowerCase()) &&
+        record._id !== user.user._id
+      );
     });
 
     let response = [];
