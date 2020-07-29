@@ -9,7 +9,7 @@ import {
   FaGraduationCap,
   FaChalkboardTeacher,
   FaList,
-  FaBook,
+  // FaBook,
   FaRegCalendarTimes,
   FaEnvelopeOpenText,
 } from "react-icons/fa";
@@ -87,11 +87,11 @@ export default [
     text: "Timetable",
     type: "all",
   },
-  {
-    id: 11,
-    url: "/books",
-    icon: <FaBook className="pagelink-icon"></FaBook>,
-    text: "Library Books",
-    type: "all",
-  },
+  // {
+  //   id: 11,
+  //   url: "/books",
+  //   icon: <FaBook className="pagelink-icon"></FaBook>,
+  //   text: "Library Books",
+  //   type: "all",
+  // },
 ];

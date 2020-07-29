@@ -5,7 +5,6 @@ import {
   FaTwitter,
   FaYoutube,
   FaInstagram,
-  FaSlack,
 } from "react-icons/fa";
 
 export default [
@@ -15,34 +14,29 @@ export default [
     url: "https://web.facebook.com/oreste.abizera.9/",
     title: "Facebook: Oreste Abizera",
   },
+
   {
     id: 2,
-    icon: <FaTwitter className="icon" />,
-    url: "https://twitter.com",
-    title: "Twitter: Oreste Abizera",
-  },
-  {
-    id: 3,
-    icon: <FaLinkedin className="icon" />,
-    url: "https://linkedin.com",
-    title: "LinkedIn: Oreste Abizera",
-  },
-  {
-    id: 4,
-    icon: <FaYoutube className="icon"></FaYoutube>,
-    url: "https://www.youtube.com/",
-    title: "Youtube: Coderspace",
-  },
-  {
-    id: 5,
     icon: <FaInstagram className="icon"></FaInstagram>,
     url: "https://www.instagram.com/coder__tauras/",
     title: "instagram: coder__tauras",
   },
   {
-    id: 6,
-    icon: <FaSlack className="icon"></FaSlack>,
-    url: "https://www.rcagroupworkspace.slack.com",
-    title: "Slack",
+    id: 3,
+    icon: <FaTwitter className="icon" />,
+    url: "https://twitter.com",
+    title: "Twitter: Oreste Abizera",
+  },
+  {
+    id: 4,
+    icon: <FaLinkedin className="icon" />,
+    url: "https://www.linkedin.com/in/oreste-abizera-151bb9194",
+    title: "LinkedIn: Oreste Abizera",
+  },
+  {
+    id: 5,
+    icon: <FaYoutube className="icon"></FaYoutube>,
+    url: "https://www.youtube.com/",
+    title: "Youtube: Coderspace",
   },
 ];
