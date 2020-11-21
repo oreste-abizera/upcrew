@@ -18,13 +18,13 @@ export default [
   {
     id: 2,
     icon: <FaInstagram className="icon"></FaInstagram>,
-    url: "https://www.instagram.com/coder__tauras/",
-    title: "instagram: coder__tauras",
+    url: "https://www.instagram.com/a__oreste/",
+    title: "instagram: a__oreste",
   },
   {
     id: 3,
     icon: <FaTwitter className="icon" />,
-    url: "https://twitter.com",
+    url: "https://twitter.com/AbizeraOreste",
     title: "Twitter: Oreste Abizera",
   },
   {
@@ -36,7 +36,7 @@ export default [
   {
     id: 5,
     icon: <FaYoutube className="icon"></FaYoutube>,
-    url: "https://www.youtube.com/",
+    url: "https://www.youtube.com/channel/UCCp5EQVuiLfqTvo0Glqv2Xg",
     title: "Youtube: Coderspace",
   },
 ];
