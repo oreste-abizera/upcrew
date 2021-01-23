@@ -37,7 +37,7 @@ export default class OurTeam extends Component {
           },
           {
             username: "Coderspace | youtube",
-            url: "https://www.youtube.com/",
+            url: "https://www.youtube.com/channel/UCCp5EQVuiLfqTvo0Glqv2Xg",
             icon: <FaYoutube className="link-icon"></FaYoutube>,
           },
           {
@@ -46,8 +46,8 @@ export default class OurTeam extends Component {
             icon: <FaGlobe className="link-icon"></FaGlobe>,
           },
           {
-            username: "Coder__Tauras | instagram",
-            url: "https://www.instagram.com/coder__tauras/",
+            username: "a__Oreste | instagram",
+            url: "https://www.instagram.com/a__oreste/",
             icon: <FaInstagram className="link-icon"></FaInstagram>,
           },
         ],
