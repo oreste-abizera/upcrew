@@ -28,6 +28,7 @@ import LibraryBooks from "./pages/secured/LibraryBooks";
 import UpdateMyProfile from "./pages/secured/UpdateMyProfile";
 import CoursesPage from "./pages/secured/CoursesPage";
 import SingleClassPage from "./pages/secured/SingleClassPage";
+import LecturesPage from "./pages/secured/LecturesPage";
 
 //import components
 import Alert from "./components/Alert";
@@ -134,6 +135,11 @@ class Routes extends Component {
             exact
             path="/messages"
             component={MessagesPage}
+          ></PrivateRoute>
+          <PrivateRoute
+            exact
+            path="/lectures"
+            component={LecturesPage}
           ></PrivateRoute>
           {user.token ? (
             <PrivateRoute path="*" component={ErrorPage}></PrivateRoute>

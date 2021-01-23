@@ -10,8 +10,9 @@ import {
   FaChalkboardTeacher,
   FaList,
   // FaBook,
-  FaRegCalendarTimes,
+  // FaRegCalendarTimes,
   FaEnvelopeOpenText,
+  FaChalkboard,
 } from "react-icons/fa";
 export default [
   {
@@ -36,28 +37,35 @@ export default [
     type: "headmaster",
   },
   {
-    id: 10,
+    id: 4,
     url: "/courses",
     icon: <FaList className="pagelink-icon"></FaList>,
     text: "Courses",
     type: ["headmaster"],
   },
   {
-    id: 4,
+    id: 5,
     url: "/classes",
     icon: <FaList className="pagelink-icon"></FaList>,
     text: "Classes",
     type: "all",
   },
   {
-    id: 5,
+    id: 6,
+    url: "/lectures",
+    icon: <FaChalkboard className="pagelink-icon"></FaChalkboard>,
+    text: "Lectures",
+    type: ["student", "teacher"],
+  },
+  {
+    id: 7,
     url: "/assignments",
     icon: <MdAssignment className="pagelink-icon"></MdAssignment>,
     text: "Assignments",
     type: ["student", "teacher"],
   },
   {
-    id: 6,
+    id: 8,
     url: "/results",
     icon: (
       <MdAssignmentReturned className="pagelink-icon"></MdAssignmentReturned>
@@ -66,7 +74,7 @@ export default [
     type: ["student"],
   },
   {
-    id: 8,
+    id: 9,
     url: "/exams",
     icon: <FaEnvelopeOpenText className="pagelink-icon"></FaEnvelopeOpenText>,
     text: "Exams",
@@ -74,19 +82,19 @@ export default [
   },
 
   {
-    id: 9,
+    id: 10,
     url: "/messages",
     icon: <MdMessage className="pagelink-icon"></MdMessage>,
     text: "Messages",
     type: "all",
   },
-  {
-    id: 7,
-    url: "/timetable",
-    icon: <FaRegCalendarTimes className="pagelink-icon"></FaRegCalendarTimes>,
-    text: "Timetable",
-    type: "all",
-  },
+  // {
+  //   id: 11,
+  //   url: "/timetable",
+  //   icon: <FaRegCalendarTimes className="pagelink-icon"></FaRegCalendarTimes>,
+  //   text: "Timetable",
+  //   type: "all",
+  // },
   // {
   //   id: 11,
   //   url: "/books",

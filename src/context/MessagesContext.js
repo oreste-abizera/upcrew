@@ -11,6 +11,7 @@ function MessagesProvider({ children }) {
   );
   const [to, setTo] = React.useState();
   const [suggestions, setSuggestions] = React.useState([]);
+  const [lectures, setLectures] = React.useState([]);
 
   React.useEffect(() => {
     mount();
@@ -121,6 +122,7 @@ function MessagesProvider({ children }) {
     solveResponse(response, "Message sent");
     // console.log(`final to = ${tempTo}`);
   }
+
   return (
     <MessagesContext.Provider
       value={{
@@ -131,6 +133,7 @@ function MessagesProvider({ children }) {
         sendMessage,
         suggestions,
         changeTo,
+        lectures,
       }}
     >
       {children}
